@@ -1,14 +1,12 @@
-import './App.css'
-import {Button} from "@/components/ui/button.tsx";
+import { Button } from "@/components/ui/button.tsx";
 
 function App() {
-
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <p className="text-3xl font-bold underline">Hello You</p>
+    <div className="flex min-h-svh flex-col w-screen items-center justify-center">
       <Button>Click me</Button>
+      <h3 className="">Hello you</h3>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
