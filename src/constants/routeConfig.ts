@@ -1,6 +1,6 @@
 import HomePage from "@/pages/Home.tsx";
 import ResearchPage from "@/pages/Research.tsx";
-import AboutPage from "@/pages/About.tsx";
+import AboutPage from "@/pages/about/ui/views/About.tsx";
 import PeoplePage from "@/pages/People.tsx";
 import CoursesPage from "@/pages/Courses.tsx";
 import SponsorPage from "@/pages/Sponsor.tsx";
