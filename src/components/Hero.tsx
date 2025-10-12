@@ -22,7 +22,7 @@ const Hero = ({
   const heightClass =
     height === "large"
       ? "h-[500px] md:h-[600px] lg:h-[700px]"
-      : "h-[400px] md:h-[510px]";
+      : "h-[400px] md:h-[450px] lg:h-[500px]";
 
   const [searchParams] = useSearchParams();
   const subSection = searchParams.get("sub");
@@ -74,7 +74,7 @@ const Hero = ({
             {height === "large" && (
               <div className="flex flex-col items-center lg:items-start lg:ml-8 w-full lg:w-auto">
                 {subtitle && (
-                  <p className="text-base md:text-lg text-white max-w-xl mb-4 md:mb-6 leading-relaxed text-center lg:text-left">
+                  <p className="text-base md:text-xl text-white max-w-xl font-medium mb-4 md:mb-6 leading-relaxed text-center lg:text-left">
                     {subtitle}
                   </p>
                 )}

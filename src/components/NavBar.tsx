@@ -11,12 +11,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { getNavItems } from "@/constants/routeConfig.ts";
+import { routes } from "@/constants/routeConfig.ts";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function NavBar() {
-  const navItems = getNavItems().filter((item) => item.label !== "Home");
+  const navItems = routes.filter((item) => item.label !== "Home");
   const [isOpen, setIsOpen] = useState(false);
 
   return (

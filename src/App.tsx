@@ -1,30 +1,44 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RootLayout from "@/layouts/RootLayout";
-import SidebarLayout from "@/layouts/SidebarLayout";
-import HomePage from "@/pages/Home.tsx";
-import ResearchPage from "@/pages/Research.tsx";
-import CoursesPage from "@/pages/Courses.tsx";
-import JoinUsPage from "@/pages/JoinUs.tsx";
-import AboutPage from "@/pages/About.tsx";
-import PeoplePage from "@/pages/People.tsx";
-import SponsorPage from "@/pages/Sponsor.tsx";
+import RootLayout from "./layouts/RootLayout";
+import SidebarLayout from "./layouts/SidebarLayout";
+import { routes } from "@/constants/routeConfig.ts";
 
 export default function App() {
+  const routesWithoutSidebar = routes.filter(
+    (route) => !route.sidebar || route.sidebar.length === 0,
+  );
+  const routesWithSidebar = routes.filter(
+    (route) => route.sidebar && route.sidebar.length > 0,
+  );
+
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<RootLayout />}>
           {/* Pages without sidebar */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/research" element={<ResearchPage />} />
-          <Route path="/courses" element={<CoursesPage />} />
-          <Route path="/join" element={<JoinUsPage />} />
+          {routesWithoutSidebar.map((route) => {
+            const Component = route.component;
+            return (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<Component />}
+              />
+            );
+          })}
 
           {/* Pages with sidebar */}
           <Route element={<SidebarLayout />}>
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/people" element={<PeoplePage />} />
-            <Route path="/sponsors" element={<SponsorPage />} />
+            {routesWithSidebar.map((route) => {
+              const Component = route.component;
+              return (
+                <Route
+                  key={route.path}
+                  path={route.path}
+                  element={<Component />}
+                />
+              );
+            })}
           </Route>
         </Route>
       </Routes>
