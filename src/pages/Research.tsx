@@ -10,8 +10,6 @@ export default function ResearchPage() {
             and collaboration that expands knowledge and creates lasting impact.
           </p>
         </div>
-
-        {/* Add more content here */}
       </div>
     </div>
   );
