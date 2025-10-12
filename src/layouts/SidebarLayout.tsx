@@ -7,9 +7,9 @@ export default function SidebarLayout() {
         <aside className="w-64 shrink-0">
           <p>Side bar</p>
         </aside>
-        <div className="flex-1">
+        <main className="flex-1">
           <Outlet />
-        </div>
+        </main>
       </div>
     </div>
   );

@@ -11,15 +11,18 @@ interface HeroProps {
   showCTA?: boolean;
 }
 
-export default function Hero({
+const Hero = ({
   children,
   image,
   title,
   height = "small",
   subtitle,
   showCTA = false,
-}: HeroProps) {
-  const heightClass = height === "large" ? "h-[700px]" : "h-[510px]";
+}: HeroProps) => {
+  const heightClass =
+    height === "large"
+      ? "h-[500px] md:h-[600px] lg:h-[700px]"
+      : "h-[400px] md:h-[510px]";
 
   const [searchParams] = useSearchParams();
   const subSection = searchParams.get("sub");
@@ -34,49 +37,63 @@ export default function Hero({
 
   return (
     <div
-      className={`relative w-screen mx-auto bg-cover bg-center  ${heightClass}`}
+      className={`relative w-screen mx-auto bg-cover bg-center ${heightClass}`}
       style={{
         backgroundImage: `url(${image})`,
       }}
     >
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 h-full flex flex-col max-w-7xl mx-auto">
+      <div className="relative z-10 w-full h-full flex flex-col max-w-7xl mx-auto pt-16 md:pt-20 lg:pt-0">
         {children}
 
         {title && (
-          <div className="flex-1 flex items-center justify-between px-8 md:px-16">
-            <div className="flex-1">
+          <div
+            className={`flex-1 flex w-full items-center justify-center px-6 md:px-8 lg:px-16 py-8 ${
+              height === "large"
+                ? "flex-col lg:flex-row gap-6 lg:gap-0"
+                : "flex-row justify-start"
+            }`}
+          >
+            <div
+              className={`w-full ${height === "large" ? "lg:flex-1" : "flex-1"} ${
+                height === "large" ? "text-center lg:text-left" : "text-left"
+              }`}
+            >
               {showBreadcrumb && (
-                <p className="text-white text-lg mb-2">
+                <p className="text-white text-base md:text-lg mb-2">
                   {title} /{" "}
                   <span className="font-semibold">{formattedSubSection}</span>
                 </p>
               )}
               <h1
-                className={`text-white leading-tight ${height === "large" ? "!text-[110px] font-semibold" : "!text-6xl font-bold "}`}
+                className={`text-white leading-tight  ${height === "large" ? "!text-5xl md:!text-7xl xl:!text-[110px] font-semibold" : "md:!text-6xl !text-4xl font-bold "}`}
               >
                 {showBreadcrumb ? formattedSubSection : title}
               </h1>
             </div>
-            <div className="flex-1 flex flex-col items-start ml-8">
-              {subtitle && (
-                <p className="text-lg text-white max-w-xl mb-6 leading-relaxed text-left">
-                  {subtitle}
-                </p>
-              )}
-              {showCTA && (
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="text-base border-2 !border-white !bg-transparent text-white hover:!bg-white hover:text-black px-8"
-                >
-                  Learn more about us
-                </Button>
-              )}
-            </div>
+            {height === "large" && (
+              <div className="flex flex-col items-center lg:items-start lg:ml-8 w-full lg:w-auto">
+                {subtitle && (
+                  <p className="text-base md:text-lg text-white max-w-xl mb-4 md:mb-6 leading-relaxed text-center lg:text-left">
+                    {subtitle}
+                  </p>
+                )}
+                {showCTA && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="text-sm md:text-base border-2 !border-white !bg-transparent text-white hover:!bg-white hover:text-black px-6 md:px-8"
+                  >
+                    Learn more about us
+                  </Button>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
     </div>
   );
-}
+};
+
+export default Hero;
