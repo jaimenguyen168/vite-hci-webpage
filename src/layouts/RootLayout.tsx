@@ -2,13 +2,14 @@ import { Outlet, useLocation } from "react-router-dom";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import { getRouteConfig } from "@/constants/routeConfig.ts";
+import Footer from "@/components/Footer.tsx";
 
 export default function RootLayout() {
   const location = useLocation();
   const routeConfig = getRouteConfig(location.pathname);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Hero
         image={
           routeConfig?.heroImage ||
@@ -21,9 +22,10 @@ export default function RootLayout() {
       >
         <NavBar />
       </Hero>
-      <main className="max-w-7xl mx-auto px-6 py-8">
+      <main className="max-w-7xl mx-auto px-6 py-8 flex-1 w-full">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }
