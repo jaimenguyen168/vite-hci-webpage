@@ -39,15 +39,6 @@ export const routes: RouteConfig[] = [
     showCTA: true,
   },
   {
-    path: "/research",
-    label: "Research",
-    component: ResearchPage,
-    heroImage:
-      "https://images.unsplash.com/photo-1580983558189-84200466afb8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670",
-    heroTitle: "Research",
-    heroHeight: "small",
-  },
-  {
     path: "/about",
     label: "About",
     component: AboutPage,
@@ -59,6 +50,15 @@ export const routes: RouteConfig[] = [
     heroImage:
       "https://images.unsplash.com/photo-1603975711481-18b7aaca4caa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2080",
     heroTitle: "About Our Lab",
+    heroHeight: "small",
+  },
+  {
+    path: "/research",
+    label: "Research",
+    component: ResearchPage,
+    heroImage:
+      "https://images.unsplash.com/photo-1580983558189-84200466afb8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670",
+    heroTitle: "Research",
     heroHeight: "small",
   },
   {

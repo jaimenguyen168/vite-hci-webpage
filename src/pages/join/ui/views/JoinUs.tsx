@@ -13,7 +13,7 @@ const JoinUsPage = () => {
   const faqs = faqData.faqs;
 
   return (
-    <div className="w-full pt-8">
+    <div className="w-full py-8">
       <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-10">
         Any questions before joining?
       </h2>

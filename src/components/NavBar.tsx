@@ -14,6 +14,7 @@ import {
 import { routes } from "@/constants/routeConfig.ts";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import Logo from "@/components/Logo.tsx";
 
 export default function NavBar() {
   const navItems = routes.filter((item) => item.label !== "Home");
@@ -25,11 +26,7 @@ export default function NavBar() {
         {/* Logo and Mobile Menu */}
         <div className="flex items-center justify-between gap-4 w-full">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-red-600 rounded-sm flex items-center justify-center overflow-hidden">
-              <img src="/hci-logo.png" alt="HCI Logo" className="size-full" />
-            </div>
-          </Link>
+          <Logo size={56} />
 
           {/* Mobile Hamburger Menu */}
           <Popover open={isOpen} onOpenChange={setIsOpen}>
