@@ -6,6 +6,7 @@ import CoursesPage from "@/pages/Courses.tsx";
 import SponsorPage from "@/pages/Sponsor.tsx";
 import JoinUsPage from "@/pages/join/ui/views/JoinUs.tsx";
 import type { ComponentType } from "react";
+import routeContent from "@/constants/content/routeContent.json";
 
 export interface SidebarItem {
   label: string;
@@ -28,65 +29,59 @@ export interface RouteConfig {
 export const routes: RouteConfig[] = [
   {
     path: "/",
-    label: "Home",
+    label: routeContent.routes.home.label,
     component: HomePage,
-    heroImage:
-      "https://images.unsplash.com/photo-1588600878108-578307a3cc9d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2676",
-    heroTitle: "Temple HCI Lab",
+    heroImage: routeContent.routes.home.heroImage,
+    heroTitle: routeContent.routes.home.heroTitle,
     heroHeight: "large",
-    heroSubtitle:
-      "Our research lab takes a human-centered approach to using AI, NLP, and Visualization to facilitate learning and empower non-experts to participate in work that has been previously reserved for trained professionals.",
+    heroSubtitle: routeContent.routes.home.heroSubtitle,
     showCTA: true,
   },
   {
     path: "/about",
-    label: "About",
+    label: routeContent.routes.about.label,
     component: AboutPage,
     sidebar: [
       { label: "About", path: "/about", isMain: true },
       { label: "Events", path: "/about?sub=events" },
       { label: "Contact Us", path: "/about?sub=contact-us" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1603975711481-18b7aaca4caa?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2080",
-    heroTitle: "About Our Lab",
+    heroImage: routeContent.routes.about.heroImage,
+    heroTitle: routeContent.routes.about.heroTitle,
     heroHeight: "small",
   },
   {
     path: "/research",
-    label: "Research",
+    label: routeContent.routes.research.label,
     component: ResearchPage,
-    heroImage:
-      "https://images.unsplash.com/photo-1580983558189-84200466afb8?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670",
-    heroTitle: "Research",
+    heroImage: routeContent.routes.research.heroImage,
+    heroTitle: routeContent.routes.research.heroTitle,
     heroHeight: "small",
   },
   {
     path: "/people",
-    label: "People",
+    label: routeContent.routes.people.label,
     component: PeoplePage,
     sidebar: [
       { label: "Current Members", path: "/people", isMain: true },
       { label: "Alumni", path: "/people?sub=alumni" },
       { label: "Collaborators", path: "/people?sub=collaborators" },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1676276374309-53509b8a9b51?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2630",
-    heroTitle: "The HCI Lab Community",
+    heroImage: routeContent.routes.people.heroImage,
+    heroTitle: routeContent.routes.people.heroTitle,
     heroHeight: "small",
   },
   {
     path: "/courses",
-    label: "Courses",
+    label: routeContent.routes.courses.label,
     component: CoursesPage,
-    heroImage:
-      "https://images.unsplash.com/photo-1612773073063-5dc1e48fa47b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670",
-    heroTitle: "Pathways",
+    heroImage: routeContent.routes.courses.heroImage,
+    heroTitle: routeContent.routes.courses.heroTitle,
     heroHeight: "small",
   },
   {
     path: "/sponsors",
-    label: "Sponsors",
+    label: routeContent.routes.sponsors.label,
     component: SponsorPage,
     sidebar: [
       { label: "Our Sponsors", path: "/sponsors", isMain: true },
@@ -95,18 +90,16 @@ export const routes: RouteConfig[] = [
         path: "/sponsors?sub=become-our-sponsor",
       },
     ],
-    heroImage:
-      "https://images.unsplash.com/photo-1573496799822-b0557c9e2f41?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2669",
-    heroTitle: "Sponsors",
+    heroImage: routeContent.routes.sponsors.heroImage,
+    heroTitle: routeContent.routes.sponsors.heroTitle,
     heroHeight: "small",
   },
   {
     path: "/join",
-    label: "Join",
+    label: routeContent.routes.join.label,
     component: JoinUsPage,
-    heroImage:
-      "https://images.unsplash.com/photo-1581093577421-f561a654a353?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2670",
-    heroTitle: "Join Us",
+    heroImage: routeContent.routes.join.heroImage,
+    heroTitle: routeContent.routes.join.heroTitle,
     heroHeight: "small",
   },
 ];

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { routes } from "@/constants/routeConfig.ts";
 import Logo from "@/components/Logo.tsx";
-import socialData from "@/content/socialLinks.json";
+import socialData from "@/constants/content/socialLinks.json";
 
 const Footer = () => {
   const navItems = routes.filter((item) => item.label !== "Home");
