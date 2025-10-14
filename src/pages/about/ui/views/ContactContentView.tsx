@@ -18,7 +18,7 @@ const ContactContentView = () => {
           <p className="text-gray-700">
             <a
               href="mailto:hcilab@temple.edu"
-              className="text-primary-red hover:underline"
+              className="text-primary-red-800 hover:underline"
             >
               hcilab@temple.edu
             </a>
