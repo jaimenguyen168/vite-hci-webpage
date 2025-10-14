@@ -2,7 +2,7 @@ import HomePage from "@/pages/Home.tsx";
 import ResearchPage from "@/pages/Research.tsx";
 import AboutPage from "@/pages/about/ui/views/About.tsx";
 import PeoplePage from "@/pages/People.tsx";
-import CoursesPage from "@/pages/Courses.tsx";
+import CoursesPage from "@/pages/courses/ui/views/Courses";
 import SponsorPage from "@/pages/Sponsor.tsx";
 import JoinUsPage from "@/pages/join/ui/views/JoinUs.tsx";
 import type { ComponentType } from "react";
