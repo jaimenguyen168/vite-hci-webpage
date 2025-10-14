@@ -1,0 +1,12 @@
+{
+  "title": "Courses",
+  "description": "Here are the current courses:",
+  "items": [
+    "CIS 1014: AI for Everyone",
+    "CIS 3655: Human-AI Interaction",
+    "CIS 3755: Introduction to Data Visualization",
+    "CIS 4398: Projects in CS",
+    "CIS 3603: User Experience Design"
+  ],
+  "moreInfoUrl": "https://stevemacn.github.io/courses"
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Job Outcomes",
+  "rolesTitle": "What can you do with HCI experience?",
+  "rolesDescription": "Recent job titles obtained by lab alumni:",
+  "roles": [
+    "Software Engineer",
+    "UX/UI Designer",
+    "UX Researcher",
+    "UX Specialist",
+    "Information Architect",
+    "Design Researcher"
+  ],
+  "companiesTitle": "Where will you work?",
+  "companiesDescription": "Recent companies / orgs that alumni have joined:",
+  "companies": ["URBN", "microsoft", "SAP"]
+}
