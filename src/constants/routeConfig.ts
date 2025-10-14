@@ -4,7 +4,7 @@ import AboutPage from "@/pages/about/ui/views/About.tsx";
 import PeoplePage from "@/pages/People.tsx";
 import CoursesPage from "@/pages/Courses.tsx";
 import SponsorPage from "@/pages/Sponsor.tsx";
-import JoinUsPage from "@/pages/JoinUs.tsx";
+import JoinUsPage from "@/pages/join/ui/views/JoinUs.tsx";
 import type { ComponentType } from "react";
 
 export interface SidebarItem {

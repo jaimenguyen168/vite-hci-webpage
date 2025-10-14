@@ -3,7 +3,7 @@ const EventsContentView = () => {
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-gray-900">Events</h2>
       <div className="space-y-4">
-        <div className="border-l-4 border-primary-red pl-4">
+        <div className="border-l-4 border-primary-red-800 pl-4">
           <h3 className="text-xl font-semibold text-gray-900">
             Upcoming Event Title
           </h3>
