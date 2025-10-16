@@ -7,7 +7,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import faqData from "@/pages/join/content/faq.json";
-import applyData from "@/pages/join/content/apply.json";
+import applyData from "../../../../../content/applications/apply.json";
 
 const JoinUsPage = () => {
   const faqs = faqData.faqs;
