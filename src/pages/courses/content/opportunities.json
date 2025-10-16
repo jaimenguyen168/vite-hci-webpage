@@ -2,11 +2,11 @@
   "title": "Other Opportunities",
   "blurb": "There are other ways to get involved with us. We host the OwlHacks hackathon here at Temple and you can develop your leadership skills. Our members are very involved with ACM and ACM-W where you can learn more about career development. Finally, we have partnered with TUDev to provide more development skills that extend beyond your classes. So even if we don't have space right now, there are many ways to get involved with us.",
   "logos": [
-    { "alt": "OwlHacks",   "src": "/logos/owlhacks.png" },
-    { "alt": "ACM",        "src": "/logos/acm.png" },
-    { "alt": "ACM-W",      "src": "/logos/acm-w.png" },
-    { "alt": "TUDev",      "src": "/logos/tudev.png" },
-    { "alt": "DesignBloc", "src": "/logos/db.png" },
-    { "alt": "PhillyCHI",  "src": "/logos/philly-chi.png" }
+    { "alt": "OwlHacks",   "src": "/logos/owlhacks.png", "href": "https://owlhacks.com" },
+    { "alt": "ACM",        "src": "/logos/acm.png", "href": "https://acm.org" },
+    { "alt": "ACM-W",      "src": "/logos/acm-w.png", "href": "https://acm.org/women" },
+    { "alt": "TUDev",      "src": "/logos/tudev.png", "href": "https://tudev.org" },
+    { "alt": "CodeForPhilly", "src": "/logos/codeforphilly.png", "href": "https://codeforphilly.org" },
+    { "alt": "PhillyCHI",  "src": "/logos/philly-chi.png", "href": "https://phillychi.org" }
   ]
 }
