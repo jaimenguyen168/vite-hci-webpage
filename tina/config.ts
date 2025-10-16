@@ -51,7 +51,7 @@ export default defineConfig({
       {
         name: "application",
         label: "Applications",
-        path: "src/content/applications",
+        path: "content/applications",
         format: "json",
         fields: [
           {
