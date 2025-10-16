@@ -1,0 +1,38 @@
+{
+  "title": "Job Outcomes",
+  "roleTitle": "What can you do with HCI experience?",
+  "roleDescription": "Recent job titles obtained by lab alumni:",
+  "roles": [
+    "Software Engineer",
+    "UX/UI Designer",
+    "UX Researcher",
+    "UX Specialist",
+    "Information Architect",
+    "Design Researcher"
+  ],
+  "companyTitle": "Where will you work?",
+  "companyDescription": "Recent companies / orgs that alumni have joined:",
+  "companies": [
+    {
+      "name": "URBN",
+      "alumni": [
+        { "name": "Alice Smith", "photo": "/photos/alice.jpg" }
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "alumni": [
+        { "name": "Bob Jones", "photo": "/photos/bob.jpg" },
+        { "name": "Carol White", "photo": "/photos/carol.jpg" },
+        { "name": "David Lee", "photo": "/photos/david.jpg" }
+      ]
+    },
+    {
+      "name": "SAP",
+      "alumni": [
+        { "name": "Eve Brown", "photo": "/photos/eve.jpg" },
+        { "name": "Frank Davis", "photo": "/photos/frank.jpg" }
+      ]
+    }
+  ]
+}
