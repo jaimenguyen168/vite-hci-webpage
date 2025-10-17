@@ -9,7 +9,7 @@ export default function RootLayout() {
   const routeConfig = getRouteConfig(location.pathname);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col scrollbar-hide">
       <Hero
         image={
           routeConfig?.heroImage ||
@@ -22,7 +22,7 @@ export default function RootLayout() {
       >
         <NavBar />
       </Hero>
-      <main className="max-w-7xl mx-auto px-6 py-8 flex-1 w-full">
+      <main className="max-w-7xl mx-auto px-6 py-8 flex-1 w-full scrollbar-hide">
         <Outlet />
       </main>
       <Footer />
