@@ -29,26 +29,6 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts",
-        path: "content/posts",
-        fields: [
-          {
-            type: "string",
-            name: "title",
-            label: "Title",
-            isTitle: true,
-            required: true,
-          },
-          {
-            type: "rich-text",
-            name: "body",
-            label: "Body",
-            isBody: true,
-          },
-        ],
-      },
-      {
         name: "application",
         label: "Applications",
         path: "content/applications",
@@ -77,6 +57,98 @@ export default defineConfig({
                 name: "url",
                 label: "Button URL",
                 required: true,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        name: "people",
+        label: "People",
+        path: "content/people",
+        format: "json",
+        match: {
+          include: "people",
+        },
+        fields: [
+          {
+            type: "object",
+            name: "people",
+            label: "Team Members",
+            list: true,
+            ui: {
+              itemProps: (item) => {
+                return { label: item?.name || "New Team Member" };
+              },
+            },
+            fields: [
+              {
+                type: "string",
+                name: "name",
+                label: "Name",
+                isTitle: true,
+                required: true,
+              },
+              {
+                type: "string",
+                name: "url",
+                label: "URL",
+                description: "Personal website or profile URL",
+              },
+              {
+                type: "image",
+                name: "img",
+                label: "Profile Image",
+                description: "Profile photo filename",
+              },
+              {
+                type: "string",
+                name: "roles",
+                label: "Roles",
+                list: true,
+                required: true,
+                options: [
+                  { value: "pi", label: "Assistant Professor" },
+                  { value: "phd", label: "PhD Student" },
+                  { value: "ms", label: "Masters Student" },
+                  { value: "ug", label: "Undergraduate" },
+                  { value: "hs", label: "High School" },
+                ],
+              },
+              {
+                type: "string",
+                name: "status",
+                label: "Status",
+                required: true,
+                options: [
+                  { value: "active", label: "Active" },
+                  { value: "alumni", label: "Alumni" },
+                  { value: "collaborator", label: "Collaborator" },
+                ],
+              },
+              {
+                type: "number",
+                name: "start",
+                label: "Start Year",
+                description: "Year joined the team",
+              },
+              {
+                type: "number",
+                name: "end",
+                label: "End Year",
+                description: "Year left the team (if applicable)",
+              },
+              {
+                type: "string",
+                name: "affiliation",
+                label: "Affiliation",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "now",
+                label: "Current Status",
+                description: "Where they are now (for alumni)",
               },
             ],
           },
