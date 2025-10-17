@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
+@import 'tailwind-scrollbar-hide/v4';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -94,6 +95,17 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Hide scrollbars globally */
+html, body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
 }
 
 @media (prefers-color-scheme: light) {
