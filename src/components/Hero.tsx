@@ -37,9 +37,11 @@ const Hero = ({
 
   return (
     <div
-      className={`relative w-screen mx-auto bg-cover bg-center ${heightClass}`}
+      className={`relative w-screen mx-auto bg-cover ${heightClass}`}
       style={{
         backgroundImage: `url(${image})`,
+        backgroundPosition:
+          window.innerWidth >= 1024 ? "center 36%" : "center 50%",
       }}
     >
       <div className="absolute inset-0 bg-black/50" />

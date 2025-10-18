@@ -1,3 +1,5 @@
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +9,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import faqData from "@/pages/join/content/faq.json";
-import applyData from "../../../../../content/applications/apply.json";
+import applyData from "../../../../../content/join/apply.json";
 
 const JoinUsPage = () => {
   const faqs = faqData.faqs;
@@ -19,27 +21,9 @@ const JoinUsPage = () => {
       </h2>
 
       <div className="px-0 md:px-6 mb-16">
-        <Accordion
-          type="single"
-          collapsible
-          className="space-y-6"
-          defaultValue="item-1"
-        >
-          {faqs.map((faq) => (
-            <AccordionItem
-              key={faq.id}
-              value={faq.id}
-              className="rounded-4xl shadow-lg"
-            >
-              <AccordionTrigger className="px-6 py-5 !bg-white !border-2 !rounded-full text-left !text-base md:!text-2xl font-medium shadow shadow-gray-300">
-                {faq.question}
-              </AccordionTrigger>
-              {faq.answer && (
-                <AccordionContent className="px-6 py-5 text-gray-700 leading-relaxed text-sm md:text-lg">
-                  {faq.answer}
-                </AccordionContent>
-              )}
-            </AccordionItem>
+        <Accordion type="single" collapsible className="space-y-6">
+          {faqs.map((faq, index) => (
+            <AnimatedAccordionItem key={faq.id} faq={faq} index={index} />
           ))}
         </Accordion>
       </div>
@@ -64,3 +48,42 @@ const JoinUsPage = () => {
 };
 
 export default JoinUsPage;
+
+const AnimatedAccordionItem = ({
+  faq,
+  index,
+}: {
+  faq: { id: string; question: string; answer: string };
+  index: number;
+}) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "50px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: 50 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: "easeOut",
+      }}
+    >
+      <AccordionItem
+        key={faq.id}
+        value={faq.id}
+        className="rounded-4xl shadow-lg"
+      >
+        <AccordionTrigger className="px-6 py-5 !bg-white !border-2 !rounded-full text-left !text-base md:!text-2xl font-medium shadow shadow-gray-300">
+          {faq.question}
+        </AccordionTrigger>
+        {faq.answer && (
+          <AccordionContent className="px-6 py-5 text-gray-700 leading-relaxed text-sm md:text-lg">
+            {faq.answer}
+          </AccordionContent>
+        )}
+      </AccordionItem>
+    </motion.div>
+  );
+};
