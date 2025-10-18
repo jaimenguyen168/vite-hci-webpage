@@ -80,7 +80,7 @@ export default function NavBar() {
                 <NavigationMenuLink asChild>
                   <Link
                     to={item.path}
-                    className="!text-white !bg-transparent mx-1 xl:mx-2 !font-medium !text-lg font-roboto transition-colors hover:!bg-white/10 px-3 py-2 rounded-md"
+                    className="!text-white !bg-transparent mx-1 xl:mx-2 !font-medium !text-lg font-roboto transition-colors hover:!bg-white/10 px-3 py-2 rounded-md whitespace-nowrap"
                   >
                     {item.label}
                   </Link>

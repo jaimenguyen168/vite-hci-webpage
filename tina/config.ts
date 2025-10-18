@@ -28,10 +28,225 @@ export default defineConfig({
   // See docs on content modeling for more info on how to setup new content models: https://tina.io/docs/r/content-modelling-collections/
   schema: {
     collections: [
+      // Route content
       {
-        name: "application",
-        label: "Applications",
-        path: "content/applications",
+        name: "routes",
+        label: "Routes",
+        path: "content/routes",
+        format: "json",
+        fields: [
+          {
+            type: "object",
+            name: "home",
+            label: "Home",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroSubtitle",
+                label: "Hero Subtitle",
+                ui: {
+                  component: "textarea",
+                },
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "about",
+            label: "About",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "research",
+            label: "Research",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "people",
+            label: "People",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "courses",
+            label: "Courses",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "sponsors",
+            label: "Sponsors",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+            ],
+          },
+          {
+            type: "object",
+            name: "join",
+            label: "Join",
+            fields: [
+              {
+                type: "string",
+                name: "label",
+                label: "Label",
+                required: true,
+              },
+              {
+                type: "string",
+                name: "heroImage",
+                label: "Hero Image",
+                description: "Paste image URL or select from media",
+                ui: {
+                  component: "image",
+                },
+              },
+              {
+                type: "string",
+                name: "heroTitle",
+                label: "Hero Title",
+                required: true,
+              },
+            ],
+          },
+        ],
+      },
+
+      // Join content
+      {
+        name: "join",
+        label: "Join Us",
+        path: "content/join",
         format: "json",
         fields: [
           {
@@ -62,6 +277,8 @@ export default defineConfig({
           },
         ],
       },
+
+      // People content
       {
         name: "people",
         label: "People",
