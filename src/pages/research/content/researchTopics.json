@@ -13,7 +13,7 @@
         {
           "title": "CoNotate: Suggesting Queries Based on Notes Promotes Knowledge Discovery | CHI 2021",
           "description": "CoNotate offers query suggestions based on analyzing the searcher's notes and previous searches for patterns and gaps in information. This approach helped searchers issue significantly more queries, and discover more domain-specific terms than standard web search. This demonstrates how search can leverage user-generated content to help people get started when exploring complex, multi-faceted information spaces.",
-          "image": "https://via.placeholder.com/400x200/4F46E5/FFFFFF?text=AI+Learning+Platform",
+          "image": "https://dl.acm.org/cms/attachment/html/10.1145/3411764.3445618/assets/html/images/chi21-574-fig3.jpg",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Demo", "icon": "/src/assets/icons/demo-icon.png", "url": "#" },
@@ -24,7 +24,7 @@
         {
           "title": "InterWeave: Presenting Suggestions in Context Scaffolds Information Search and Synthesis | UIST 2022",
           "description": "InterWeave mines the emergent structure of a searchers' notes and places contextual search guidance suggestions within this structure. This approach helped search actively, gather information, and connect newly discovered information to existing knowledge, compared to current search. This demonstrates how search can leverage user-generated content and structure to help people explore and make sense of complex information spaces.",
-          "image": "https://via.placeholder.com/400x200/059669/FFFFFF?text=Ethical+AI+Research",
+          "image": "https://srishtipalani.github.io/static/media/interweave-screenshot.3e1a44d38423e009fedd.png",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Talk", "icon": "/src/assets/icons/talk-icon.png", "url": "#" },
@@ -34,7 +34,7 @@
         {
           "title": "Sensecape: Enabling Multilevel Exploration and Sensemaking with Large Language Models | UIST 2023",
           "description": "Sensecape is an interactive system designed to support complex information tasks with an LLM by enabling users to manage the complexity of information through multilevel abstraction and switch seamlessly between foraging and sensemaking. Sensecape empowers users to explore more topics and structure their knowledge hierarchically, thanks to the externalization of levels of abstraction.",
-          "image": "https://via.placeholder.com/400x200/DC2626/FFFFFF?text=Content+Creation+Tool",
+          "image": "https://i.ytimg.com/vi/X3cf1U1dFGQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAp9Ky_w8w6H4AUijzo_H3YgilM1w",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Demo", "icon": "/src/assets/icons/demo-icon.png", "url": "#" },
@@ -58,7 +58,7 @@
         {
           "title": "CoNotate: Suggesting Queries Based on Notes Promotes Knowledge Discovery | CHI 2021",
           "description": "CoNotate offers query suggestions based on analyzing the searcher's notes and previous searches for patterns and gaps in information. This approach helped searchers issue significantly more queries, and discover more domain-specific terms than standard web search. This demonstrates how search can leverage user-generated content to help people get started when exploring complex, multi-faceted information spaces.",
-          "image": "https://via.placeholder.com/400x200/4F46E5/FFFFFF?text=AI+Learning+Platform",
+          "image": "https://dl.acm.org/cms/attachment/html/10.1145/3411764.3445618/assets/html/images/chi21-574-fig3.jpg",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Demo", "icon": "/src/assets/icons/demo-icon.png", "url": "#" },
@@ -69,7 +69,7 @@
         {
           "title": "InterWeave: Presenting Suggestions in Context Scaffolds Information Search and Synthesis | UIST 2022",
           "description": "InterWeave mines the emergent structure of a searchers' notes and places contextual search guidance suggestions within this structure. This approach helped search actively, gather information, and connect newly discovered information to existing knowledge, compared to current search. This demonstrates how search can leverage user-generated content and structure to help people explore and make sense of complex information spaces.",
-          "image": "https://via.placeholder.com/400x200/059669/FFFFFF?text=Ethical+AI+Research",
+          "image": "https://srishtipalani.github.io/static/media/interweave-screenshot.3e1a44d38423e009fedd.png",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Talk", "icon": "/src/assets/icons/talk-icon.png", "url": "#" },
@@ -79,7 +79,7 @@
         {
           "title": "Sensecape: Enabling Multilevel Exploration and Sensemaking with Large Language Models | UIST 2023",
           "description": "Sensecape is an interactive system designed to support complex information tasks with an LLM by enabling users to manage the complexity of information through multilevel abstraction and switch seamlessly between foraging and sensemaking. Sensecape empowers users to explore more topics and structure their knowledge hierarchically, thanks to the externalization of levels of abstraction.",
-          "image": "https://via.placeholder.com/400x200/DC2626/FFFFFF?text=Content+Creation+Tool",
+          "image": "https://i.ytimg.com/vi/X3cf1U1dFGQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAp9Ky_w8w6H4AUijzo_H3YgilM1w",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Demo", "icon": "/src/assets/icons/demo-icon.png", "url": "#" },
@@ -102,7 +102,7 @@
         {
           "title": "CoNotate: Suggesting Queries Based on Notes Promotes Knowledge Discovery | CHI 2021",
           "description": "CoNotate offers query suggestions based on analyzing the searcher's notes and previous searches for patterns and gaps in information. This approach helped searchers issue significantly more queries, and discover more domain-specific terms than standard web search. This demonstrates how search can leverage user-generated content to help people get started when exploring complex, multi-faceted information spaces.",
-          "image": "https://via.placeholder.com/400x200/4F46E5/FFFFFF?text=AI+Learning+Platform",
+          "image": "https://dl.acm.org/cms/attachment/html/10.1145/3411764.3445618/assets/html/images/chi21-574-fig3.jpg",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Demo", "icon": "/src/assets/icons/demo-icon.png", "url": "#" },
@@ -113,7 +113,7 @@
         {
           "title": "InterWeave: Presenting Suggestions in Context Scaffolds Information Search and Synthesis | UIST 2022",
           "description": "InterWeave mines the emergent structure of a searchers' notes and places contextual search guidance suggestions within this structure. This approach helped search actively, gather information, and connect newly discovered information to existing knowledge, compared to current search. This demonstrates how search can leverage user-generated content and structure to help people explore and make sense of complex information spaces.",
-          "image": "https://via.placeholder.com/400x200/059669/FFFFFF?text=Ethical+AI+Research",
+          "image": "https://srishtipalani.github.io/static/media/interweave-screenshot.3e1a44d38423e009fedd.png",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Talk", "icon": "/src/assets/icons/talk-icon.png", "url": "#" },
@@ -123,7 +123,7 @@
         {
           "title": "Sensecape: Enabling Multilevel Exploration and Sensemaking with Large Language Models | UIST 2023",
           "description": "Sensecape is an interactive system designed to support complex information tasks with an LLM by enabling users to manage the complexity of information through multilevel abstraction and switch seamlessly between foraging and sensemaking. Sensecape empowers users to explore more topics and structure their knowledge hierarchically, thanks to the externalization of levels of abstraction.",
-          "image": "https://via.placeholder.com/400x200/DC2626/FFFFFF?text=Content+Creation+Tool",
+          "image": "https://i.ytimg.com/vi/X3cf1U1dFGQ/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAp9Ky_w8w6H4AUijzo_H3YgilM1w",
           "actions": [
             { "label": "PDF", "icon": "/src/assets/icons/pdf-icon.png", "url": "#" },
             { "label": "Demo", "icon": "/src/assets/icons/demo-icon.png", "url": "#" },

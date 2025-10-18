@@ -12,13 +12,13 @@ interface ResearchIntroProps {
 
 export function ResearchIntro({ introText }: ResearchIntroProps) {
   return (
-    <div className="container mx-auto px-8 mb-16">
-      <div className="max-w-4xl">
+    <div className="px-8">
+      <div className="max-w-6xl">
         <div 
-          className="border-l-4 pl-8 mb-12" 
+          className="border-l-8 pl-8 mb-12"
           style={{ borderLeftColor: DESIGN_TOKENS.colors.primaryRed }}
         >
-          <p className="text-2xl font-roboto leading-relaxed">
+          <p className="text-base md:text-lg xl:text-2xl font-roboto leading-relaxed">
             {introText}
           </p>
         </div>

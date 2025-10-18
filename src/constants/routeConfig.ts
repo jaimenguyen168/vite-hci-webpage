@@ -1,5 +1,5 @@
 import HomePage from "@/pages/Home.tsx";
-import ResearchPage from "@/pages/Research.tsx";
+import ResearchPage from "@/pages/research/ui/views/Research.tsx";
 import AboutPage from "@/pages/about/ui/views/About.tsx";
 import PeoplePage from "@/pages/People.tsx";
 import CoursesPage from "@/pages/Courses.tsx";

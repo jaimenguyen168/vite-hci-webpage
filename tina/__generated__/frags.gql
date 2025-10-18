@@ -1,0 +1,72 @@
+fragment RoutesParts on Routes {
+  __typename
+  home {
+    __typename
+    label
+    heroImage
+    heroTitle
+    heroSubtitle
+  }
+  about {
+    __typename
+    label
+    heroImage
+    heroTitle
+  }
+  research {
+    __typename
+    label
+    heroImage
+    heroTitle
+  }
+  people {
+    __typename
+    label
+    heroImage
+    heroTitle
+  }
+  courses {
+    __typename
+    label
+    heroImage
+    heroTitle
+  }
+  sponsors {
+    __typename
+    label
+    heroImage
+    heroTitle
+  }
+  join {
+    __typename
+    label
+    heroImage
+    heroTitle
+  }
+}
+
+fragment JoinParts on Join {
+  __typename
+  title
+  button {
+    __typename
+    text
+    url
+  }
+}
+
+fragment PeopleParts on People {
+  __typename
+  people {
+    __typename
+    name
+    url
+    img
+    roles
+    status
+    start
+    end
+    affiliation
+    now
+  }
+}

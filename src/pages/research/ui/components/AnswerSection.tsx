@@ -12,7 +12,7 @@ interface AnswerSectionProps {
 export function AnswerSection({ answer }: AnswerSectionProps) {
   return (
     <div className="mb-8 flex justify-center">
-      <div className="max-w-4xl w-full relative">
+      <div className="w-full relative">
         {/* Text Content with Red Bar */}
         <div className="flex items-start">
           <div className="flex-1 pr-6">
