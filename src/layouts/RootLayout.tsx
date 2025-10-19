@@ -3,10 +3,21 @@ import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
 import { getRouteConfig } from "@/constants/routeConfig.ts";
 import Footer from "@/components/Footer.tsx";
+import { useEffect } from "react";
 
 export default function RootLayout() {
   const location = useLocation();
   const routeConfig = getRouteConfig(location.pathname);
+
+  useEffect(() => {
+    if (routeConfig?.heroImage) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = routeConfig.heroImage;
+      document.head.appendChild(link);
+    }
+  }, [routeConfig?.heroImage]);
 
   return (
     <div className="min-h-screen flex flex-col scrollbar-hide">
