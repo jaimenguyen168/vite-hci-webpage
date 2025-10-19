@@ -4,9 +4,9 @@ import SidebarLayout from "./layouts/SidebarLayout";
 import { routes } from "@/constants/routeConfig.ts";
 
 export default function App() {
-  const basename = import.meta.env.PROD && !import.meta.env.VERCEL 
-    ? "/vite-hci-webpage/" 
-    : "";
+  const basename = window.location.pathname.startsWith('/vite-hci-webpage/') 
+  ? "/vite-hci-webpage/" 
+  : "";
   
   const routesWithoutSidebar = routes.filter(
     (route) => !route.sidebar || route.sidebar.length === 0,
