@@ -11,19 +11,13 @@ interface AnswerSectionProps {
 
 export function AnswerSection({ answer }: AnswerSectionProps) {
   return (
-    <div className="mb-8 flex justify-center">
+    <div className="mb-12 flex justify-center">
       <div className="w-full relative">
         {/* Text Content with Red Bar */}
-        <div className="flex items-start">
-          <div className="flex-1 pr-6">
-            <p className="text-gray-900 text-base md:text-lg leading-relaxed font-sans text-right font-bold">
-              {answer}
-            </p>
-          </div>
-          <div 
-            className={`${DESIGN_TOKENS.spacing.barWidth} ${DESIGN_TOKENS.spacing.barHeight} flex-shrink-0`}
-            style={{ backgroundColor: DESIGN_TOKENS.colors.primaryRed }}
-          ></div>
+        <div className="border-r-8 pl-10 pr-6" style={{ borderColor: DESIGN_TOKENS.colors.primaryRed }}>
+          <h2 className="text-base md:text-lg xl:text-2xl leading-relaxed font-sans text-right font-semibold">
+            {answer}
+          </h2>
         </div>
       </div>
     </div>

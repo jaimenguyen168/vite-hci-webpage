@@ -15,8 +15,8 @@ const JoinUsPage = () => {
   const faqs = faqData.faqs;
 
   return (
-    <div className="w-full py-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-10">
+    <div className="w-full pb-8 pt-4">
+      <h2 className="font-bold text-gray-900 !text-2xl md:!text-3xl xl:!text-4xl mb-8">
         Any questions before joining?
       </h2>
 
@@ -29,7 +29,7 @@ const JoinUsPage = () => {
       </div>
 
       <Card className="bg-primary-red-900 border-0 shadow-lg !rounded-4xl">
-        <CardContent className="px-8 md:px-16 py-8 flex items-center justify-between">
+        <CardContent className="px-8 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
           <h2 className="text-xl md:text-2xl font-semibold text-white">
             {applyData.title}
           </h2>
