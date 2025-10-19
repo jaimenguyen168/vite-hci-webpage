@@ -18,9 +18,9 @@ export function ResearchIntro({ introText }: ResearchIntroProps) {
           className="border-l-8 pl-8 mb-12"
           style={{ borderLeftColor: DESIGN_TOKENS.colors.primaryRed }}
         >
-          <p className="text-base md:text-lg xl:text-2xl font-roboto leading-relaxed">
+          <h2 className="text-base md:text-lg xl:text-2xl leading-relaxed">
             {introText}
-          </p>
+          </h2>
         </div>
       </div>
     </div>
