@@ -6,7 +6,10 @@ import ViteImageOptimize from "vite-plugin-imagemin";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === "production" ? "/vite-hci-webpage/" : "/",
+  base:
+    process.env.NODE_ENV === "production" && process.env.VERCEL !== "1"
+      ? "/vite-hci-webpage/"
+      : "/",
   plugins: [
     react(),
     tailwindcss(),
