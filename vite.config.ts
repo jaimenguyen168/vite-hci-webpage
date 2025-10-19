@@ -6,6 +6,7 @@ import ViteImageOptimize from "vite-plugin-imagemin";
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === "production" ? "/Vite-HCI-Webpage/" : "/",
   plugins: [
     react(),
     tailwindcss(),
