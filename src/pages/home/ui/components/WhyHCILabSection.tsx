@@ -12,29 +12,29 @@ import {
 } from "@/components/ui/carousel";
 import Title from "@/components/Title.tsx";
 import { Link } from "react-router-dom";
-import { cn } from "@/lib/utils";
+import { cn, getImagePath } from "@/lib/utils";
 
 const images = [
   {
     src: "/images/cover/3-studio.jpg",
-    alt: "Students collaborating in modern university lab"
+    alt: "Students collaborating in modern university lab",
   },
   {
     src: "/images/cover/5-studio.JPG",
-    alt: "Research team working on computer science project"
+    alt: "Research team working on computer science project",
   },
   {
     src: "/images/cover/6-studio.JPG",
-    alt: "University campus building exterior"
+    alt: "University campus building exterior",
   },
   {
     src: "/images/cover/HCI_OpenHouse-5.jpg",
-    alt: "Students in technology classroom"
+    alt: "Students in technology classroom",
   },
   {
     src: "/images/cover/HCI_OpenHouse-38.jpg",
-    alt: "HCI research equipment and workspace"
-  }
+    alt: "HCI research equipment and workspace",
+  },
 ];
 
 const WhyHCILabSection = () => {
@@ -72,10 +72,10 @@ const WhyHCILabSection = () => {
           <Title title="Why HCI Lab?" classname="font-medium" />
 
           <p className="text-base lg:text-lg text-gray-700 leading-relaxed">
-            Being part of a research lab builds real-world skills, from critical thinking
-            to teamwork. Students gain mentorship and hands-on experience, while
-            job opportunities open doors to future careers in academia, healthcare,
-            and industry.
+            Being part of a research lab builds real-world skills, from critical
+            thinking to teamwork. Students gain mentorship and hands-on
+            experience, while job opportunities open doors to future careers in
+            academia, healthcare, and industry.
           </p>
           <Link to="/about">
             <Button
@@ -96,17 +96,17 @@ const WhyHCILabSection = () => {
                     <CardContent className="p-0">
                       <div className="relative h-72 rounded-3xl overflow-hidden">
                         <img
-                          src={image.src}
+                          src={getImagePath(image.src)}
                           alt={image.alt}
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.style.display = "none";
                           }}
                         />
-                        <div
-                          className="hidden w-full h-full bg-gray-200 items-center justify-center rounded-3xl"
-                        >
-                          <span className="text-gray-500 text-center px-4">{image.alt}</span>
+                        <div className="hidden w-full h-full bg-gray-200 items-center justify-center rounded-3xl">
+                          <span className="text-gray-500 text-center px-4">
+                            {image.alt}
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -114,8 +114,12 @@ const WhyHCILabSection = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            {isFirst ? null : <CarouselPrevious className="left-4 size-10 !bg-white" />}
-            {isLast ? null : <CarouselNext className="right-4 size-10 !bg-white" />}
+            {isFirst ? null : (
+              <CarouselPrevious className="left-4 size-10 !bg-white" />
+            )}
+            {isLast ? null : (
+              <CarouselNext className="right-4 size-10 !bg-white" />
+            )}
           </Carousel>
 
           {/* Pagination dots */}
@@ -126,7 +130,7 @@ const WhyHCILabSection = () => {
                 onClick={() => api?.scrollTo(index)}
                 className={cn(
                   "size-4 !rounded-full !p-0 transition-colors",
-                  current === index + 1 ? "!bg-gray-500" : "!bg-gray-300"
+                  current === index + 1 ? "!bg-gray-500" : "!bg-gray-300",
                 )}
               />
             ))}

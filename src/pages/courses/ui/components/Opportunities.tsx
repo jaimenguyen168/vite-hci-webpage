@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
+import { getImagePath } from "@/lib/utils.ts";
 
 type OpportunitiesContent = {
   title: string;
@@ -44,7 +45,7 @@ export default function Opportunities({
                 className="inline-block transition-transform hover:scale-110"
               >
                 <img
-                  src={item.src}
+                  src={getImagePath(item.src)}
                   alt={item.alt}
                   className="h-12 md:h-16 object-contain"
                 />

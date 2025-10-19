@@ -1,8 +1,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import Title from "@/components/Title.tsx";
+import { getImagePath } from "@/lib/utils.ts";
 
 interface NewsItem {
   id: string;
@@ -14,21 +15,21 @@ const newsItems: NewsItem[] = [
   {
     id: "news-1",
     date: "MAY 2025",
-    title: "Congratulations to our lab members in the Class of 2025!"
+    title: "Congratulations to our lab members in the Class of 2025!",
   },
   {
     id: "news-2",
     date: "APR 2025",
-    title: '"[Paper Name]" accepted into ITiCSe 2025!'
+    title: '"[Paper Name]" accepted into ITiCSe 2025!',
   },
   {
     id: "news-3",
     date: "APR 2025",
-    title: '"[Paper Name]" accepted into ITiCSe 2025!'
-  }
+    title: '"[Paper Name]" accepted into ITiCSe 2025!',
+  },
 ];
 
-const RecentNewsSection= () => {
+const RecentNewsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "50px" });
 
@@ -49,7 +50,9 @@ const RecentNewsSection= () => {
               <motion.div
                 key={news.id}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                animate={
+                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                }
                 transition={{
                   duration: 0.5,
                   delay: index * 0.1,
@@ -75,12 +78,12 @@ const RecentNewsSection= () => {
         </div>
         <div className="transform rotate-3 rounded-[64px] overflow-hidden shadow-lg">
           <img
-            src="/images/cover/5-studio.JPG"
+            src={getImagePath("/images/cover/5-studio.JPG")}
             alt="Lab/Event participants collaborating"
             className="w-full h-80 object-cover"
             onError={(e) => {
               // Fallback to placeholder if image fails to load
-              e.currentTarget.style.display = 'none';
+              e.currentTarget.style.display = "none";
             }}
           />
         </div>

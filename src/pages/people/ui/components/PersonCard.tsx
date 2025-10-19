@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { roleColors, roleLabels } from "@/pages/people/constants/roleConfig.ts";
 import type { Person } from "@/pages/people/types.ts";
-import { getInitials } from "@/lib/utils.ts";
+import { getImagePath, getInitials } from "@/lib/utils.ts";
 
 function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
   const [expandedRoleIndex, setExpandedRoleIndex] = useState<number | null>(
@@ -41,7 +41,7 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
           <div className="flex justify-center">
             <Avatar className="size-20 lg:size-32">
               <AvatarImage
-                src={person.img}
+                src={getImagePath(person.img)}
                 alt={person.name}
                 className="object-cover"
               />
