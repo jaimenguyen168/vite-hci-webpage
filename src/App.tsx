@@ -4,6 +4,10 @@ import SidebarLayout from "./layouts/SidebarLayout";
 import { routes } from "@/constants/routeConfig.ts";
 
 export default function App() {
+  const basename = import.meta.env.PROD && !import.meta.env.VERCEL 
+    ? "/vite-hci-webpage/" 
+    : "";
+  
   const routesWithoutSidebar = routes.filter(
     (route) => !route.sidebar || route.sidebar.length === 0,
   );
@@ -12,7 +16,7 @@ export default function App() {
   );
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<RootLayout />}>
           {/* Pages without sidebar */}
