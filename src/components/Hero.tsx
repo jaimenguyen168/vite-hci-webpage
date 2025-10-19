@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import type { ReactNode } from "react";
 import { useSearchParams } from "react-router-dom";
+import { getImagePath } from "@/lib/utils.ts";
 
 interface HeroProps {
   children: ReactNode;
@@ -39,7 +40,7 @@ const Hero = ({
     <div
       className={`relative w-screen mx-auto bg-cover ${heightClass}`}
       style={{
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${getImagePath(image)})`,
         backgroundPosition:
           window.innerWidth >= 1024 ? "center 36%" : "center 50%",
       }}
