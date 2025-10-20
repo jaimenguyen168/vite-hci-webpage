@@ -5,13 +5,30 @@
 
 import { DESIGN_TOKENS } from "../../constants/design";
 import type { ResearchProject } from "../../types";
-import { getImagePath } from "@/lib/utils.ts";
+import { Code, FileText, Mic, Share2, SquarePlay } from "lucide-react";
 
 interface ResearchCardProps {
   research: ResearchProject;
 }
 
 export function ResearchCard({ research }: ResearchCardProps) {
+  const renderIcon = (label: string) => {
+    switch (label) {
+      case "PDF":
+        return <FileText size={12} />;
+      case "Code":
+        return <Code size={12} />;
+      case "Demo":
+        return <SquarePlay size={12} />;
+      case "Talk":
+        return <Mic size={12} />;
+      case "Cite":
+        return <Share2 size={12} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
       {/* Image */}
@@ -19,7 +36,7 @@ export function ResearchCard({ research }: ResearchCardProps) {
         className={`w-full ${DESIGN_TOKENS.spacing.cardImageHeight} overflow-hidden`}
       >
         <img
-          src={getImagePath(research.image)}
+          src={research.image}
           alt={research.title}
           className="w-full h-full object-cover"
         />
@@ -47,11 +64,7 @@ export function ResearchCard({ research }: ResearchCardProps) {
               href={action.url}
               className="inline-flex items-center gap-1 px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 transition-colors duration-200"
             >
-              <img
-                src={getImagePath(action.icon)}
-                alt={action.label}
-                className="w-3 h-3"
-              />
+              {renderIcon(action.label)}
               <span>{action.label}</span>
             </a>
           ))}
