@@ -5,7 +5,9 @@
       "url": "https://stevemacn.github.io",
       "img": "/images/people/smacneil.jpg",
       "roles": [
-        "pi"
+        "pi",
+        "phd",
+        "ms"
       ],
       "status": "active",
       "affiliation": "Temple University"
