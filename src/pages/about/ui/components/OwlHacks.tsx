@@ -66,7 +66,7 @@ const OwlHacks = () => {
               </h2>
               <div className="mt-6">
                 <Button
-                  className="text-black !rounded-full !text-sm hover:!bg-gray-200 ring-2 ring-black"
+                  className="text-black hover:!text-white !rounded-full !text-sm hover:!bg-gray-900 ring-2 !bg-transparent"
                   size="sm"
                   onClick={() => window.open("https://owlhacks.com", "_blank")}
                 >
