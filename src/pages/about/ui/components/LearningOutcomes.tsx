@@ -10,7 +10,7 @@ type LearningOutcomes = {
 
 export default function LearningOutcomes({ content }: { content: LearningOutcomes }) {
   return (
-    <div className="relative pt-6">
+    <div className="relative">
       <Card
         className="shadow-lg font-roboto"
         style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}

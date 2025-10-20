@@ -14,7 +14,7 @@ type Alumni = {
 
 export default function Alumni({ content }: { content: Alumni }) {
   return (
-    <div className="relative pt-6">
+    <div className="relative">
       <Card
         className="shadow-lg font-roboto"
         style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}

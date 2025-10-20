@@ -8,7 +8,7 @@ import alumniContent from "../../content/alumni.json";
 
 const AboutContentView = () => {
   return (
-    <div className="space-y-6">
+    <div className="space-y-12 pb-16">
       <CommunityResearch content={communityResearchContent} />
       <LearningOutcomes content={learningOutcomesContent} />
       <Alumni content={alumniContent} />

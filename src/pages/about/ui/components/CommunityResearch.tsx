@@ -8,7 +8,7 @@ type CommunityResearch = {
 
 export default function CommunityResearch({ content }: { content: CommunityResearch }) {
   return (
-    <div className="relative pt-6">
+    <div className="relative">
 
       <Card
         className="shadow-lg font-roboto"

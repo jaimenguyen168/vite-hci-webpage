@@ -13,7 +13,6 @@ const OwlHacks = () => {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="mt-12"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-roboto">
         <div>
