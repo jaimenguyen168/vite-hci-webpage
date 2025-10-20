@@ -1,0 +1,24 @@
+{
+    "title": "Where do our Alumni Land?",
+    "description": "Many of our alumni have gone on to secure prestigious positions in academia, industry, and government, reflecting the strength and impact of our collaborative research environment.",
+    "alumni": [
+        {
+            "name": "Hannah V. Nguyen",
+            "title": "UX Designer @ URBN",
+            "quote": "Being a part of the Temple HCI Lab gave me a new perspective on user research and design. In the lab, I worked with a talented team on a novel chatbot UI project (<strong>Feedstack</strong>), which was both fun, challenging, and rewarding! That experience in conversational UI design helped me land my first full-time role as an Analyst & UX Designer at URBN (Urban Outfitters, Inc) for their retail chatbots. I'm so grateful that but most importantly the memories and people I've met at Temple HCI!",
+            "img": ""
+        },
+        {
+            "name": "Andrew Tran",
+            "title": "Software Engineer @ Amazon",
+            "quote": "Working on real-world projects helped me build a strong portfolio. The mentorship from Dr. MacNeil and the collaborative environment at the Temple HCI Lab were instrumental in my growth as a developer. The skills and experiences I gained there paved the way for my current role as a Software Engineer at Amazon. I'm thankful for the opportunities and connections I made during my time at the lab.",
+            "img": ""
+        },
+        {
+            "name": "John Doe",
+            "title": "Software Engineer @ Google",
+            "quote": "Working on real-world projects helped me build a strong portfolio. The mentorship from Dr. MacNeil and the collaborative environment at the Temple HCI Lab were instrumental in my growth as a developer. The skills and experiences I gained there paved the way for my current role as a Software Engineer at Amazon. I'm thankful for the opportunities and connections I made during my time at the lab.",
+            "img": ""
+        }
+    ]
+}
