@@ -32,7 +32,7 @@ export default defineConfig({
       {
         name: "routes",
         label: "Routes",
-        path: "content/routes",
+        path: "public/content/routes",
         format: "json",
         fields: [
           {
@@ -246,7 +246,7 @@ export default defineConfig({
       {
         name: "join",
         label: "Join Us",
-        path: "content/join",
+        path: "public/content/join",
         format: "json",
         fields: [
           {
@@ -282,7 +282,7 @@ export default defineConfig({
       {
         name: "people",
         label: "People",
-        path: "content/people",
+        path: "public/content/people",
         format: "json",
         match: {
           include: "people",
