@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script>
-      sessionStorage.redirect = location.href;
+      // Only redirect if it's NOT an admin route
+      var path = location.pathname;
+      if (!path.includes('/admin')) {
+        // Store the full path including the base
+        sessionStorage.redirect = location.pathname + location.search + location.hash;
+      }
     </script>
     <meta http-equiv="refresh" content="0;URL='./index.html'">
 </head>
