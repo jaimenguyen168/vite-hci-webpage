@@ -19,7 +19,6 @@ interface ApplyData {
 }
 
 const JoinUsPage = () => {
-  // const [faqData, setFaqData] = useState(null);
   const [applyData, setApplyData] = useState<ApplyData | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,14 +26,11 @@ const JoinUsPage = () => {
     const fetchData = async () => {
       try {
         const [applyResponse] = await Promise.all([
-          fetch("/content/join/faq.json"),
           fetch("/content/join/apply.json"),
         ]);
 
-        // const faqResult = await faqResponse.json();
         const applyResult = await applyResponse.json();
 
-        // setFaqData(faqResult);
         setApplyData(applyResult);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -50,7 +46,7 @@ const JoinUsPage = () => {
     return <div>Loading...</div>;
   }
 
-  if (!faqData || !applyData) {
+  if (!applyData) {
     return <div>Error loading content</div>;
   }
 
