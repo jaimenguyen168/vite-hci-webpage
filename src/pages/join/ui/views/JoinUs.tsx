@@ -26,7 +26,7 @@ const JoinUsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [faqResponse, applyResponse] = await Promise.all([
+        const [applyResponse] = await Promise.all([
           fetch("/content/join/faq.json"),
           fetch("/content/join/apply.json"),
         ]);
