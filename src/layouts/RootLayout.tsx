@@ -1,13 +1,17 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
-import { getRouteConfig } from "@/constants/routeConfig.ts";
+import { getRouteConfig, type RouteConfig } from "@/constants/routeConfig.ts";
 import Footer from "@/components/Footer.tsx";
 import { useEffect } from "react";
 
-export default function RootLayout() {
+interface RootLayoutProps {
+  routes: RouteConfig[];
+}
+
+export default function RootLayout({ routes }: RootLayoutProps) {
   const location = useLocation();
-  const routeConfig = getRouteConfig(location.pathname);
+  const routeConfig = getRouteConfig(routes, location.pathname);
 
   useEffect(() => {
     if (routeConfig?.heroImage) {
@@ -31,12 +35,12 @@ export default function RootLayout() {
         subtitle={routeConfig?.heroSubtitle}
         showCTA={routeConfig?.showCTA}
       >
-        <NavBar />
+        <NavBar routes={routes} />
       </Hero>
       <main className="max-w-7xl mx-auto px-6 py-8 flex-1 w-full scrollbar-hide">
         <Outlet />
       </main>
-      <Footer />
+      <Footer routes={routes} />
     </div>
   );
 }

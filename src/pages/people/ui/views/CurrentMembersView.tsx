@@ -1,18 +1,17 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import peopleData from "../../../../../content/people/people.json";
 import PersonCard from "@/pages/people/ui/components/PersonCard.tsx";
 import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
 
-const CurrentMembersView = () => {
-  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+interface CurrentMembersViewProps {
+  activeMembers: Person[];
+}
 
-  const activeMembers = peopleData.people.filter(
-    (person) => person.status === "active",
-  );
+const CurrentMembersView = ({ activeMembers }: CurrentMembersViewProps) => {
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
 
   const filteredMembers =
     selectedRoles.length > 0

@@ -11,13 +11,17 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { routes } from "@/constants/routeConfig.ts";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Logo from "@/components/Logo.tsx";
+import type { RouteConfig } from "@/constants/routeConfig.ts";
 
-export default function NavBar() {
-  const navItems = routes.filter((item) => item.label !== "Home");
+interface NavBarProps {
+  routes?: RouteConfig[];
+}
+
+export default function NavBar({ routes }: NavBarProps) {
+  const navItems = routes?.filter((item) => item.label !== "Home");
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -53,7 +57,7 @@ export default function NavBar() {
             <PopoverContent align="start" className="w-48 p-2 md:hidden mr-6 ">
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-1">
-                  {navItems.map((item) => (
+                  {navItems?.map((item) => (
                     <NavigationMenuItem key={item.path} className="w-full">
                       <NavigationMenuLink asChild>
                         <Link
@@ -75,7 +79,7 @@ export default function NavBar() {
         {/* Desktop Navigation Menu */}
         <NavigationMenu className="hidden md:block">
           <NavigationMenuList>
-            {navItems.map((item) => (
+            {navItems?.map((item) => (
               <NavigationMenuItem key={item.path}>
                 <NavigationMenuLink asChild>
                   <Link
