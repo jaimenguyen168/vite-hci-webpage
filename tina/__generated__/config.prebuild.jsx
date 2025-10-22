@@ -313,7 +313,6 @@ var config_default = defineConfig({
                 name: "roles",
                 label: "Roles",
                 list: true,
-                required: true,
                 options: [
                   { value: "pi", label: "Assistant Professor" },
                   { value: "phd", label: "PhD Student" },
