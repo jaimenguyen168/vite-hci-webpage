@@ -7,21 +7,17 @@ import type { Person } from "@/pages/people/types.ts";
 import { getImagePath, getInitials } from "@/lib/utils.ts";
 
 function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
-  const [expandedRoleIndex, setExpandedRoleIndex] = useState<number | null>(
-    null,
-  );
+  const [hoveredRoleIndex, setHoveredRoleIndex] = useState<number | null>(null);
 
   const roles = Array.isArray(person.roles) ? person.roles : [];
-
-  const handleRoleClick = (index: number) => {
-    setExpandedRoleIndex(expandedRoleIndex === index ? null : index);
-  };
 
   const handleCardClick = () => {
     if (person.url) {
       window.open(person.url, "_blank", "noopener,noreferrer");
     }
   };
+
+  console.log("Image", person.img);
 
   return (
     <motion.div
@@ -65,7 +61,7 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
           <div className="flex justify-center items-center gap-2 mb-3 flex-wrap">
             <AnimatePresence>
               {roles.map((role, index) => {
-                const isExpanded = expandedRoleIndex === index;
+                const isExpanded = hoveredRoleIndex === index;
                 return (
                   <motion.div
                     key={index}
@@ -83,9 +79,10 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
                     `}
                     style={{ backgroundColor: roleColors[role] || "#6b7280" }}
                     title={!isExpanded ? roleLabels[role] || role : undefined}
+                    onMouseEnter={() => setHoveredRoleIndex(index)}
+                    onMouseLeave={() => setHoveredRoleIndex(null)}
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleRoleClick(index);
                     }}
                   >
                     <motion.span
@@ -102,20 +99,20 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
             </AnimatePresence>
           </div>
 
-          {/* Additional info */}
-          <div className="space-y-1">
-            {person.start && (
-              <p className="text-muted-foreground text-xs lg:text-sm">
-                {person.status === "alumni" && !person.end
-                  ? person.start
-                  : `${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}
-              </p>
-            )}
+          {/*/!* Additional info *!/*/}
+          {/*<div className="space-y-1">*/}
+          {/*  {person.start && (*/}
+          {/*    <p className="text-muted-foreground text-xs lg:text-sm">*/}
+          {/*      {person.status === "alumni" && !person.end*/}
+          {/*        ? person.start*/}
+          {/*        : `${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}*/}
+          {/*    </p>*/}
+          {/*  )}*/}
 
-            {person.now && person.status === "alumni" && (
-              <p className="text-muted-foreground text-sm">Now: {person.now}</p>
-            )}
-          </div>
+          {/*  {person.now && person.status === "alumni" && (*/}
+          {/*    <p className="text-muted-foreground text-sm">Now: {person.now}</p>*/}
+          {/*  )}*/}
+          {/*</div>*/}
         </CardContent>
       </Card>
     </motion.div>

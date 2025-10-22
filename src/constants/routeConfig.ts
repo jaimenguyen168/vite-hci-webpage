@@ -3,7 +3,7 @@ import ResearchPage from "@/pages/research/ui/views/Research.tsx";
 import AboutPage from "@/pages/about/ui/views/About.tsx";
 import PeoplePage from "@/pages/people/ui/views/People.tsx";
 import CoursesPage from "@/pages/courses/ui/views/Courses";
-import SponsorPage from "@/pages/Sponsor.tsx";
+import SponsorsPage from "@/pages/sponsors/ui/views/Sponsors";
 import JoinUsPage from "@/pages/join/ui/views/JoinUs.tsx";
 import type { ComponentType } from "react";
 
@@ -139,7 +139,7 @@ export const createRoutes = (routeContent: RouteContent): RouteConfig[] => [
   {
     path: "/sponsors",
     label: routeContent.sponsors.label,
-    component: SponsorPage,
+    component: SponsorsPage,
     sidebar: [
       { label: "Our Sponsors", path: "/sponsors", isMain: true },
       {

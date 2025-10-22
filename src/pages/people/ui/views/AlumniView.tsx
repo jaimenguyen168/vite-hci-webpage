@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import PersonCard from "@/pages/people/ui/components/PersonCard.tsx";
 import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
+import Title from "@/components/Title.tsx";
 
 interface AlumniViewProps {
   alumniMembers: Person[];
@@ -24,9 +25,7 @@ const AlumniView = ({ alumniMembers }: AlumniViewProps) => {
 
   return (
     <div className="w-full mb-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">
-        Alumni
-      </h2>
+      <Title title="Alumni" />
 
       <RoleLegend onSelectedRolesChange={handleSelectedRolesChange} />
 

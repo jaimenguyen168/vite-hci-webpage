@@ -1,0 +1,96 @@
+{
+  "sponsors": [
+    {
+      "id": "nsf",
+      "name": "The National Science Foundation (NSF)",
+      "logo": "/images/sponsors/nsf-logo.png",
+      "logoAlt": "NSF Logo",
+      "grants": [
+        {
+          "title": "CAREER: Safety by Design: Protecting Adolescents from Online Risks",
+          "projectNumber": "#1844881",
+          "dateRange": "3/2019 - 2/2024",
+          "amount": "$550,000"
+        },
+        {
+          "title": "PFI-RP: A Multi-Disciplinary Approach to Detecting Adolescent Online Risks",
+          "projectNumber": "#2125609",
+          "dateRange": "9/2021 - 8/2024",
+          "amount": "$1,000,000"
+        },
+        {
+          "title": "SaTC: CORE: Small: Collaborative: Leveraging community oversight to enhance collective efficacy for privacy and security",
+          "projectNumber": "#1956441",
+          "dateRange": "8/2020 - 7/2023",
+          "amount": "$500,000"
+        },
+        {
+          "title": "EAGER:CHS: Examining Self-Harm and Suicide Contagion Risks of Viral Social Media Challenges on Youth and Young Adults",
+          "projectNumber": "#2134914",
+          "dateRange": "9/2021 - 8/2023",
+          "amount": "$300,000"
+        }
+      ]
+    },
+    {
+      "id": "temple",
+      "name": "Temple College of Science and Technology",
+      "logo": "/images/sponsors/temple-cst-logo.png",
+      "logoAlt": "Temple CST Logo",
+      "grants": [
+        {
+          "title": "Faculty Research Development Grant",
+          "projectNumber": "#FRDG-2023",
+          "dateRange": "1/2023 - 12/2023",
+          "amount": "$25,000"
+        },
+        {
+          "title": "Student Research Support Grant",
+          "projectNumber": "#SRSG-2024",
+          "dateRange": "1/2024 - 12/2024",
+          "amount": "$15,000"
+        }
+      ]
+    },
+    {
+      "id": "acl",
+      "name": "Administration for Community Living",
+      "logo": "/images/sponsors/acl-logo.png",
+      "logoAlt": "ACL Logo",
+      "grants": [
+        {
+          "title": "Accessibility Technology Research Grant",
+          "projectNumber": "#ACL-2023-001",
+          "dateRange": "6/2023 - 5/2024",
+          "amount": "$200,000"
+        },
+        {
+          "title": "Community Living Support Initiative",
+          "projectNumber": "#ACL-2024-002",
+          "dateRange": "1/2024 - 12/2024",
+          "amount": "$150,000"
+        }
+      ]
+    },
+    {
+      "id": "nidilrr",
+      "name": "National Institute of Disability, Independent Living and Rehabilitation Research",
+      "logo": "/images/sponsors/nidilrr-logo.jpg",
+      "logoAlt": "NIDILRR Logo",
+      "grants": [
+        {
+          "title": "Rehabilitation Technology Research Grant",
+          "projectNumber": "#NIDILRR-2023-001",
+          "dateRange": "3/2023 - 2/2025",
+          "amount": "$300,000"
+        },
+        {
+          "title": "Independent Living Research Initiative",
+          "projectNumber": "#NIDILRR-2024-002",
+          "dateRange": "1/2024 - 12/2024",
+          "amount": "$250,000"
+        }
+      ]
+    }
+  ]
+}

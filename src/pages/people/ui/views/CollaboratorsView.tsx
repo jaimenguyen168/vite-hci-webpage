@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import type { Person } from "@/pages/people/types.ts";
 import { getInitials } from "@/lib/utils.ts";
+import Title from "@/components/Title.tsx";
 
 function CollaboratorCard({
   person,
@@ -48,15 +49,15 @@ function CollaboratorCard({
           )}
         </CardHeader>
 
-        <CardContent className="-mt-2">
-          <div className="space-y-1">
-            {person.start && (
-              <p className="text-muted-foreground text-xs lg:text-sm">
-                {`${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}
-              </p>
-            )}
-          </div>
-        </CardContent>
+        {/*<CardContent className="-mt-2">*/}
+        {/*  <div className="space-y-1">*/}
+        {/*    {person.start && (*/}
+        {/*      <p className="text-muted-foreground text-xs lg:text-sm">*/}
+        {/*        {`${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}*/}
+        {/*      </p>*/}
+        {/*    )}*/}
+        {/*  </div>*/}
+        {/*</CardContent>*/}
       </Card>
     </motion.div>
   );
@@ -69,9 +70,7 @@ interface CollaboratorsViewProps {
 const CollaboratorsView = ({ collaborators }: CollaboratorsViewProps) => {
   return (
     <div className="w-full mb-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">
-        Collaborators
-      </h2>
+      <Title title="Collaborators" />
 
       {collaborators.length > 0 ? (
         <motion.div

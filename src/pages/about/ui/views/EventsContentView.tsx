@@ -1,4 +1,4 @@
-import OwlHacks from "../components/OwlHacks";
+import OwlHacks from "@/pages/about/ui/components/OwlHacks.tsx";
 
 const EventsContentView = () => {
   return (
