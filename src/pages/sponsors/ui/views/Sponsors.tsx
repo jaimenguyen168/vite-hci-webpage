@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
-import sponsorsData from "../../content/sponsors.json";
-import SponsorCard from "../components/SponsorCard";
-import SponsorModal from "../components/SponsorModal";
+import SponsorModal from "@/pages/sponsors/ui/components/SponsorModal.tsx";
+import SponsorCard from "@/pages/sponsors/ui/components/SponsorCard.tsx";
+import sponsorsData from "@/pages/sponsors/content/sponsors.json";
+import Title from "@/components/Title.tsx";
 
 interface Grant {
   title: string;
@@ -53,7 +54,7 @@ const Sponsors = () => {
         className="px-8 space-y-6"
       >
         <div className="max-w-6xl">
-          <h1 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">Our Sponsors</h1>
+          <Title title="Our Sponsors" />
           <div 
             className="border-l-8 pl-8 mb-12"
             style={{ borderLeftColor: '#9D3747' }}

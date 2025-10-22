@@ -1,7 +1,9 @@
+import Title from "@/components/Title.tsx";
+
 const ContactContentView = () => {
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-gray-900">Contact Us</h2>
+    <div className="w-full mb-8 py-4">
+      <Title title="Contact Us" />
       <div className="space-y-4">
         <div>
           <h3 className="text-lg font-semibold text-gray-900">Address</h3>

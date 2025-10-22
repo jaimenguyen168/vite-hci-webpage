@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import peopleData from "../../../../../content/people/people.json";
 import type { Person } from "@/pages/people/types.ts";
 import { getInitials } from "@/lib/utils.ts";
+import Title from "@/components/Title.tsx";
 
 function CollaboratorCard({
   person,
@@ -69,10 +70,8 @@ const CollaboratorsView = () => {
   );
 
   return (
-    <div className="w-full mb-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">
-        Collaborators
-      </h2>
+      <div className="w-full mb-8 py-4">
+          <Title title="Collaborators" />
 
       {collaborators.length > 0 ? (
         <motion.div

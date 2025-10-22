@@ -4,6 +4,7 @@ import peopleData from "../../../../../content/people/people.json";
 import PersonCard from "@/pages/people/ui/components/PersonCard.tsx";
 import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
+import Title from "@/components/Title.tsx";
 
 const AlumniView = () => {
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
@@ -24,10 +25,8 @@ const AlumniView = () => {
   };
 
   return (
-    <div className="w-full mb-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">
-        Alumni
-      </h2>
+      <div className="w-full mb-8 py-4">
+          <Title title="Alumni" />
 
       <RoleLegend onSelectedRolesChange={handleSelectedRolesChange} />
 

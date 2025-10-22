@@ -6,6 +6,7 @@ import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
+import Title from "@/components/Title.tsx";
 
 const CurrentMembersView = () => {
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
@@ -26,10 +27,8 @@ const CurrentMembersView = () => {
   };
 
   return (
-    <div className="w-full mb-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">
-        Current Members
-      </h2>
+    <div className="w-full mb-8 py-4">
+      <Title title="Current Members" />
 
       <RoleLegend onSelectedRolesChange={handleSelectedRolesChange} />
 

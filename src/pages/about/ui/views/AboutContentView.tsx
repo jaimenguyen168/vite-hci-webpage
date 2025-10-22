@@ -1,9 +1,10 @@
 import Testimonial from "@/pages/about/ui/components/Testimonial.tsx";
+import Title from "@/components/Title.tsx";
 
 const AboutContentView = () => {
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-bold text-gray-900">About Our Lab</h2>
+    <div className="w-full mb-8 py-4">
+      <Title title="About Our Lab" />
       <p className="text-lg text-gray-700">
         The Temple HCI Lab is dedicated to advancing human-computer interaction
         research through innovative approaches to AI, NLP, and Visualization.
