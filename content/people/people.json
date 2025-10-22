@@ -1,0 +1,1019 @@
+{
+  "people": [
+    {
+      "name": "Stephen MacNeil",
+      "url": "https://stevemacn.github.io",
+      "img": "/images/people/smacneil.jpg",
+      "roles": [
+        "pi"
+      ],
+      "status": "active",
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Rahad Arman Nabid",
+      "url": "https://scholar.google.com/citations?user=gBltM-4AAAAJ&hl=en",
+      "img": "/images/people/rnabid.webp",
+      "roles": [
+        "phd"
+      ],
+      "status": "active",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Cynthia Zastudil",
+      "url": "https://scholar.google.com/citations?user=etXzIrsAAAAJ",
+      "img": "/images/people/czastudil.webp",
+      "roles": [
+        "phd"
+      ],
+      "status": "active",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Ian Applebaum",
+      "url": "https://www.linkedin.com/in/ian-applebaum-82b824a0/",
+      "img": "/images/people/iapplebaum.webp",
+      "roles": [
+        "phd"
+      ],
+      "status": "active",
+      "start": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Mounika Ravi Hospet",
+      "url": "https://www.linkedin.com/in/mounikaravi989/",
+      "img": "/images/people/mhospet.webp",
+      "roles": [
+        "phd"
+      ],
+      "status": "active",
+      "start": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Zijian Ding",
+      "url": "",
+      "img": "/images/people/zding.jpg",
+      "roles": [
+        "phd"
+      ],
+      "status": "alumni",
+      "start": 2019,
+      "affiliation": "University of Maryland",
+      "now": "University of Maryland"
+    },
+    {
+      "name": "Ashley Boone",
+      "url": "https://stevemacn.github.io",
+      "img": "/images/people/aboone.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2019,
+      "affiliation": "University of Washington",
+      "now": "Georgia Tech"
+    },
+    {
+      "name": "Kexin Quan",
+      "url": "https://www.kexinquan.com/",
+      "img": "/images/people/kquan.jpg",
+      "roles": [
+        "ms"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Kenneth Chen",
+      "url": "https://efeichen.me/about/",
+      "img": "/images/people/kchen.png",
+      "roles": [
+        "ms"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Kendall Nakai",
+      "url": "https://kendallnakai.com/",
+      "img": "/images/people/knakai.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Fred Huang",
+      "url": "https://www.linkedin.com/in/ziheng-huang-52619a1a5/",
+      "img": "/images/people/fhuang.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Avery Hom",
+      "url": "https://www.averykhom.com/",
+      "img": "/images/people/ahom.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Katie Wang",
+      "url": "https://www.katiewang.org/about",
+      "img": "/images/people/kwang.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2021,
+      "affiliation": "University of Washington"
+    },
+    {
+      "name": "Andrew Tran",
+      "url": "https://www.linkedin.com/in/andrew-tran-648b6121a/",
+      "img": "/images/people/atran.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Erin Ross",
+      "url": "https://www.linkedin.com/in/erin-c-ross/",
+      "img": "/images/people/eross.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2021,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Mary Le",
+      "url": "",
+      "img": "/images/people/mle.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Lauren Kan",
+      "url": "https://www.linkedin.com/in/lauren-kan-47b667166/",
+      "img": "/images/people/lkan.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Noel Chacko",
+      "url": "https://www.linkedin.com/in/noel-chacko/",
+      "img": "/images/people/nchacko.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Rebecca Fritz",
+      "url": "https://www.linkedin.com/in/rebecca-fritz-1a8420216/",
+      "img": "/images/people/rfritz.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Magdalena Rogalska",
+      "url": "https://www.linkedin.com/in/magdalena-rogalska-4ba446263/",
+      "img": "/images/people/mrogalska.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Parth Patel",
+      "url": "https://www.parthpatel.dev/",
+      "img": "/images/people/ppatel.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "John Bernardin",
+      "url": "https://www.linkedin.com/in/john-bernardin-9a10381b7/",
+      "img": "/images/people/jbernardin.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Christine Kapp",
+      "url": "https://www.linkedin.com/in/christine-kapp-658b41238/",
+      "img": "/images/people/ckapp.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Egi Rama",
+      "url": "https://www.linkedin.com/in/egi-rama-094a531b9/",
+      "img": "/images/people/erama.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Khiem Pham",
+      "url": "https://www.linkedin.com/in/kpham841/",
+      "img": "/images/people/kpham.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2021,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Alexander Yu",
+      "url": "https://www.linkedin.com/in/alexander-w-yu/",
+      "img": "/images/people/ayu.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2021,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Irene Hou",
+      "url": "https://www.linkedin.com/in/irene-hou-08/",
+      "img": "/images/people/ihou.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2021,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Dan Mogil",
+      "url": "https://www.linkedin.com/in/daniel-mogil/",
+      "img": "/images/people/dmogil.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Seth Bernstein",
+      "url": "https://www.linkedin.com/in/seth-bernstein-b23a36200/",
+      "img": "/images/people/sbernstein.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Maggie Hanley",
+      "url": "",
+      "img": "/images/people/mhanley.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2021,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Ben Smolin",
+      "url": "",
+      "img": "/images/people/bsmolin.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Joanne Kim",
+      "url": "",
+      "img": "/images/people/jkim.jpeg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Susie Jin",
+      "url": "",
+      "img": "/images/people/sjin.png",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Fuad Hassan",
+      "url": "",
+      "img": "/images/people/fhassan.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Leon Li",
+      "url": "",
+      "img": "/images/people/lli.webp",
+      "roles": [
+        "hs"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Conestoga High School"
+    },
+    {
+      "name": "Chiku Okechukwu",
+      "url": "",
+      "img": "/images/people/cokechukwu.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Sebastian Gutierrez",
+      "url": "",
+      "img": "/images/people/sgutierrez.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Sophie Chen",
+      "url": "",
+      "img": "/images/people/schen.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Sophie Metille",
+      "url": "",
+      "img": "/images/people/smetille.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Enrique Arcilla",
+      "url": "https://www.linkedin.com/in/enrique-arcilla",
+      "img": "/images/people/earcilla.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2019,
+      "end": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Kenneth Angelikas",
+      "url": "",
+      "img": "/images/people/kangelikas.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Jaina Lukose",
+      "url": "",
+      "img": "/images/people/jlukose.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Brian Ramos",
+      "url": "",
+      "img": "/images/people/bramos.jpeg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Julie Fung",
+      "url": "https://juliefung.me/",
+      "img": "/images/people/jfung.jpeg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2019,
+      "end": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Eric Richards",
+      "url": "",
+      "img": "/images/people/erichards.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2019,
+      "end": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Anthony Bryce Grubbs",
+      "url": "",
+      "img": "/images/people/abgrubbs.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2019,
+      "end": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Thomas Parashos",
+      "url": "",
+      "img": "/images/people/tparashos.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "end": 2020,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Sarah Nicita",
+      "url": "https://www.linkedin.com/in/sarah-nicita-191080152",
+      "img": "/images/people/snicita.jpg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "Brown University"
+    },
+    {
+      "name": "Steven Dow",
+      "url": "https://spdow.ucsd.edu/",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Srishti Palani",
+      "url": "http://srishtipalani.github.io/",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "UC San Diego"
+    },
+    {
+      "name": "Celine Latulipe",
+      "url": "https://celinelatulipe.net/",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "Univ. of Manitoba"
+    },
+    {
+      "name": "Mary Lou Maher",
+      "url": "",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "UNC Charlotte"
+    },
+    {
+      "name": "Tamara Clegg",
+      "url": "",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "Univ. of Maryland"
+    },
+    {
+      "name": "Joel Chan",
+      "url": "",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "Univ. of Maryland"
+    },
+    {
+      "name": "Jennifer Preece",
+      "url": "",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "Univ. of Maryland"
+    },
+    {
+      "name": "Heather Killen",
+      "url": "",
+      "img": "",
+      "status": "collaborator",
+      "start": 2020,
+      "end": 2021,
+      "affiliation": "Univ. of Maryland"
+    },
+    {
+      "name": "Paul Denny",
+      "url": "https://scholar.google.com/citations?user=KS4THtEAAAAJ&hl=en",
+      "img": "",
+      "status": "collaborator",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Univ. of Auckland"
+    },
+    {
+      "name": "Christine Holyfield",
+      "url": "https://scholar.google.com/citations?user=UjYMrpQAAAAJ&hl=en",
+      "img": "",
+      "status": "collaborator",
+      "start": 2022,
+      "end": 2025,
+      "affiliation": "University of Arkansas"
+    },
+    {
+      "name": "Arto Hellas",
+      "url": "https://www.aalto.fi/en/people/arto-hellas",
+      "img": "",
+      "status": "collaborator",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Aalto University"
+    },
+    {
+      "name": "Juho Leinonen",
+      "url": "https://juholeinonen.com/",
+      "img": "",
+      "status": "collaborator",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Aalto University"
+    },
+    {
+      "name": "James Prather",
+      "url": "",
+      "img": "",
+      "status": "collaborator",
+      "start": 2022,
+      "end": 2022,
+      "affiliation": "Abilene Christian University"
+    },
+    {
+      "name": "Hannah Nguyen",
+      "url": "",
+      "img": "/images/people/hnguyen.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "end": 2024,
+      "affiliation": "Arizona State Univ."
+    },
+    {
+      "name": "Matt Littlefield",
+      "url": "",
+      "img": "/images/people/mlittlefield.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Julia Conigliari",
+      "url": "",
+      "img": "/images/people/jconigliari.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Yashi Patel",
+      "url": "",
+      "img": "/images/people/ypatel.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Jihye Lee",
+      "url": "",
+      "img": "/images/people/jlee.jpeg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Sydney Kimbell",
+      "url": "",
+      "img": "/images/people/skimbell.jpeg",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2023,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Trevor Flick",
+      "url": "",
+      "img": "/images/people/tflick.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Megha Joshi",
+      "url": "",
+      "img": "/images/people/mjoshi.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Xandria Crosland",
+      "url": "",
+      "img": "/images/people/xcrosland.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Western Governors"
+    },
+    {
+      "name": "Adyan Chowdhury",
+      "url": "",
+      "img": "/images/people/achowdhury.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Daniel Bicalho",
+      "url": "",
+      "img": "/images/people/dbicalho.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Kush Patel",
+      "url": "",
+      "img": "/images/people/kpatel.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Omar Shakir",
+      "url": "",
+      "img": "/images/people/oshakir.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Sofia Borukhovich",
+      "url": "",
+      "img": "/images/people/sborukhovich.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Jalen Friday",
+      "url": "",
+      "img": "/images/people/jfriday.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Emily Martinez",
+      "url": "",
+      "img": "/images/people/emartinez.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Yusef Tohamy",
+      "url": "",
+      "img": "/images/people/ytohamy.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "alumni",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Srishty Muthusekaran",
+      "url": "",
+      "img": "/images/people/smuthusekaran.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2024,
+      "end": 2024,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Thanh Nguyen",
+      "url": "https://www.linkedin.com/in/thanhpng/",
+      "img": "/images/people/tnguyen.webp",
+      "roles": [
+        "ms"
+      ],
+      "status": "alumni",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Manan Patel",
+      "url": "https://www.linkedin.com/in/manan305/",
+      "img": "/images/people/mpatel.webp",
+      "roles": [
+        "ms"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Kate Hamilton",
+      "url": "https://www.linkedin.com/in/kate-hamilton-2332a3210/",
+      "img": "/images/people/khamilton.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Rayhona Nasimova",
+      "url": "https://www.linkedin.com/in/rayhona-nasimova",
+      "img": "/images/people/rnasimova.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Hena Patel",
+      "url": "https://www.linkedin.com/in/henapatel3124/",
+      "img": "/images/people/hpatel.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Ashfin Rahman",
+      "url": "https://www.linkedin.com/in/ashfin-rahman",
+      "img": "/images/people/arahman.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Antonio Lazaro",
+      "url": "http://linkedin.com/in/antonio-lazaro-13848b308",
+      "img": "/images/people/alozaro.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Dev Patel",
+      "url": "https://www.linkedin.com/in/dev-patelll",
+      "img": "/images/people/dpatel.png",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Sheena Nnam",
+      "url": "",
+      "img": "/images/people/snnam.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "TJ McBride",
+      "url": "",
+      "img": "/images/people/tmcbride.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Jaime Nguyen",
+      "url": "https://devfolio.me/jaime168",
+      "img": "/images/people/jnguyen.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "affiliation": "Temple University"
+    },
+    {
+      "name": "Kriti Baru",
+      "url": "",
+      "img": "/images/people/kbaru.webp",
+      "roles": [
+        "ug"
+      ],
+      "status": "active",
+      "start": 2025,
+      "end": 2025,
+      "affiliation": "Temple University"
+    }
+  ]
+}
