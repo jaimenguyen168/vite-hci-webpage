@@ -1,11 +1,11 @@
 export interface Person {
   name: string;
-  url?: string | null; // Tina returns nullable strings
-  img?: string | null; // Tina returns nullable strings
-  roles: string[]; // Keep as required array, but we'll handle null in the component
+  url?: string | null;
+  img?: string;
+  roles: string[];
   status: string;
-  start?: number | null; // Tina returns nullable numbers
-  end?: number | null; // Tina returns nullable numbers
+  start?: number | null;
+  end?: number | null;
   affiliation: string;
-  now?: string | null; // Tina returns nullable strings
+  now?: string | null;
 }

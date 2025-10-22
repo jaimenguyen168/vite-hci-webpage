@@ -24,8 +24,8 @@ const AlumniView = ({ alumniMembers }: AlumniViewProps) => {
   };
 
   return (
-      <div className="w-full mb-8 py-4">
-          <Title title="Alumni" />
+    <div className="w-full mb-8">
+      <Title title="Alumni" />
 
       <RoleLegend onSelectedRolesChange={handleSelectedRolesChange} />
 

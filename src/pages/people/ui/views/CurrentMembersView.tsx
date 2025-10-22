@@ -26,7 +26,7 @@ const CurrentMembersView = ({ activeMembers }: CurrentMembersViewProps) => {
   };
 
   return (
-    <div className="w-full mb-8 py-4">
+    <div className="w-full mb-8">
       <Title title="Current Members" />
 
       <RoleLegend onSelectedRolesChange={handleSelectedRolesChange} />

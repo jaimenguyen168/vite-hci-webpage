@@ -49,15 +49,15 @@ function CollaboratorCard({
           )}
         </CardHeader>
 
-        <CardContent className="-mt-2">
-          <div className="space-y-1">
-            {person.start && (
-              <p className="text-muted-foreground text-xs lg:text-sm">
-                {`${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}
-              </p>
-            )}
-          </div>
-        </CardContent>
+        {/*<CardContent className="-mt-2">*/}
+        {/*  <div className="space-y-1">*/}
+        {/*    {person.start && (*/}
+        {/*      <p className="text-muted-foreground text-xs lg:text-sm">*/}
+        {/*        {`${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}*/}
+        {/*      </p>*/}
+        {/*    )}*/}
+        {/*  </div>*/}
+        {/*</CardContent>*/}
       </Card>
     </motion.div>
   );
@@ -69,8 +69,8 @@ interface CollaboratorsViewProps {
 
 const CollaboratorsView = ({ collaborators }: CollaboratorsViewProps) => {
   return (
-      <div className="w-full mb-8 py-4">
-          <Title title="Collaborators" />
+    <div className="w-full mb-8">
+      <Title title="Collaborators" />
 
       {collaborators.length > 0 ? (
         <motion.div
