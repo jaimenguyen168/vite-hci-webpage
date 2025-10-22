@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import peopleData from "../../../../../content/people/people.json";
 import type { Person } from "@/pages/people/types.ts";
 import { getInitials } from "@/lib/utils.ts";
 
@@ -63,11 +62,11 @@ function CollaboratorCard({
   );
 }
 
-const CollaboratorsView = () => {
-  const collaborators = peopleData.people.filter(
-    (person) => person.status === "collaborator",
-  );
+interface CollaboratorsViewProps {
+  collaborators: Person[];
+}
 
+const CollaboratorsView = ({ collaborators }: CollaboratorsViewProps) => {
   return (
     <div className="w-full mb-8">
       <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">

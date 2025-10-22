@@ -6,14 +6,18 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
-import { getRouteConfig } from "@/constants/routeConfig";
+import { getRouteConfig, type RouteConfig } from "@/constants/routeConfig";
 
-export default function SidebarLayout() {
+interface SidebarLayoutProps {
+  routes: RouteConfig[];
+}
+
+export default function SidebarLayout({ routes }: SidebarLayoutProps) {
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const [open, setOpen] = useState(false);
 
-  const routeConfig = getRouteConfig(location.pathname);
+  const routeConfig = getRouteConfig(routes, location.pathname);
   const currentSub = searchParams.get("sub");
   const sidebarItems = routeConfig?.sidebar || [];
 

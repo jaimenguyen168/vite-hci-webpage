@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-import { routes } from "@/constants/routeConfig.ts";
 import Logo from "@/components/Logo.tsx";
 import socialData from "@/constants/content/socialLinks.json";
+import type { RouteConfig } from "@/constants/routeConfig.ts";
 
-const Footer = () => {
-  const navItems = routes.filter((item) => item.label !== "Home");
+interface FooterProps {
+  routes?: RouteConfig[];
+}
+
+const Footer = ({ routes }: FooterProps) => {
+  const navItems = routes?.filter((item) => item.label !== "Home");
   const socialLinks = socialData.socialLinks;
 
   return (
@@ -16,7 +20,7 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <nav className="grid grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-2 text-center sm:text-left">
-            {navItems.map((link) => (
+            {navItems?.map((link) => (
               <Link
                 key={link.label}
                 to={link.path}
