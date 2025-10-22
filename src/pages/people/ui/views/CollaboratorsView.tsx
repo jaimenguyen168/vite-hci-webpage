@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardHeader } from "@/components/ui/card";
 import type { Person } from "@/pages/people/types.ts";
 import { getInitials } from "@/lib/utils.ts";
 import Title from "@/components/Title.tsx";
