@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>react-hci-web</title>
     <script>
-      // SPA redirect handling
       (function() {
-        let redirect = sessionStorage.redirect;
+        var redirect = sessionStorage.redirect;
         delete sessionStorage.redirect;
-        if (redirect && redirect !== location.href) {
+        if (redirect && redirect !== location.pathname) {
+          // Use pushState instead of replaceState to handle the base path correctly
           history.replaceState(null, null, redirect);
         }
       })();

@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import peopleData from "../../../../../content/people/people.json";
 import type { Person } from "@/pages/people/types.ts";
 import { getInitials } from "@/lib/utils.ts";
 import Title from "@/components/Title.tsx";
@@ -64,11 +63,11 @@ function CollaboratorCard({
   );
 }
 
-const CollaboratorsView = () => {
-  const collaborators = peopleData.people.filter(
-    (person) => person.status === "collaborator",
-  );
+interface CollaboratorsViewProps {
+  collaborators: Person[];
+}
 
+const CollaboratorsView = ({ collaborators }: CollaboratorsViewProps) => {
   return (
       <div className="w-full mb-8 py-4">
           <Title title="Collaborators" />

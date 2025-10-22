@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import peopleData from "../../../../../content/people/people.json";
 import PersonCard from "@/pages/people/ui/components/PersonCard.tsx";
 import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
 import Title from "@/components/Title.tsx";
 
-const AlumniView = () => {
-  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+interface AlumniViewProps {
+  alumniMembers: Person[];
+}
 
-  const alumniMembers = peopleData.people.filter(
-    (person) => person.status === "alumni",
-  );
+const AlumniView = ({ alumniMembers }: AlumniViewProps) => {
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
 
   const filteredAlumni =
     selectedRoles.length > 0
