@@ -1,11 +1,12 @@
 import { Outlet, useLocation, useSearchParams, Link } from "react-router-dom";
-import { useState } from "react";
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { ChevronDown } from "lucide-react";
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { getRouteConfig, type RouteConfig } from "@/constants/routeConfig";
 
 interface SidebarLayoutProps {
@@ -15,7 +16,6 @@ interface SidebarLayoutProps {
 export default function SidebarLayout({ routes }: SidebarLayoutProps) {
   const location = useLocation();
   const [searchParams] = useSearchParams();
-  const [open, setOpen] = useState(false);
 
   const routeConfig = getRouteConfig(routes, location.pathname);
   const currentSub = searchParams.get("sub");
@@ -30,54 +30,92 @@ export default function SidebarLayout({ routes }: SidebarLayoutProps) {
   };
 
   const activeItem = sidebarItems.find((item) => isActive(item));
-  const activeLabel = activeItem?.label || "Menu";
 
-  const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => (
-    <nav className="border border-gray-200">
-      {sidebarItems.map((item, index) => (
-        <Link
-          key={index}
-          to={item.path}
-          onClick={isMobile ? () => setOpen(false) : undefined}
-          className={`
-            block w-full text-left px-4 md:px-6 py-2 md:py-3 text-base md:text-lg transition-colors
-            ${
-              isActive(item)
-                ? "bg-primary-red-800 !text-primary-red-foreground font-medium !border-none"
-                : "bg-white !text-gray-800 hover:bg-gray-50"
-            }
-            ${index !== sidebarItems.length - 1 ? "border-b border-gray-200" : ""}
-          `}
-        >
-          {item.label}
-        </Link>
-      ))}
+  const getBreadcrumbItems = () => {
+    const items = [{ label: "Home", path: "/" }];
+
+    if (routeConfig) {
+      items.push({
+        label: routeConfig.label || "Path",
+        path: routeConfig.path,
+      });
+    }
+
+    if (activeItem && !activeItem.isMain) {
+      items.push({
+        label: activeItem.label,
+        path: activeItem.path,
+      });
+    }
+
+    return items;
+  };
+
+  const breadcrumbItems = getBreadcrumbItems();
+
+  const SidebarContent = () => (
+    <nav className="border border-gray-200 bg-white rounded-lg">
+      <div className="p-2">
+        {sidebarItems.map((item, index) => (
+          <Link
+            key={index}
+            to={item.path}
+            className={`
+              block w-full text-left px-4 py-3 text-base rounded-md transition-colors mb-1
+              ${
+                isActive(item)
+                  ? "bg-primary-red-800 !text-primary-red-foreground font-medium"
+                  : "bg-white !text-gray-800 hover:bg-gray-50"
+              }
+              ${index !== sidebarItems.length - 1 && "border-b"}
+            `}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 
-  const MobileSidebar = () => (
-    <Collapsible open={open} onOpenChange={setOpen}>
-      <CollapsibleTrigger className="flex items-center justify-between w-full p-4 !bg-white !rounded-none !border-gray-200">
-        <span className="font-medium">{activeLabel}</span>
-        <ChevronDown
-          className={`h-5 w-5 transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <SidebarContent isMobile />
-      </CollapsibleContent>
-    </Collapsible>
+  const MobileBreadcrumb = () => (
+    <div className="">
+      <Breadcrumb>
+        <BreadcrumbList>
+          {breadcrumbItems.map((item, index) => (
+            <div key={index} className="flex items-center">
+              {index > 0 && <BreadcrumbSeparator className="mr-2" />}
+              <BreadcrumbItem>
+                {index === breadcrumbItems.length - 1 ? (
+                  <BreadcrumbPage className="font-semibold text-primary-red-800">
+                    {item.label}
+                  </BreadcrumbPage>
+                ) : (
+                  <BreadcrumbLink asChild>
+                    <Link
+                      to={item.path}
+                      className="!text-gray-600 hover:!text-gray-900"
+                    >
+                      {item.label}
+                    </Link>
+                  </BreadcrumbLink>
+                )}
+              </BreadcrumbItem>
+            </div>
+          ))}
+        </BreadcrumbList>
+      </Breadcrumb>
+    </div>
   );
 
   return (
     <div className="max-w-7xl mx-auto lg:px-0 py-0 lg:py-2">
-      {/* Mobile Menu */}
-      <div className="md:hidden mb-6">
-        <MobileSidebar />
+      {/* Mobile Breadcrumb */}
+      <div className="md:hidden">
+        <MobileBreadcrumb />
       </div>
 
       <div className="flex gap-8">
-        {/* Desktop Sidebar */}
+        {/* Desktop Sidebar - Side panel */}
         <aside className="hidden md:block w-80 shrink-0">
           <div className="sticky top-8">
             <SidebarContent />
@@ -85,9 +123,14 @@ export default function SidebarLayout({ routes }: SidebarLayoutProps) {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1">
+        <main className="flex-1 pt-6">
           <Outlet />
         </main>
+      </div>
+
+      {/* Mobile Sidebar - Bottom */}
+      <div className="md:hidden shrink-0 w-full mb-8">
+        <SidebarContent />
       </div>
     </div>
   );

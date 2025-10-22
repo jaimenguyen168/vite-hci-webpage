@@ -2,7 +2,7 @@ import Title from "@/components/Title.tsx";
 
 const ContactContentView = () => {
   return (
-    <div className="w-full mb-8 py-4">
+    <div className="w-full mb-8">
       <Title title="Contact Us" />
       <div className="space-y-4">
         <div>

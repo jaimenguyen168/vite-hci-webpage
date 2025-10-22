@@ -40,13 +40,17 @@ const Sponsors = () => {
 
   // Show blank page for "Interested in sponsoring?" tab
   if (sub === "become-our-sponsor") {
-    return <div><h1 className="text-3xl md:text-4xl font-bold text-black">TBD</h1></div>;
+    return (
+      <div>
+        <h1 className="text-3xl md:text-4xl font-bold text-black">TBD</h1>
+      </div>
+    );
   }
 
   return (
-    <div className="w-full py-4 container mx-auto">
+    <div className="w-full container mx-auto pb-16">
       {/* Header */}
-      <motion.div 
+      <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 30 }}
         animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -55,13 +59,17 @@ const Sponsors = () => {
       >
         <div className="max-w-6xl">
           <Title title="Our Sponsors" />
-          <div 
+          <div
             className="border-l-8 pl-8 mb-12"
-            style={{ borderLeftColor: '#9D3747' }}
+            style={{ borderLeftColor: "#9D3747" }}
           >
             <h2 className="text-base md:text-lg xl:text-2xl leading-relaxed text-gray-700">
-              Thank you to our sponsors for their support! To learn more about becoming a sponsor of our lab,{" "}
-              <a href="#" className="underline text-blue-600 hover:text-blue-800">
+              Thank you to our sponsors for their support! To learn more about
+              becoming a sponsor of our lab,{" "}
+              <a
+                href="#"
+                className="underline text-blue-600 hover:text-blue-800"
+              >
                 visit this page
               </a>
               .
@@ -71,7 +79,7 @@ const Sponsors = () => {
       </motion.div>
 
       {/* Sponsor Cards */}
-      <motion.div 
+      <motion.div
         ref={cardsRef}
         initial={{ opacity: 0 }}
         animate={isCardsInView ? { opacity: 1 } : { opacity: 0 }}
