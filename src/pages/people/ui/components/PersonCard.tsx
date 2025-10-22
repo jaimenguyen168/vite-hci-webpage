@@ -17,8 +17,6 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
     }
   };
 
-  console.log("Image", person.img);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
