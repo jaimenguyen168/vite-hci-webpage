@@ -14,7 +14,11 @@ export const getInitials = (name: string) => {
     .slice(0, 2);
 };
 
-export const getImagePath = (path: string): string => {
+export const getImagePath = (path?: string | null): string => {
+  if (!path) {
+    return "";
+  }
+
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
 
   const isGitHubPages =

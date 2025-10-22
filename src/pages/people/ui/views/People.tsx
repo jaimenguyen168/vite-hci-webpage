@@ -4,6 +4,7 @@ import AlumniView from "@/pages/people/ui/views/AlumniView.tsx";
 import CollaboratorsView from "@/pages/people/ui/views/CollaboratorsView.tsx";
 import { useEffect, useState } from "react";
 import type { Person } from "@/pages/people/types.ts";
+import client from "../../../../../tina/__generated__/client.ts";
 
 const PeoplePage = () => {
   const [searchParams] = useSearchParams();
@@ -15,11 +16,13 @@ const PeoplePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/content/people/people.json");
-        const result = await response.json();
-        setPeopleData(result.people || []);
+        const response = await client.queries.people({
+          relativePath: "people.json",
+        });
+
+        setPeopleData((response.data.people.people as Person[]) || []);
       } catch (error) {
-        console.error("Error fetching people data:", error);
+        console.error("Error fetching people data from Tina:", error);
       } finally {
         setLoading(false);
       }
