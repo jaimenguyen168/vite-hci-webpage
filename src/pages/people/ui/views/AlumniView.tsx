@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import peopleData from "../../../../../content/people/people.json";
 import PersonCard from "@/pages/people/ui/components/PersonCard.tsx";
 import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
+import Title from "@/components/Title.tsx";
 
-const AlumniView = () => {
+interface AlumniViewProps {
+  alumniMembers: Person[];
+}
+
+const AlumniView = ({ alumniMembers }: AlumniViewProps) => {
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
-
-  const alumniMembers = peopleData.people.filter(
-    (person) => person.status === "alumni",
-  );
 
   const filteredAlumni =
     selectedRoles.length > 0
@@ -25,9 +25,7 @@ const AlumniView = () => {
 
   return (
     <div className="w-full mb-8">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-4xl mb-6">
-        Alumni
-      </h2>
+      <Title title="Alumni" />
 
       <RoleLegend onSelectedRolesChange={handleSelectedRolesChange} />
 

@@ -258,7 +258,7 @@ type PeoplePeople {
   name: String!
   url: String
   img: String
-  roles: [String!]!
+  roles: [String]
   status: String!
   start: Float
   end: Float

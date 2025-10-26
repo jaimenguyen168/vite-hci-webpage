@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
+import Title from "@/components/Title.tsx";
 
 type CommunityResearch = {
   title: string;
@@ -6,23 +7,26 @@ type CommunityResearch = {
   video: string;
 };
 
-export default function CommunityResearch({ content }: { content: CommunityResearch }) {
+export default function CommunityResearch({
+  content,
+}: {
+  content: CommunityResearch;
+}) {
   return (
     <div className="relative">
-
       <Card
         className="shadow-lg font-roboto"
         style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}
       >
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Left: Description */}
           <CardContent className="px-6 md:px-8 py-6 flex-1">
-            <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-6">
-              {content.title}
-            </h2>
-            <p className="leading-relaxed text-md py-6">{content.description}</p>
+            <Title title={content.title} />
+            <p className="leading-relaxed text-md py-6">
+              {content.description}
+            </p>
           </CardContent>
-          
+
           {/* Right: Video */}
           <CardContent className="px-6 md:px-8 py-6 flex-1">
             <div className="relative w-full h-full aspect-video rounded-lg overflow-hidden shadow-md bg-black">

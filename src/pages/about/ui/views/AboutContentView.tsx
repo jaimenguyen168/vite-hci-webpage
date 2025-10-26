@@ -13,7 +13,6 @@ const AboutContentView = () => {
       <LearningOutcomes content={learningOutcomesContent} />
       <Alumni content={alumniContent} />
       <LabHistory />
-
     </div>
   );
 };

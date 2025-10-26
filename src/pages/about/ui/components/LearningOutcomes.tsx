@@ -1,14 +1,19 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
+import Title from "@/components/Title.tsx";
 
 type LearningOutcomes = {
+  title: string;
+  items: Array<{
     title: string;
-    items: Array<{
-        title: string;
-        description: string;
-        }>;
+    description: string;
+  }>;
 };
 
-export default function LearningOutcomes({ content }: { content: LearningOutcomes }) {
+export default function LearningOutcomes({
+  content,
+}: {
+  content: LearningOutcomes;
+}) {
   return (
     <div className="relative">
       <Card
@@ -16,9 +21,7 @@ export default function LearningOutcomes({ content }: { content: LearningOutcome
         style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}
       >
         <CardContent className="px-6 md:px-8 py-6">
-          <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-6">
-            {content.title}
-          </h2>
+          <Title title={content.title} />
           <ul className="list-none space-y-4 text-lg py-6">
             {content.items.map((item, index) => (
               <li key={index}>

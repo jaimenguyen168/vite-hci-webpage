@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -9,9 +9,47 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import faqData from "@/pages/join/content/faq.json";
-import applyData from "../../../../../content/join/apply.json";
+
+interface ApplyData {
+  title: string;
+  button: {
+    text: string;
+    url: string;
+  };
+}
 
 const JoinUsPage = () => {
+  const [applyData, setApplyData] = useState<ApplyData | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [applyResponse] = await Promise.all([
+          fetch("/content/join/apply.json"),
+        ]);
+
+        const applyResult = await applyResponse.json();
+
+        setApplyData(applyResult);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!applyData) {
+    return <div>Error loading content</div>;
+  }
+
   const faqs = faqData.faqs;
 
   return (

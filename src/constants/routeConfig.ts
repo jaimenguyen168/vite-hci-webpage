@@ -3,10 +3,9 @@ import ResearchPage from "@/pages/research/ui/views/Research.tsx";
 import AboutPage from "@/pages/about/ui/views/About.tsx";
 import PeoplePage from "@/pages/people/ui/views/People.tsx";
 import CoursesPage from "@/pages/courses/ui/views/Courses";
-import SponsorPage from "@/pages/Sponsor.tsx";
+import SponsorsPage from "@/pages/sponsors/ui/views/Sponsors";
 import JoinUsPage from "@/pages/join/ui/views/JoinUs.tsx";
 import type { ComponentType } from "react";
-import routeContent from "../../content/routes/routeContent.json";
 
 export interface SidebarItem {
   label: string;
@@ -26,7 +25,65 @@ export interface RouteConfig {
   showCTA?: boolean;
 }
 
-export const routes: RouteConfig[] = [
+interface RouteContent {
+  home: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+    heroSubtitle: string;
+  };
+  about: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+  };
+  research: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+  };
+  people: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+  };
+  courses: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+  };
+  sponsors: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+  };
+  join: {
+    label: string;
+    heroImage: string;
+    heroTitle: string;
+  };
+}
+
+// Cache for route content to avoid multiple fetches
+let routeContentCache: RouteContent | null = null;
+
+export const fetchRouteContent = async (): Promise<RouteContent> => {
+  if (routeContentCache) {
+    return routeContentCache;
+  }
+
+  try {
+    const response = await fetch("/content/routes/routeContent.json");
+    const content = await response.json();
+    routeContentCache = content;
+    return content;
+  } catch (error) {
+    console.error("Error fetching route content:", error);
+    throw error;
+  }
+};
+
+export const createRoutes = (routeContent: RouteContent): RouteConfig[] => [
   {
     path: "/",
     label: routeContent.home.label,
@@ -82,7 +139,7 @@ export const routes: RouteConfig[] = [
   {
     path: "/sponsors",
     label: routeContent.sponsors.label,
-    component: SponsorPage,
+    component: SponsorsPage,
     sidebar: [
       { label: "Our Sponsors", path: "/sponsors", isMain: true },
       {
@@ -104,5 +161,5 @@ export const routes: RouteConfig[] = [
   },
 ];
 
-export const getRouteConfig = (path: string) =>
+export const getRouteConfig = (routes: RouteConfig[], path: string) =>
   routes.find((route) => route.path === path);

@@ -381,7 +381,7 @@ export type PeoplePeople = {
   name: Scalars['String']['output'];
   url?: Maybe<Scalars['String']['output']>;
   img?: Maybe<Scalars['String']['output']>;
-  roles: Array<Scalars['String']['output']>;
+  roles?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   status: Scalars['String']['output'];
   start?: Maybe<Scalars['Float']['output']>;
   end?: Maybe<Scalars['Float']['output']>;
@@ -623,7 +623,7 @@ export type RoutesPartsFragment = { __typename: 'Routes', home?: { __typename: '
 
 export type JoinPartsFragment = { __typename: 'Join', title: string, button?: { __typename: 'JoinButton', text: string, url: string } | null };
 
-export type PeoplePartsFragment = { __typename: 'People', people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles: Array<string>, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
+export type PeoplePartsFragment = { __typename: 'People', people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
 
 export type RoutesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -668,7 +668,7 @@ export type PeopleQueryVariables = Exact<{
 }>;
 
 
-export type PeopleQuery = { __typename?: 'Query', people: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles: Array<string>, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } };
+export type PeopleQuery = { __typename?: 'Query', people: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } };
 
 export type PeopleConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -680,7 +680,7 @@ export type PeopleConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles: Array<string>, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
+export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
 
 export const RoutesPartsFragmentDoc = gql`
     fragment RoutesParts on Routes {
@@ -997,7 +997,7 @@ export const ExperimentalGetTinaClient = () =>
   getSdk(
     generateRequester(
       createClient({
-        url: "https://content.tinajs.io/1.6/content/b0a4ae6f-8630-4b5e-8ac0-4d83afcb034e/github/main",
+        url: "http://localhost:4001/graphql",
         queries,
       })
     )

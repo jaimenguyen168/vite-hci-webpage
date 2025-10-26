@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "dev:tina": "npx tinacms dev -c \"pnpm run dev\"",
-    "build": "tsc -b && tinacms build && vite build",
+    "build": "tsc -b && tinacms build --skip-cloud-checks && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"

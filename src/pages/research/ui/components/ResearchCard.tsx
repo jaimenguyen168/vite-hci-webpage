@@ -4,14 +4,20 @@
  */
 
 import { DESIGN_TOKENS } from "../../constants/design";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import type { ResearchProject } from "../../types";
 import { Code, FileText, Mic, Share2, SquarePlay } from "lucide-react";
 
 interface ResearchCardProps {
   research: ResearchProject;
+  index: number;
 }
 
-export function ResearchCard({ research }: ResearchCardProps) {
+export function ResearchCard({ research, index }: ResearchCardProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "50px" });
+
   const renderIcon = (label: string) => {
     switch (label) {
       case "PDF":
@@ -30,7 +36,17 @@ export function ResearchCard({ research }: ResearchCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        ease: "easeOut",
+      }}
+      className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+    >
       {/* Image */}
       <div
         className={`w-full ${DESIGN_TOKENS.spacing.cardImageHeight} overflow-hidden`}
@@ -70,6 +86,6 @@ export function ResearchCard({ research }: ResearchCardProps) {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

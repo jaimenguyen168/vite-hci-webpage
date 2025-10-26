@@ -24,7 +24,7 @@ var config_default = defineConfig({
       {
         name: "routes",
         label: "Routes",
-        path: "content/routes",
+        path: "public/content/routes",
         format: "json",
         fields: [
           {
@@ -237,7 +237,7 @@ var config_default = defineConfig({
       {
         name: "join",
         label: "Join Us",
-        path: "content/join",
+        path: "public/content/join",
         format: "json",
         fields: [
           {
@@ -272,7 +272,7 @@ var config_default = defineConfig({
       {
         name: "people",
         label: "People",
-        path: "content/people",
+        path: "public/content/people",
         format: "json",
         match: {
           include: "people"
@@ -313,7 +313,6 @@ var config_default = defineConfig({
                 name: "roles",
                 label: "Roles",
                 list: true,
-                required: true,
                 options: [
                   { value: "pi", label: "Assistant Professor" },
                   { value: "phd", label: "PhD Student" },
