@@ -1,6 +1,6 @@
 import CommunityResearch from "../components/CommunityResearch";
 import LearningOutcomes from "../components/LearningOutcomes";
-import Alumni from "../components/Alumni";
+import Alumni from "../components/WhereAlumniLand";
 import LabHistory from "../components/LabHistory";
 import communityResearchContent from "../../content/communityResearch.json";
 import learningOutcomesContent from "../../content/learningOutcomes.json";
