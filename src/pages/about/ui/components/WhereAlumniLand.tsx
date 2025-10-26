@@ -24,9 +24,9 @@ export default function Alumni({ content }: { content: Alumni }) {
   return (
     <div className="relative">
       <Card className="font-roboto py-0 border-none shadow-none">
-        <CardContent className="px-6 md:px-8 py-6">
+        <CardContent className="px-6 md:px-8">
           <Title title={content.title} />
-          <p className="leading-relaxed text-md py-6">{content.description}</p>
+          <p className="leading-relaxed text-md">{content.description}</p>
         </CardContent>
 
         {/* Alumni Testimonials Carousel */}
@@ -64,7 +64,7 @@ export default function Alumni({ content }: { content: Alumni }) {
                     </div>
 
                     {/* Alumni Info - Fixed at bottom */}
-                    <div className="flex-shrink-0 space-y-3 text-center">
+                    <div className="pt-4 flex-shrink-0 space-y-3 text-center">
                       <h3 className="font-semibold text-base md:text-lg">{alumnus.name}</h3>
                       <img
                         src={alumnus.img}
