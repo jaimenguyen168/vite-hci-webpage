@@ -36,8 +36,10 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
             <Avatar className="size-20 lg:size-32">
               <AvatarImage
                 src={getImagePath(person.img)}
-                alt={person.name}
+                alt={`${person.name}, ${roles[0] ? roleLabels[roles[0]] || roles[0] : "Research Team Member"} at ${person.affiliation || "Research Lab"}`}
                 className="object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <AvatarFallback className="text-4xl font-bold bg-gray-200 text-gray-600">
                 {getInitials(person.name)}
