@@ -34,3 +34,11 @@ export const getImagePath = (path?: string): string => {
 
   return `/${cleanPath}`;
 };
+
+export const preloadImage = (src: string) => {
+  const link = document.createElement("link");
+  link.rel = "preload";
+  link.as = "image";
+  link.href = src;
+  document.head.appendChild(link);
+};

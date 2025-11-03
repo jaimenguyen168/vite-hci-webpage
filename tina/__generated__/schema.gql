@@ -254,6 +254,30 @@ type JoinConnection implements Connection {
   edges: [JoinConnectionEdges]
 }
 
+type PeopleSeoCurrent {
+  title: String!
+  description: String!
+  keywords: String!
+}
+
+type PeopleSeoAlumni {
+  title: String!
+  description: String!
+  keywords: String!
+}
+
+type PeopleSeoCollaborators {
+  title: String!
+  description: String!
+  keywords: String!
+}
+
+type PeopleSeo {
+  current: PeopleSeoCurrent
+  alumni: PeopleSeoAlumni
+  collaborators: PeopleSeoCollaborators
+}
+
 type PeoplePeople {
   name: String!
   url: String
@@ -267,10 +291,35 @@ type PeoplePeople {
 }
 
 type People implements Node & Document {
+  seo: PeopleSeo
   people: [PeoplePeople]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input PeopleSeoCurrentFilter {
+  title: StringFilter
+  description: StringFilter
+  keywords: StringFilter
+}
+
+input PeopleSeoAlumniFilter {
+  title: StringFilter
+  description: StringFilter
+  keywords: StringFilter
+}
+
+input PeopleSeoCollaboratorsFilter {
+  title: StringFilter
+  description: StringFilter
+  keywords: StringFilter
+}
+
+input PeopleSeoFilter {
+  current: PeopleSeoCurrentFilter
+  alumni: PeopleSeoAlumniFilter
+  collaborators: PeopleSeoCollaboratorsFilter
 }
 
 input ImageFilter {
@@ -303,6 +352,7 @@ input PeoplePeopleFilter {
 }
 
 input PeopleFilter {
+  seo: PeopleSeoFilter
   people: PeoplePeopleFilter
 }
 
@@ -407,6 +457,30 @@ input JoinMutation {
   button: JoinButtonMutation
 }
 
+input PeopleSeoCurrentMutation {
+  title: String
+  description: String
+  keywords: String
+}
+
+input PeopleSeoAlumniMutation {
+  title: String
+  description: String
+  keywords: String
+}
+
+input PeopleSeoCollaboratorsMutation {
+  title: String
+  description: String
+  keywords: String
+}
+
+input PeopleSeoMutation {
+  current: PeopleSeoCurrentMutation
+  alumni: PeopleSeoAlumniMutation
+  collaborators: PeopleSeoCollaboratorsMutation
+}
+
 input PeoplePeopleMutation {
   name: String
   url: String
@@ -420,6 +494,7 @@ input PeoplePeopleMutation {
 }
 
 input PeopleMutation {
+  seo: PeopleSeoMutation
   people: [PeoplePeopleMutation]
 }
 

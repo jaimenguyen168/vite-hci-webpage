@@ -1,60 +1,148 @@
 import { useSearchParams } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import {
+  useActiveMembers,
+  useAlumniMembers,
+  useCollaborators,
+  usePeopleSEO,
+} from "@/hooks/usePeopleData";
 import CurrentMembersView from "@/pages/people/ui/views/CurrentMembersView.tsx";
-import AlumniView from "@/pages/people/ui/views/AlumniView.tsx";
-import CollaboratorsView from "@/pages/people/ui/views/CollaboratorsView.tsx";
-import { useEffect, useState } from "react";
-import type { Person } from "@/pages/people/types.ts";
-import client from "../../../../../tina/__generated__/client.ts";
+import LoadingSpinner from "@/components/LoadingSpinner.tsx";
+import { useSEO } from "@/hooks/useSEO.ts";
+
+const AlumniView = lazy(() => import("@/pages/people/ui/views/AlumniView.tsx"));
+const CollaboratorsView = lazy(
+  () => import("@/pages/people/ui/views/CollaboratorsView.tsx"),
+);
+
+// Error component with semantic HTML
+const ErrorMessage = ({
+  message = "Error loading content",
+  onRetry,
+}: {
+  message?: string;
+  onRetry?: () => void;
+}) => (
+  <div className="flex items-center justify-center min-h-[200px]" role="alert">
+    <div className="text-center">
+      <div className="text-red-500 text-lg font-medium mb-2">⚠️ {message}</div>
+      {onRetry && (
+        <button
+          onClick={onRetry}
+          className="text-sm text-primary hover:underline"
+          aria-label="Retry loading content"
+        >
+          Try again
+        </button>
+      )}
+    </div>
+  </div>
+);
 
 const PeoplePage = () => {
   const [searchParams] = useSearchParams();
   const sub = searchParams.get("sub");
 
-  const [peopleData, setPeopleData] = useState<Person[] | null>(null);
-  const [loading, setLoading] = useState(true);
+  // Use specific hooks based on the current view
+  const activeMembers = useActiveMembers();
+  const alumniMembers = useAlumniMembers();
+  const collaborators = useCollaborators();
+  const {
+    data: seoData,
+    isLoading: seoLoading,
+    isError: seoError,
+  } = usePeopleSEO();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await client.queries.people({
-          relativePath: "people.json",
-        });
+  const getSEOConfig = () => {
+    const baseUrl = window.location.origin;
+    const basePath = "/people";
 
-        setPeopleData((response.data.people.people as Person[]) || []);
-      } catch (error) {
-        console.error("Error fetching people data from Tina:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!seoData) {
+      return {
+        title: "People | Our Research Lab",
+        description: "Meet our research team members.",
+        keywords: "research team, lab members",
+        canonical: `${baseUrl}${basePath}`,
+      };
+    }
 
-    fetchData();
-  }, []);
+    switch (sub) {
+      case "alumni":
+        return {
+          ...seoData.alumni,
+          canonical: `${baseUrl}${basePath}?sub=alumni`,
+        };
+      case "collaborators":
+        return {
+          ...seoData.collaborators,
+          canonical: `${baseUrl}${basePath}?sub=collaborators`,
+        };
+      default:
+        return {
+          ...seoData.current,
+          canonical: `${baseUrl}${basePath}`,
+        };
+    }
+  };
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const seoConfig = getSEOConfig();
+
+  useSEO(seoConfig);
+
+  const getCurrentQuery = () => {
+    switch (sub) {
+      case "alumni":
+        return alumniMembers;
+      case "collaborators":
+        return collaborators;
+      default:
+        return activeMembers;
+    }
+  };
+
+  const currentQuery = getCurrentQuery();
+
+  // Handle loading state
+  if (currentQuery.isLoading || seoLoading) {
+    return <LoadingSpinner />;
   }
 
-  if (!peopleData) {
-    return <div>Error loading content</div>;
+  // Handle error state
+  if (currentQuery.isError || seoError) {
+    return (
+      <>
+        <ErrorMessage
+          message={currentQuery.error?.message || "Failed to load people data"}
+          onRetry={() => currentQuery.refetch?.()}
+        />
+      </>
+    );
   }
-
-  const activeMembers = peopleData?.filter((p) => p.status === "active");
-  const alumniMembers = peopleData?.filter((p) => p.status === "alumni");
-  const collaborators = peopleData?.filter((p) => p.status === "collaborator");
 
   const renderContent = () => {
     switch (sub) {
       case "alumni":
-        return <AlumniView alumniMembers={alumniMembers} />;
+        return (
+          <Suspense fallback={<LoadingSpinner />}>
+            <AlumniView alumniMembers={alumniMembers.data} />
+          </Suspense>
+        );
       case "collaborators":
-        return <CollaboratorsView collaborators={collaborators} />;
+        return (
+          <Suspense fallback={<LoadingSpinner />}>
+            <CollaboratorsView collaborators={collaborators.data} />
+          </Suspense>
+        );
       default:
-        return <CurrentMembersView activeMembers={activeMembers} />;
+        return <CurrentMembersView activeMembers={activeMembers.data} />;
     }
   };
 
-  return <div className="prose prose-lg max-w-none">{renderContent()}</div>;
+  return (
+    <main className="prose prose-lg max-w-none" role="main">
+      {renderContent()}
+    </main>
+  );
 };
 
 export default PeoplePage;

@@ -35,16 +35,22 @@ const Hero = ({
     : null;
 
   const showBreadcrumb = subSection && title;
+  const imagePath = getImagePath(image);
 
   return (
-    <div
-      className={`relative w-screen mx-auto bg-cover ${heightClass}`}
-      style={{
-        backgroundImage: `url(${getImagePath(image)})`,
-        backgroundPosition:
-          window.innerWidth >= 1024 ? "center 36%" : "center 50%",
-      }}
-    >
+    <div className={`relative w-screen mx-auto bg-cover ${heightClass}`}>
+      <img
+        src={imagePath}
+        alt={title || "Hero background"}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          objectPosition:
+            window.innerWidth >= 1024 ? "center 36%" : "center 50%",
+        }}
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
+      />
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 w-full h-full flex flex-col max-w-7xl mx-auto pt-16 md:pt-20 lg:pt-0">
         {children}
