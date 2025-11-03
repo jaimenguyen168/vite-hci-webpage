@@ -57,6 +57,27 @@ fragment JoinParts on Join {
 
 fragment PeopleParts on People {
   __typename
+  seo {
+    __typename
+    current {
+      __typename
+      title
+      description
+      keywords
+    }
+    alumni {
+      __typename
+      title
+      description
+      keywords
+    }
+    collaborators {
+      __typename
+      title
+      description
+      keywords
+    }
+  }
   people {
     __typename
     name

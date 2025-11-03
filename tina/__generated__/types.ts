@@ -376,6 +376,34 @@ export type JoinConnection = Connection & {
   edges?: Maybe<Array<Maybe<JoinConnectionEdges>>>;
 };
 
+export type PeopleSeoCurrent = {
+  __typename?: 'PeopleSeoCurrent';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  keywords: Scalars['String']['output'];
+};
+
+export type PeopleSeoAlumni = {
+  __typename?: 'PeopleSeoAlumni';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  keywords: Scalars['String']['output'];
+};
+
+export type PeopleSeoCollaborators = {
+  __typename?: 'PeopleSeoCollaborators';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  keywords: Scalars['String']['output'];
+};
+
+export type PeopleSeo = {
+  __typename?: 'PeopleSeo';
+  current?: Maybe<PeopleSeoCurrent>;
+  alumni?: Maybe<PeopleSeoAlumni>;
+  collaborators?: Maybe<PeopleSeoCollaborators>;
+};
+
 export type PeoplePeople = {
   __typename?: 'PeoplePeople';
   name: Scalars['String']['output'];
@@ -391,10 +419,35 @@ export type PeoplePeople = {
 
 export type People = Node & Document & {
   __typename?: 'People';
+  seo?: Maybe<PeopleSeo>;
   people?: Maybe<Array<Maybe<PeoplePeople>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
+};
+
+export type PeopleSeoCurrentFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  keywords?: InputMaybe<StringFilter>;
+};
+
+export type PeopleSeoAlumniFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  keywords?: InputMaybe<StringFilter>;
+};
+
+export type PeopleSeoCollaboratorsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  keywords?: InputMaybe<StringFilter>;
+};
+
+export type PeopleSeoFilter = {
+  current?: InputMaybe<PeopleSeoCurrentFilter>;
+  alumni?: InputMaybe<PeopleSeoAlumniFilter>;
+  collaborators?: InputMaybe<PeopleSeoCollaboratorsFilter>;
 };
 
 export type ImageFilter = {
@@ -427,6 +480,7 @@ export type PeoplePeopleFilter = {
 };
 
 export type PeopleFilter = {
+  seo?: InputMaybe<PeopleSeoFilter>;
   people?: InputMaybe<PeoplePeopleFilter>;
 };
 
@@ -603,6 +657,30 @@ export type JoinMutation = {
   button?: InputMaybe<JoinButtonMutation>;
 };
 
+export type PeopleSeoCurrentMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  keywords?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PeopleSeoAlumniMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  keywords?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PeopleSeoCollaboratorsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  keywords?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PeopleSeoMutation = {
+  current?: InputMaybe<PeopleSeoCurrentMutation>;
+  alumni?: InputMaybe<PeopleSeoAlumniMutation>;
+  collaborators?: InputMaybe<PeopleSeoCollaboratorsMutation>;
+};
+
 export type PeoplePeopleMutation = {
   name?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
@@ -616,6 +694,7 @@ export type PeoplePeopleMutation = {
 };
 
 export type PeopleMutation = {
+  seo?: InputMaybe<PeopleSeoMutation>;
   people?: InputMaybe<Array<InputMaybe<PeoplePeopleMutation>>>;
 };
 
@@ -623,7 +702,7 @@ export type RoutesPartsFragment = { __typename: 'Routes', home?: { __typename: '
 
 export type JoinPartsFragment = { __typename: 'Join', title: string, button?: { __typename: 'JoinButton', text: string, url: string } | null };
 
-export type PeoplePartsFragment = { __typename: 'People', people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
+export type PeoplePartsFragment = { __typename: 'People', seo?: { __typename: 'PeopleSeo', current?: { __typename: 'PeopleSeoCurrent', title: string, description: string, keywords: string } | null, alumni?: { __typename: 'PeopleSeoAlumni', title: string, description: string, keywords: string } | null, collaborators?: { __typename: 'PeopleSeoCollaborators', title: string, description: string, keywords: string } | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
 
 export type RoutesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -668,7 +747,7 @@ export type PeopleQueryVariables = Exact<{
 }>;
 
 
-export type PeopleQuery = { __typename?: 'Query', people: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } };
+export type PeopleQuery = { __typename?: 'Query', people: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PeopleSeo', current?: { __typename: 'PeopleSeoCurrent', title: string, description: string, keywords: string } | null, alumni?: { __typename: 'PeopleSeoAlumni', title: string, description: string, keywords: string } | null, collaborators?: { __typename: 'PeopleSeoCollaborators', title: string, description: string, keywords: string } | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } };
 
 export type PeopleConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -680,7 +759,7 @@ export type PeopleConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
+export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'PeopleSeo', current?: { __typename: 'PeopleSeoCurrent', title: string, description: string, keywords: string } | null, alumni?: { __typename: 'PeopleSeoAlumni', title: string, description: string, keywords: string } | null, collaborators?: { __typename: 'PeopleSeoCollaborators', title: string, description: string, keywords: string } | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
 
 export const RoutesPartsFragmentDoc = gql`
     fragment RoutesParts on Routes {
@@ -744,6 +823,27 @@ export const JoinPartsFragmentDoc = gql`
 export const PeoplePartsFragmentDoc = gql`
     fragment PeopleParts on People {
   __typename
+  seo {
+    __typename
+    current {
+      __typename
+      title
+      description
+      keywords
+    }
+    alumni {
+      __typename
+      title
+      description
+      keywords
+    }
+    collaborators {
+      __typename
+      title
+      description
+      keywords
+    }
+  }
   people {
     __typename
     name

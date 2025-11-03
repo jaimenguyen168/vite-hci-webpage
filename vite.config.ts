@@ -30,6 +30,48 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, "index.html"),
       },
+      output: {
+        // Split large chunks into smaller ones
+        manualChunks: {
+          // Separate vendor libraries
+          "vendor-react": ["react", "react-dom"],
+          "vendor-router": ["react-router-dom"],
+          "vendor-query": ["@tanstack/react-query"],
+
+          // Separate UI libraries (your large radix-ui imports)
+          "vendor-ui": [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-popover",
+            "@radix-ui/react-navigation-menu",
+            "@radix-ui/react-avatar",
+            "@radix-ui/react-slot",
+          ],
+
+          // Separate heavy animation libraries
+          "vendor-animation": ["framer-motion", "embla-carousel-react"],
+
+          // Separate icon library (1MB+ lucide-react)
+          "vendor-icons": ["lucide-react"],
+
+          // Separate utility libraries
+          "vendor-utils": [
+            "tailwind-merge",
+            "clsx",
+            "class-variance-authority",
+          ],
+        },
+      },
     },
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false,
+  },
+
+  optimizeDeps: {
+    include: [
+      "react",
+      "react-dom",
+      "react-router-dom",
+      "@tanstack/react-query",
+    ],
   },
 });
