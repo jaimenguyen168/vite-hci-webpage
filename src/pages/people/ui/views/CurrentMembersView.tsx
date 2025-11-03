@@ -6,22 +6,12 @@ import type { Person } from "@/pages/people/types.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import Title from "@/components/Title.tsx";
-import { useSEO } from "@/hooks/useSEO";
-import { peopleSEO } from "@/pages/people/constants/peopleSEO.ts";
 interface CurrentMembersViewProps {
   activeMembers: Person[];
 }
 
 const CurrentMembersView = ({ activeMembers }: CurrentMembersViewProps) => {
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
-  const baseUrl = window.location.origin;
-
-  useSEO({
-    title: peopleSEO.current.title,
-    description: peopleSEO.current.description,
-    keywords: peopleSEO.current.keywords,
-    canonical: `${baseUrl}/people`,
-  });
 
   const filteredMembers =
     selectedRoles.length > 0

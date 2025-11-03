@@ -220,27 +220,68 @@ type RoutesConnection implements Connection {
   edges: [RoutesConnectionEdges]
 }
 
-type JoinButton {
+type JoinSeo {
+  title: String!
+  description: String!
+  keywords: String!
+}
+
+type JoinApplyButton {
   text: String!
   url: String!
 }
 
-type Join implements Node & Document {
+type JoinApply {
   title: String!
-  button: JoinButton
+  button: JoinApplyButton
+}
+
+type JoinFaqs {
+  question: String!
+  answer: String!
+  defaultOpen: Boolean
+}
+
+type Join implements Node & Document {
+  seo: JoinSeo
+  apply: JoinApply
+  faqs: [JoinFaqs]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
 }
 
-input JoinButtonFilter {
+input JoinSeoFilter {
+  title: StringFilter
+  description: StringFilter
+  keywords: StringFilter
+}
+
+input JoinApplyButtonFilter {
   text: StringFilter
   url: StringFilter
 }
 
-input JoinFilter {
+input JoinApplyFilter {
   title: StringFilter
-  button: JoinButtonFilter
+  button: JoinApplyButtonFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input JoinFaqsFilter {
+  question: StringFilter
+  answer: StringFilter
+  defaultOpen: BooleanFilter
+}
+
+input JoinFilter {
+  seo: JoinSeoFilter
+  apply: JoinApplyFilter
+  faqs: JoinFaqsFilter
 }
 
 type JoinConnectionEdges {
@@ -447,14 +488,32 @@ input RoutesMutation {
   join: RoutesJoinMutation
 }
 
-input JoinButtonMutation {
+input JoinSeoMutation {
+  title: String
+  description: String
+  keywords: String
+}
+
+input JoinApplyButtonMutation {
   text: String
   url: String
 }
 
-input JoinMutation {
+input JoinApplyMutation {
   title: String
-  button: JoinButtonMutation
+  button: JoinApplyButtonMutation
+}
+
+input JoinFaqsMutation {
+  question: String
+  answer: String
+  defaultOpen: Boolean
+}
+
+input JoinMutation {
+  seo: JoinSeoMutation
+  apply: JoinApplyMutation
+  faqs: [JoinFaqsMutation]
 }
 
 input PeopleSeoCurrentMutation {
