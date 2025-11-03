@@ -41,15 +41,6 @@ const AboutContentView = () => {
       </motion.div>
 
       <motion.div
-        ref={alumniRef}
-        initial={{ opacity: 0, y: 30 }}
-        animate={isAlumniInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.8 }}
-      >
-        <Alumni content={alumniContent} />
-      </motion.div>
-
-      <motion.div
         ref={historyRef}
         initial={{ opacity: 0, y: 30 }}
         animate={isHistoryInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}

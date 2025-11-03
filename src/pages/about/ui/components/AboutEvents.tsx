@@ -1,5 +1,3 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { getImagePath } from "@/lib/utils.ts";
 
@@ -32,16 +30,8 @@ const aboutEventsContents: AboutContent = {
 }
 
 export default function AboutEvents() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "50px" });
-
   return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-      transition={{ duration: 0.8 }}
-    >
+    <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-roboto">
         <div>
           <h2 className="text-3xl font-bold text-gray-900">{aboutEventsContents.title1}</h2>
@@ -90,6 +80,6 @@ export default function AboutEvents() {
           </div>
         </div>
       </div>
-    </motion.section>
+    </div>
   );
 }
