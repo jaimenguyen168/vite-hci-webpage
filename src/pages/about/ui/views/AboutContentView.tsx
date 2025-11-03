@@ -1,10 +1,10 @@
 import CommunityResearch from "../components/CommunityResearch";
 import LearningOutcomes from "../components/LearningOutcomes";
-import Alumni from "../components/WhereAlumniLand";
+// import Alumni from "../components/WhereAlumniLand";
 import LabHistory from "../components/LabHistory";
 import communityResearchContent from "../../content/communityResearch.json";
 import learningOutcomesContent from "../../content/learningOutcomes.json";
-import alumniContent from "../../content/alumni.json";
+// import alumniContent from "../../content/alumni.json";
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
@@ -12,12 +12,12 @@ import { useRef } from "react";
 const AboutContentView = () => {
   const communityRef = useRef(null);
   const learningRef = useRef(null);
-  const alumniRef = useRef(null);
+  // const alumniRef = useRef(null);
   const historyRef = useRef(null);
 
   const isCommunityInView = useInView(communityRef, { once: true });
   const isLearningInView = useInView(learningRef, { once: true });
-  const isAlumniInView = useInView(alumniRef, { once: true });
+  // const isAlumniInView = useInView(alumniRef, { once: true });
   const isHistoryInView = useInView(historyRef, { once: true });
 
   return (
