@@ -5,7 +5,7 @@ import {
   useAlumniMembers,
   useCollaborators,
   usePeopleSEO,
-} from "@/hooks/usePeopleData";
+} from "@/pages/people/hooks/usePeopleData.ts";
 import CurrentMembersView from "@/pages/people/ui/views/CurrentMembersView.tsx";
 import LoadingSpinner from "@/components/LoadingSpinner.tsx";
 import { useSEO } from "@/hooks/useSEO.ts";

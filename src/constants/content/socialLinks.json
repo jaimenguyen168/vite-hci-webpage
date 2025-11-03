@@ -1,17 +1,17 @@
 {
   "socialLinks": [
     {
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1024px-Instagram_logo_2016.svg.png",
+      "iconUrl": "/logos/insta.webp",
       "href": "https://www.instagram.com/templehci/",
       "label": "Instagram"
     },
     {
-      "iconUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png",
+      "iconUrl": "/logos/linkedin.webp",
       "href": "https://www.linkedin.com/company/temple-hci-lab/posts/?feedView=all",
       "label": "LinkedIn"
     },
     {
-      "iconUrl": "https://img.freepik.com/free-vector/twitter-app-new-logo-x-black-background_1017-45425.jpg?semt=ais_hybrid&w=740&q=80",
+      "iconUrl": "/logos/twitter.png",
       "href": "https://x.com/templehci?lang=en",
       "label": "Twitter"
     }

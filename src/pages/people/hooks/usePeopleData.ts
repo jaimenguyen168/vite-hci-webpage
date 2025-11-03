@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import type { PeopleData } from "@/pages/people/types.ts";
-import client from "../../tina/__generated__/client.ts";
+import client from "../../../../tina/__generated__/client.ts";
 
 export const usePeopleData = () => {
   return useQuery({
