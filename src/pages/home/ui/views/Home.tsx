@@ -1,10 +1,10 @@
-import {useRef} from "react";
+import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import ResearchCard from "@/pages/home/ui/components/ResearchCard.tsx";
 import WhyHCILabSection from "@/pages/home/ui/components/WhyHCILabSection.tsx";
 import BeyondTheLabSection from "@/pages/home/ui/components/BeyondTheLabSection.tsx";
 import RecentNewsSection from "@/pages/home/ui/components/RecentNewsSection.tsx";
-import {BookOpen, Globe, type LucideIcon, Users} from "lucide-react";
+import { BookOpen, Globe, type LucideIcon, Users } from "lucide-react";
 import Title from "@/components/Title.tsx";
 
 interface ResearchArea {
@@ -13,39 +13,46 @@ interface ResearchArea {
   description: string;
   buttonText: string;
   buttonUrl: string;
-  icon: LucideIcon
+  icon: LucideIcon;
 }
 
 const researchAreas: ResearchArea[] = [
   {
     id: "genai-education",
     title: "GenAI & Education",
-    description: "Exploring Generative AI in computing education, enhancing learning, creativity, and assessment through intelligent tools.",
+    description:
+      "Exploring Generative AI in computing education, enhancing learning, creativity, and assessment through intelligent tools.",
     buttonText: "Read more",
     buttonUrl: "/research/genai-education",
-    icon: BookOpen
+    icon: BookOpen,
   },
   {
     id: "accessible-technology",
     title: "Accessible Technology",
-    description: "Exploring accessible technology in computing, enhancing inclusion, usability, and opportunity through thoughtful design and innovation.",
+    description:
+      "Exploring accessible technology in computing, enhancing inclusion, usability, and opportunity through thoughtful design and innovation.",
     buttonText: "Read more",
     buttonUrl: "/research/accessible-technology",
-    icon: Globe
+    icon: Globe,
   },
   {
     id: "social-computing",
     title: "Social Computing",
-    description: "Exploring social computing in education, fostering collaboration, communication, and community through interactive digital platforms.",
+    description:
+      "Exploring social computing in education, fostering collaboration, communication, and community through interactive digital platforms.",
     buttonText: "Read more",
     buttonUrl: "/research/social-computing",
-    icon: Users
-  }
+    icon: Users,
+  },
 ];
 
 export default function HomePage() {
   const heroRef = useRef(null);
   const isHeroInView = useInView(heroRef, { once: true });
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">

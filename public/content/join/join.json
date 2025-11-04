@@ -1,13 +1,13 @@
 {
   "seo": {
-    "title": "Join Our Research Lab | Apply Now.",
+    "title": "Join Our Research Lab | Apply Now",
     "description": "Join our HCI research lab! We welcome undergraduate students, graduate students, and recent graduates passionate about human-computer interaction research.",
     "keywords": "join research lab, HCI research, apply lab position, undergraduate research, graduate research, human-computer interaction"
   },
   "apply": {
     "title": "Apply to Join HCI Lab!",
     "button": {
-      "text": "Link to Google",
+      "text": "Link to Google Form",
       "url": "https://forms.google.com/your-form-link"
     }
   },
