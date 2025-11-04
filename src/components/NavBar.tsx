@@ -39,22 +39,35 @@ export default function NavBar({ routes }: NavBarProps) {
                 className="group size-10 md:hidden flex items-center justify-center !bg-transparent !border-2 !border-white hover:!bg-white"
                 variant="outline"
                 size="icon"
+                aria-label={
+                  isOpen ? "Close navigation menu" : "Open navigation menu"
+                }
+                aria-expanded={isOpen}
+                aria-controls="mobile-menu"
               >
                 <div className="relative size-8 flex items-center justify-center ">
                   <Menu
                     className={`absolute size-5 text-white transition-all duration-300 group-hover:text-black ${
                       isOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
                     }`}
+                    aria-hidden="true"
                   />
                   <X
                     className={`absolute size-5 text-white transition-all duration-300 group-hover:text-black ${
                       isOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
                     }`}
+                    aria-hidden="true"
                   />
                 </div>
               </Button>
             </PopoverTrigger>
-            <PopoverContent align="start" className="w-48 p-2 md:hidden mr-6 ">
+            <PopoverContent
+              align="start"
+              className="w-48 p-2 md:hidden mr-6"
+              id="mobile-menu"
+              role="menu"
+              aria-label="Navigation menu"
+            >
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-1">
                   {navItems?.map((item) => (
@@ -64,6 +77,7 @@ export default function NavBar({ routes }: NavBarProps) {
                           to={item.path}
                           onClick={() => setIsOpen(false)}
                           className="!text-black !bg-transparent !text-base font-roboto transition-colors hover:!bg-black/10 px-3 py-1 rounded-md"
+                          role="menuitem"
                         >
                           {item.label}
                         </Link>

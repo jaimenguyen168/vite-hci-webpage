@@ -47,16 +47,52 @@ fragment RoutesParts on Routes {
 
 fragment JoinParts on Join {
   __typename
-  title
-  button {
+  seo {
     __typename
-    text
-    url
+    title
+    description
+    keywords
+  }
+  apply {
+    __typename
+    title
+    button {
+      __typename
+      text
+      url
+    }
+  }
+  faqs {
+    __typename
+    question
+    answer
+    defaultOpen
   }
 }
 
 fragment PeopleParts on People {
   __typename
+  seo {
+    __typename
+    current {
+      __typename
+      title
+      description
+      keywords
+    }
+    alumni {
+      __typename
+      title
+      description
+      keywords
+    }
+    collaborators {
+      __typename
+      title
+      description
+      keywords
+    }
+  }
   people {
     __typename
     name
