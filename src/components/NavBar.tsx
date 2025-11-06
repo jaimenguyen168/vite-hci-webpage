@@ -123,6 +123,10 @@ export default function NavBar({ routes }: NavBarProps) {
                           onClick={() => setIsOpen(false)}
                           className="!text-black !bg-transparent !text-base font-roboto transition-colors hover:!bg-black/10 px-3 py-1 rounded-md"
                           role="menuitem"
+                          aria-label={
+                            item?.linkDescription ||
+                            `Navigate to ${item?.label || item.path}`
+                          }
                         >
                           {item.label}
                         </Link>
@@ -152,6 +156,10 @@ export default function NavBar({ routes }: NavBarProps) {
                         ? "!text-base px-2 py-1 hover:!bg-black/60"
                         : "!text-lg px-3 py-2 hover:!bg-black/20"
                     }`}
+                    aria-label={
+                      item?.linkDescription ||
+                      `Navigate to ${item?.label || item.path}`
+                    }
                   >
                     {item.label}
                   </Link>

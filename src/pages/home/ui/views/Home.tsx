@@ -11,9 +11,9 @@ interface ResearchArea {
   id: string;
   title: string;
   description: string;
-  buttonText: string;
   buttonUrl: string;
   icon: LucideIcon;
+  linkDescription?: string;
 }
 
 const researchAreas: ResearchArea[] = [
@@ -22,27 +22,27 @@ const researchAreas: ResearchArea[] = [
     title: "GenAI & Education",
     description:
       "Exploring Generative AI in computing education, enhancing learning, creativity, and assessment through intelligent tools.",
-    buttonText: "Read more",
     buttonUrl: "/research/genai-education",
     icon: BookOpen,
+    linkDescription: "Learn more about GenAI & Education research",
   },
   {
     id: "accessible-technology",
     title: "Accessible Technology",
     description:
       "Exploring accessible technology in computing, enhancing inclusion, usability, and opportunity through thoughtful design and innovation.",
-    buttonText: "Read more",
     buttonUrl: "/research/accessible-technology",
     icon: Globe,
+    linkDescription: "Learn more about Accessible Technology research",
   },
   {
     id: "social-computing",
     title: "Social Computing",
     description:
       "Exploring social computing in education, fostering collaboration, communication, and community through interactive digital platforms.",
-    buttonText: "Read more",
     buttonUrl: "/research/social-computing",
     icon: Users,
+    linkDescription: "Learn more about Social Computing research",
   },
 ];
 
@@ -62,12 +62,12 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 30 }}
         animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8 }}
-        className="container mx-auto px-4 pt-4 pb-12"
+        className="container mx-auto px-4 pt-4 pb-12 space-y-12"
       >
         <Title title="Our Research" />
 
         {/* Research Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {researchAreas.map((research, index) => (
             <ResearchCard key={research.id} research={research} index={index} />
           ))}

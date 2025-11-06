@@ -1,9 +1,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import Title from "@/components/Title.tsx";
 import { getImagePath } from "@/lib/utils.ts";
+import { AccessibleLink } from "@/components/AccessibleLink.tsx";
+import { routeContent } from "@/constants/routeConfig.ts";
 
 interface NewsItem {
   id: string;
@@ -39,7 +40,6 @@ const RecentNewsSection = () => {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="mt-12"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
@@ -67,16 +67,19 @@ const RecentNewsSection = () => {
               </motion.div>
             ))}
           </div>
-          <Link to="/research">
+          <AccessibleLink
+            to="/about?sub=events"
+            aria-label={routeContent.about.linkDescription}
+          >
             <Button
               className="!bg-red-900 text-white !rounded-full !px-12 !text-sm hover:!bg-red-800 transition-colors mt-8"
               size="sm"
             >
               More Events
             </Button>
-          </Link>
+          </AccessibleLink>
         </div>
-        <div className="transform rotate-3 rounded-[64px] overflow-hidden shadow-lg">
+        <div className="transform rotate-3 rounded-3xl overflow-hidden shadow-lg">
           <img
             src={getImagePath("/images/cover/5-studio.JPG")}
             alt="Lab/Event participants collaborating"
