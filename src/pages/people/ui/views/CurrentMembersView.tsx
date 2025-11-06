@@ -6,11 +6,14 @@ import type { Person } from "@/pages/people/types.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
 import Title from "@/components/Title.tsx";
+import { useNavigate } from "react-router-dom";
+
 interface CurrentMembersViewProps {
   activeMembers: Person[];
 }
 
 const CurrentMembersView = ({ activeMembers }: CurrentMembersViewProps) => {
+  const navigate = useNavigate();
   const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
 
   const filteredMembers =
@@ -110,10 +113,7 @@ const CurrentMembersView = ({ activeMembers }: CurrentMembersViewProps) => {
               <Button
                 variant="outline"
                 size="lg"
-                onClick={() => {
-                  // Add actual navigation or form handling here
-                  console.log("Navigate to application form");
-                }}
+                onClick={() => navigate("/join")}
                 className="px-8 py-3 text-base !bg-transparent font-medium rounded-full !border-2 !border-gray-600 text-gray-700 hover:!bg-gray-600 hover:!text-white hover:!border-gray-700 transition-colors"
                 aria-describedby="join-description"
               >

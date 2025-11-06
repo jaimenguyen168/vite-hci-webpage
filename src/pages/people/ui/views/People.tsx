@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import {
   useActiveMembers,
   useAlumniMembers,
@@ -9,41 +9,21 @@ import {
 import CurrentMembersView from "@/pages/people/ui/views/CurrentMembersView.tsx";
 import LoadingSpinner from "@/components/LoadingSpinner.tsx";
 import { useSEO } from "@/hooks/useSEO.ts";
+import ErrorMessage from "@/components/ErrorMessage.tsx";
 
 const AlumniView = lazy(() => import("@/pages/people/ui/views/AlumniView.tsx"));
 const CollaboratorsView = lazy(
   () => import("@/pages/people/ui/views/CollaboratorsView.tsx"),
 );
 
-// Error component with semantic HTML
-const ErrorMessage = ({
-  message = "Error loading content",
-  onRetry,
-}: {
-  message?: string;
-  onRetry?: () => void;
-}) => (
-  <div className="flex items-center justify-center min-h-[200px]" role="alert">
-    <div className="text-center">
-      <div className="text-red-500 text-lg font-medium mb-2">⚠️ {message}</div>
-      {onRetry && (
-        <button
-          onClick={onRetry}
-          className="text-sm text-primary hover:underline"
-          aria-label="Retry loading content"
-        >
-          Try again
-        </button>
-      )}
-    </div>
-  </div>
-);
-
 const PeoplePage = () => {
   const [searchParams] = useSearchParams();
   const sub = searchParams.get("sub");
 
-  // Use specific hooks based on the current view
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [sub]);
+
   const activeMembers = useActiveMembers();
   const alumniMembers = useAlumniMembers();
   const collaborators = useCollaborators();
@@ -102,12 +82,10 @@ const PeoplePage = () => {
 
   const currentQuery = getCurrentQuery();
 
-  // Handle loading state
   if (currentQuery.isLoading || seoLoading) {
     return <LoadingSpinner />;
   }
 
-  // Handle error state
   if (currentQuery.isError || seoError) {
     return (
       <>
