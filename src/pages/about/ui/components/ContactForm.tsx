@@ -1,11 +1,8 @@
 import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-
 const ContactForm = () => {
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -76,8 +73,8 @@ const ContactForm = () => {
     setFormData((prev) => ({
         ...prev,
         requests: prev.requests.includes(option)
-            ? prev.requests.filter((r) => r !== option) // Remove if already selected
-            : [...prev.requests, option], // Add if not selected
+            ? prev.requests.filter((r) => r !== option)
+            : [...prev.requests, option],
     }));
   };
 
@@ -93,9 +90,8 @@ const ContactForm = () => {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Contact Form Card */}
-      <Card className="p-6 shadow-lg font-roboto" style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}>
+    <Card className="shadow-lg font-roboto" style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}>
+      <div className="px-6 md:px-8 py-6">
         <form onSubmit={handleSubmit}>
           <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-6">Get in Touch</h2>
           
@@ -105,7 +101,6 @@ const ContactForm = () => {
               Name <span className="text-red-600">*</span>
             </label>
             
-            {/* Two inputs side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-150">
               <div>
                 <Input
@@ -160,73 +155,6 @@ const ContactForm = () => {
                 className={`border-2 focus:outline-none focus:ring-0 focus:!border-gray-300 ${errors.email ? "!border-red-500" : "border-gray-300"}`}
               />
               {errors.email && <p className="text-red-600 text-sm mt-1">{errors.email}</p>}
-            </div>
-          </div>
-
-          {/* Phone */}
-          <div className="mb-6">
-            <label className="text-base font-semibold block mb-2">
-              Phone
-            </label>
-            <div className="flex items-center gap-2 w-150">
-              <div className="flex-1">
-                <Input
-                  id="phone_1"
-                  type="tel"
-                  maxLength={3}
-                  value={formData.phoneArea}
-                  className="text-center border-2 border-gray-300 focus:outline-none focus:ring-0 focus:!border-gray-300"
-                  placeholder="123"
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/[^0-9]/g, '');
-                    setFormData({ ...formData, phoneArea: value });
-
-                    if (value.length === 3) {
-                      document.getElementById('phone_2')?.focus();
-                    }
-                  }}
-                />
-              </div>
-
-              <span className="text-xl">-</span>
-
-              {/* Prefix */}
-              <div className="flex-1">
-                <Input
-                  id="phone_2"
-                  type="tel"
-                  maxLength={3}
-                  value={formData.phonePrefix}
-                  className="text-center border-2 border-gray-300 focus:outline-none focus:ring-0 focus:!border-gray-300"
-                  placeholder="456"
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/[^0-9]/g, '');
-                    setFormData({ ...formData, phonePrefix: value });
-                    
-                    if (value.length === 3) {
-                      document.getElementById('phone_3')?.focus();
-                    }
-                  }}
-                />
-              </div>
-
-              <span className="text-xl">-</span>
-
-              {/* Line Number (####) */}
-              <div className="flex-1">
-                <Input
-                  id="phone_3"
-                  type="tel"
-                  maxLength={4}
-                  value={formData.phoneLine}
-                  className="text-center border-2 border-gray-300 focus:outline-none focus:ring-0 focus:!border-gray-300"
-                  placeholder="7890"
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/[^0-9]/g, '');
-                    setFormData({ ...formData, phoneLine: value });
-                  }}
-                />
-              </div>
             </div>
           </div>
 
@@ -302,8 +230,8 @@ const ContactForm = () => {
             </button>
           </div>
         </form>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 };
 

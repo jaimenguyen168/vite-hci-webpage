@@ -86,6 +86,8 @@ export type Query = {
   joinConnection: JoinConnection;
   people: People;
   peopleConnection: PeopleConnection;
+  about: About;
+  aboutConnection: AboutConnection;
 };
 
 
@@ -139,9 +141,25 @@ export type QueryPeopleConnectionArgs = {
   filter?: InputMaybe<PeopleFilter>;
 };
 
+
+export type QueryAboutArgs = {
+  relativePath?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+export type QueryAboutConnectionArgs = {
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<AboutFilter>;
+};
+
 export type DocumentFilter = {
   join?: InputMaybe<JoinFilter>;
   people?: InputMaybe<PeopleFilter>;
+  about?: InputMaybe<AboutFilter>;
 };
 
 export type DocumentConnectionEdges = {
@@ -181,7 +199,7 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Join | People | Folder;
+export type DocumentNode = Join | People | About | Folder;
 
 export type JoinSeo = {
   __typename?: 'JoinSeo';
@@ -363,6 +381,165 @@ export type PeopleConnection = Connection & {
   edges?: Maybe<Array<Maybe<PeopleConnectionEdges>>>;
 };
 
+export type AboutCommunityResearch = {
+  __typename?: 'AboutCommunityResearch';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  video?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutStudioTime = {
+  __typename?: 'AboutStudioTime';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  buttonText?: Maybe<Scalars['String']['output']>;
+  buttonLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutLearningOutcomesItems = {
+  __typename?: 'AboutLearningOutcomesItems';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutLearningOutcomesAlumni = {
+  __typename?: 'AboutLearningOutcomesAlumni';
+  name?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+  quote?: Maybe<Scalars['String']['output']>;
+  img?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutLearningOutcomes = {
+  __typename?: 'AboutLearningOutcomes';
+  title: Scalars['String']['output'];
+  items?: Maybe<Array<Maybe<AboutLearningOutcomesItems>>>;
+  alumni?: Maybe<Array<Maybe<AboutLearningOutcomesAlumni>>>;
+};
+
+export type AboutEvents = {
+  __typename?: 'AboutEvents';
+  title1?: Maybe<Scalars['String']['output']>;
+  description1?: Maybe<Scalars['String']['output']>;
+  image1?: Maybe<Scalars['String']['output']>;
+  image1Alt?: Maybe<Scalars['String']['output']>;
+  title2?: Maybe<Scalars['String']['output']>;
+  description2?: Maybe<Scalars['String']['output']>;
+  image2?: Maybe<Scalars['String']['output']>;
+  image2Alt?: Maybe<Scalars['String']['output']>;
+  ctaTitle?: Maybe<Scalars['String']['output']>;
+  buttonText?: Maybe<Scalars['String']['output']>;
+  buttonLink?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutLabHappeningsImages = {
+  __typename?: 'AboutLabHappeningsImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutLabHappenings = {
+  __typename?: 'AboutLabHappenings';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<AboutLabHappeningsImages>>>;
+};
+
+export type About = Node & Document & {
+  __typename?: 'About';
+  communityResearch?: Maybe<AboutCommunityResearch>;
+  studioTime?: Maybe<AboutStudioTime>;
+  learningOutcomes?: Maybe<AboutLearningOutcomes>;
+  events?: Maybe<AboutEvents>;
+  labHappenings?: Maybe<AboutLabHappenings>;
+  id: Scalars['ID']['output'];
+  _sys: SystemInfo;
+  _values: Scalars['JSON']['output'];
+};
+
+export type AboutCommunityResearchFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  video?: InputMaybe<StringFilter>;
+};
+
+export type AboutStudioTimeFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  buttonText?: InputMaybe<StringFilter>;
+  buttonLink?: InputMaybe<StringFilter>;
+};
+
+export type AboutLearningOutcomesItemsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+};
+
+export type AboutLearningOutcomesAlumniFilter = {
+  name?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+  quote?: InputMaybe<StringFilter>;
+  img?: InputMaybe<ImageFilter>;
+};
+
+export type AboutLearningOutcomesFilter = {
+  title?: InputMaybe<StringFilter>;
+  items?: InputMaybe<AboutLearningOutcomesItemsFilter>;
+  alumni?: InputMaybe<AboutLearningOutcomesAlumniFilter>;
+};
+
+export type AboutEventsFilter = {
+  title1?: InputMaybe<StringFilter>;
+  description1?: InputMaybe<StringFilter>;
+  image1?: InputMaybe<ImageFilter>;
+  image1Alt?: InputMaybe<StringFilter>;
+  title2?: InputMaybe<StringFilter>;
+  description2?: InputMaybe<StringFilter>;
+  image2?: InputMaybe<ImageFilter>;
+  image2Alt?: InputMaybe<StringFilter>;
+  ctaTitle?: InputMaybe<StringFilter>;
+  buttonText?: InputMaybe<StringFilter>;
+  buttonLink?: InputMaybe<StringFilter>;
+};
+
+export type AboutLabHappeningsImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type AboutLabHappeningsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  images?: InputMaybe<AboutLabHappeningsImagesFilter>;
+};
+
+export type AboutFilter = {
+  communityResearch?: InputMaybe<AboutCommunityResearchFilter>;
+  studioTime?: InputMaybe<AboutStudioTimeFilter>;
+  learningOutcomes?: InputMaybe<AboutLearningOutcomesFilter>;
+  events?: InputMaybe<AboutEventsFilter>;
+  labHappenings?: InputMaybe<AboutLabHappeningsFilter>;
+};
+
+export type AboutConnectionEdges = {
+  __typename?: 'AboutConnectionEdges';
+  cursor: Scalars['String']['output'];
+  node?: Maybe<About>;
+};
+
+export type AboutConnection = Connection & {
+  __typename?: 'AboutConnection';
+  pageInfo: PageInfo;
+  totalCount: Scalars['Float']['output'];
+  edges?: Maybe<Array<Maybe<AboutConnectionEdges>>>;
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   addPendingDocument: DocumentNode;
@@ -374,6 +551,8 @@ export type Mutation = {
   createJoin: Join;
   updatePeople: People;
   createPeople: People;
+  updateAbout: About;
+  createAbout: About;
 };
 
 
@@ -433,15 +612,29 @@ export type MutationCreatePeopleArgs = {
   params: PeopleMutation;
 };
 
+
+export type MutationUpdateAboutArgs = {
+  relativePath: Scalars['String']['input'];
+  params: AboutMutation;
+};
+
+
+export type MutationCreateAboutArgs = {
+  relativePath: Scalars['String']['input'];
+  params: AboutMutation;
+};
+
 export type DocumentUpdateMutation = {
   join?: InputMaybe<JoinMutation>;
   people?: InputMaybe<PeopleMutation>;
+  about?: InputMaybe<AboutMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
   join?: InputMaybe<JoinMutation>;
   people?: InputMaybe<PeopleMutation>;
+  about?: InputMaybe<AboutMutation>;
 };
 
 export type JoinSeoMutation = {
@@ -499,9 +692,78 @@ export type PeopleMutation = {
   people?: InputMaybe<Array<InputMaybe<PeoplePeopleMutation>>>;
 };
 
+export type AboutCommunityResearchMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  video?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutStudioTimeMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  buttonText?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutLearningOutcomesItemsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutLearningOutcomesAlumniMutation = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  quote?: InputMaybe<Scalars['String']['input']>;
+  img?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutLearningOutcomesMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  items?: InputMaybe<Array<InputMaybe<AboutLearningOutcomesItemsMutation>>>;
+  alumni?: InputMaybe<Array<InputMaybe<AboutLearningOutcomesAlumniMutation>>>;
+};
+
+export type AboutEventsMutation = {
+  title1?: InputMaybe<Scalars['String']['input']>;
+  description1?: InputMaybe<Scalars['String']['input']>;
+  image1?: InputMaybe<Scalars['String']['input']>;
+  image1Alt?: InputMaybe<Scalars['String']['input']>;
+  title2?: InputMaybe<Scalars['String']['input']>;
+  description2?: InputMaybe<Scalars['String']['input']>;
+  image2?: InputMaybe<Scalars['String']['input']>;
+  image2Alt?: InputMaybe<Scalars['String']['input']>;
+  ctaTitle?: InputMaybe<Scalars['String']['input']>;
+  buttonText?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutLabHappeningsImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutLabHappeningsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<AboutLabHappeningsImagesMutation>>>;
+};
+
+export type AboutMutation = {
+  communityResearch?: InputMaybe<AboutCommunityResearchMutation>;
+  studioTime?: InputMaybe<AboutStudioTimeMutation>;
+  learningOutcomes?: InputMaybe<AboutLearningOutcomesMutation>;
+  events?: InputMaybe<AboutEventsMutation>;
+  labHappenings?: InputMaybe<AboutLabHappeningsMutation>;
+};
+
 export type JoinPartsFragment = { __typename: 'Join', seo?: { __typename: 'JoinSeo', title: string, description: string, keywords: string } | null, apply?: { __typename: 'JoinApply', title: string, button?: { __typename: 'JoinApplyButton', text: string, url: string } | null } | null, faqs?: Array<{ __typename: 'JoinFaqs', question: string, answer: string, defaultOpen?: boolean | null } | null> | null };
 
 export type PeoplePartsFragment = { __typename: 'People', images?: { __typename: 'PeopleImages', heroes?: Array<{ __typename: 'PeopleImagesHeroes', src: string, alt: string, title?: string | null } | null> | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
+
+export type AboutPartsFragment = { __typename: 'About', communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, studioTime?: { __typename: 'AboutStudioTime', title?: string | null, description?: string | null, image?: string | null, imageAlt?: string | null, imageCaption?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, labHappenings?: { __typename: 'AboutLabHappenings', title?: string | null, description?: string | null, images?: Array<{ __typename: 'AboutLabHappeningsImages', src?: string | null, alt?: string | null } | null> | null } | null };
 
 export type JoinQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -540,6 +802,25 @@ export type PeopleConnectionQueryVariables = Exact<{
 
 
 export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, images?: { __typename: 'PeopleImages', heroes?: Array<{ __typename: 'PeopleImagesHeroes', src: string, alt: string, title?: string | null } | null> | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
+
+export type AboutQueryVariables = Exact<{
+  relativePath: Scalars['String']['input'];
+}>;
+
+
+export type AboutQuery = { __typename?: 'Query', about: { __typename: 'About', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, studioTime?: { __typename: 'AboutStudioTime', title?: string | null, description?: string | null, image?: string | null, imageAlt?: string | null, imageCaption?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, labHappenings?: { __typename: 'AboutLabHappenings', title?: string | null, description?: string | null, images?: Array<{ __typename: 'AboutLabHappeningsImages', src?: string | null, alt?: string | null } | null> | null } | null } };
+
+export type AboutConnectionQueryVariables = Exact<{
+  before?: InputMaybe<Scalars['String']['input']>;
+  after?: InputMaybe<Scalars['String']['input']>;
+  first?: InputMaybe<Scalars['Float']['input']>;
+  last?: InputMaybe<Scalars['Float']['input']>;
+  sort?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<AboutFilter>;
+}>;
+
+
+export type AboutConnectionQuery = { __typename?: 'Query', aboutConnection: { __typename?: 'AboutConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AboutConnectionEdges', cursor: string, node?: { __typename: 'About', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, studioTime?: { __typename: 'AboutStudioTime', title?: string | null, description?: string | null, image?: string | null, imageAlt?: string | null, imageCaption?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, labHappenings?: { __typename: 'AboutLabHappenings', title?: string | null, description?: string | null, images?: Array<{ __typename: 'AboutLabHappeningsImages', src?: string | null, alt?: string | null } | null> | null } | null } | null } | null> | null } };
 
 export const JoinPartsFragmentDoc = gql`
     fragment JoinParts on Join {
@@ -590,6 +871,67 @@ export const PeoplePartsFragmentDoc = gql`
     end
     affiliation
     now
+  }
+}
+    `;
+export const AboutPartsFragmentDoc = gql`
+    fragment AboutParts on About {
+  __typename
+  communityResearch {
+    __typename
+    title
+    description
+    video
+  }
+  studioTime {
+    __typename
+    title
+    description
+    image
+    imageAlt
+    imageCaption
+    buttonText
+    buttonLink
+  }
+  learningOutcomes {
+    __typename
+    title
+    items {
+      __typename
+      title
+      description
+    }
+    alumni {
+      __typename
+      name
+      title
+      quote
+      img
+    }
+  }
+  events {
+    __typename
+    title1
+    description1
+    image1
+    image1Alt
+    title2
+    description2
+    image2
+    image2Alt
+    ctaTitle
+    buttonText
+    buttonLink
+  }
+  labHappenings {
+    __typename
+    title
+    description
+    images {
+      __typename
+      src
+      alt
+    }
   }
 }
     `;
@@ -707,6 +1049,63 @@ export const PeopleConnectionDocument = gql`
   }
 }
     ${PeoplePartsFragmentDoc}`;
+export const AboutDocument = gql`
+    query about($relativePath: String!) {
+  about(relativePath: $relativePath) {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        hasReferences
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...AboutParts
+  }
+}
+    ${AboutPartsFragmentDoc}`;
+export const AboutConnectionDocument = gql`
+    query aboutConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: AboutFilter) {
+  aboutConnection(
+    before: $before
+    after: $after
+    first: $first
+    last: $last
+    sort: $sort
+    filter: $filter
+  ) {
+    pageInfo {
+      hasPreviousPage
+      hasNextPage
+      startCursor
+      endCursor
+    }
+    totalCount
+    edges {
+      cursor
+      node {
+        ... on Document {
+          _sys {
+            filename
+            basename
+            hasReferences
+            breadcrumbs
+            path
+            relativePath
+            extension
+          }
+          id
+        }
+        ...AboutParts
+      }
+    }
+  }
+}
+    ${AboutPartsFragmentDoc}`;
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
@@ -721,6 +1120,12 @@ export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) 
       },
     peopleConnection(variables?: PeopleConnectionQueryVariables, options?: C): Promise<{data: PeopleConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PeopleConnectionQueryVariables, query: string}> {
         return requester<{data: PeopleConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: PeopleConnectionQueryVariables, query: string}, PeopleConnectionQueryVariables>(PeopleConnectionDocument, variables, options);
+      },
+    about(variables: AboutQueryVariables, options?: C): Promise<{data: AboutQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutQueryVariables, query: string}> {
+        return requester<{data: AboutQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutQueryVariables, query: string}, AboutQueryVariables>(AboutDocument, variables, options);
+      },
+    aboutConnection(variables?: AboutConnectionQueryVariables, options?: C): Promise<{data: AboutConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutConnectionQueryVariables, query: string}> {
+        return requester<{data: AboutConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: AboutConnectionQueryVariables, query: string}, AboutConnectionQueryVariables>(AboutConnectionDocument, variables, options);
       }
     };
   }
