@@ -1,33 +1,36 @@
-import Title from "@/components/Title.tsx";
+import ContactInformation from "../components/ContactInformation";
+import ContactForm from "../components/ContactForm";
+
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 const ContactContentView = () => {
+
+  const contactInfoRef = useRef(null);
+  const contactFormRef = useRef(null);
+
+  const isContactInfoInView = useInView(contactInfoRef, { once: true });
+  const isContactFormInView = useInView(contactFormRef, { once: true });
+
   return (
-    <div className="w-full mb-8">
-      <Title title="Contact Us" />
-      <div className="space-y-4">
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900">Address</h3>
-          <p className="text-gray-700">
-            Temple University
-            <br />
-            Department of Computer Science
-            <br />
-            Philadelphia, PA
-          </p>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900">Email</h3>
-          <p className="text-gray-700">
-            <a
-              href="mailto:hcilab@temple.edu"
-              className="text-primary-red-800 hover:underline"
-            >
-              hcilab@temple.edu
-            </a>
-          </p>
-        </div>
-        {/* Add more contact information here */}
-      </div>
+    <div className="space-y-12 pb-16">
+      <motion.div
+        ref={contactInfoRef}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isContactInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.8 }}
+      >
+        <ContactInformation />
+      </motion.div>
+
+      <motion.div
+        ref={contactFormRef}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isContactFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.8 }}
+      >
+        <ContactForm />
+      </motion.div>
     </div>
   );
 };

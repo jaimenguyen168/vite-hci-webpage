@@ -1,0 +1,98 @@
+{
+    "communityResearch": {
+        "title": "Community Research Approach",
+        "description": "Our lab takes a community-centered approach where students collaborate, share ideas, and learn from each other. Together, they explore real-world questions, build research skills, and create meaningful, collective solutions.",
+        "video": "https://www.youtube.com/embed/CkwdRPN-r2M?si=R5YQhcKB3TjxnZtr"
+    },
+    "studioTime": {
+        "title": "When You're at Studio Time...",
+        "description": "Our HCI studio time is a collaborative space where students learn by doing. HCI members explore interaction design, user testing, UX, and web development through real-world projects. It's a chance to explore interaction design, try new ideas, learn from failure, and build solutions that solve real needs.",
+        "image": "/images/cover/5-studio.JPG",
+        "imageAlt": "HCI Lab members collaborating at Studio Time",
+        "imageCaption": "HCI lab members collaborating at Studio Time",
+        "buttonText": "Learn More About Studio Time",
+        "buttonLink": "https://owlhacks.com"
+    },
+    "learningOutcomes": {
+        "title": "Learning Outcomes",
+        "items": [
+            {
+                "title": "Leadership",
+                "description": "think critically, collaborate with others, and communicate complex ideas simply."
+            },
+            {
+                "title": "Design",
+                "description": "learn to talk large systemic problems with solutions that actually meet people's needs"
+            },
+            {
+                "title": "Development",
+                "description": "learn to apply AI, ML, Web Dev, and Software Engineering skills on real projects that get used by real people."
+            }
+        ],
+        "alumni": [
+            {
+                "name": "Hannah V. Nguyen",
+                "title": "UX Designer @ URBN",
+                "quote": "Being a part of the Temple HCI Lab gave me a new perspective on user research and design. In the lab, I worked with a talented team on a novel chatbot UI project (<strong>Feedstack</strong>), which was both fun, challenging, and rewarding! That experience in conversational UI design helped me land my first full-time role as an Analyst & UX Designer at URBN (Urban Outfitters, Inc) for their retail chatbots. I'm so grateful that but most importantly the memories and people I've met at Temple HCI!",
+                "img": "/images/people/hnguyen.webp"
+            },
+            {
+                "name": "Andrew Tran",
+                "title": "Software Engineer @ Amazon",
+                "quote": "Working on real-world projects helped me build a strong portfolio. The mentorship from Dr. MacNeil and the collaborative environment at the Temple HCI Lab were instrumental in my growth as a developer. The skills and experiences I gained there paved the way for my current role as a Software Engineer at Amazon. I'm thankful for the opportunities and connections I made during my time at the lab.",
+                "img": "/images/people/atran.webp"
+            },
+            {
+                "name": "Andrew Tran",
+                "title": "Software Engineer @ Amazon",
+                "quote": "Working on real-world projects helped me build a strong portfolio. The mentorship from Dr. MacNeil and the collaborative environment at the Temple HCI Lab were instrumental in my growth as a developer. The skills and experiences I gained there paved the way for my current role as a Software Engineer at Amazon. I'm thankful for the opportunities and connections I made during my time at the lab.",
+                "img": "/images/people/atran.webp"
+            },
+            {
+                "name": "Andrew Tran",
+                "title": "Software Engineer @ Amazon",
+                "quote": "Working on real-world projects helped me build a strong portfolio. The mentorship from Dr. MacNeil and the collaborative environment at the Temple HCI Lab were instrumental in my growth as a developer. The skills and experiences I gained there paved the way for my current role as a Software Engineer at Amazon. I'm thankful for the opportunities and connections I made during my time at the lab.",
+                "img": "/images/people/atran.webp"
+            }
+        ]
+    },
+    "labHappenings": {
+        "title": "Lab Happenings",
+        "description": "What began as a small group of six researchers in a modest lab space has grown into a thriving community of over 50 members in just 2–3 years. During this time, our lab has published [insert number] peer-reviewed papers and participated in [insert number] national and international conferences including:",
+        "images": [
+            {
+                "src": "/images/cover/3-studio.jpg",
+                "alt": "HCI Lab members working together during studio time session"
+            },
+            {
+                "src": "/images/cover/5-studio.JPG",
+                "alt": "Students collaborating at tables in the HCI Lab studio space"
+            },
+            {
+                "src": "/images/cover/6-studio.JPG",
+                "alt": "Temple HCI Lab studio session with students at workstations"
+            },
+            {
+                "src": "/images/cover/HCI_OpenHouse-5.jpg",
+                "alt": "HCI Lab Open House event with students and visitors"
+            },
+            {
+                "src": "/images/cover/HCI_OpenHouse-38.jpg",
+                "alt": "Attendees at Temple HCI Lab Open House presentation"
+            }
+        ]
+    },
+    "events": {
+        "title1": "Owl Hacks",
+        "description1": "Our HCI Lab at Temple proudly sponsors OwlHacks, the university's annual hackathon that brings together creative students from all disciplines to design, build, and innovate.<br><br>Through this event, we celebrate collaboration, accessibility, and the spirit of human-centered design—empowering students to turn ideas into impactful, user-focused technologies.",
+        "image1": "/images/cover/5-studio.JPG",
+        "image1Alt": "Lab/Event participants collaborating",
+        "title2": "Not Just a Hackathon",
+        "description2": "OwlHacks features panels with Temple alumni now working in the tech and design industry, giving students a chance to learn from real-world experiences and explore diverse career paths in human-centered technology.",
+        "image2": "/images/cover/5-studio.JPG",
+        "image2Alt": "Lab/Event participants collaborating",
+        "ctaTitle": "Want to find out more?",
+        "buttonText": "Check Out the Owl-Hacks Website",
+        "buttonLink": "https://owlhacks.com"
+    }
+}

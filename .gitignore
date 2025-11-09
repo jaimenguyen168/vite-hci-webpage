@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 
 .env
+
+.unlighthouse/# TinaCMS generated files
+tina/__generated__/
+tina/tina-lock.json
+
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock

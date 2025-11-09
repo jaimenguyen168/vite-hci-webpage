@@ -58,11 +58,14 @@ type Query {
   joinConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: JoinFilter): JoinConnection!
   people(relativePath: String): People!
   peopleConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: PeopleFilter): PeopleConnection!
+  about(relativePath: String): About!
+  aboutConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: AboutFilter): AboutConnection!
 }
 
 input DocumentFilter {
   join: JoinFilter
   people: PeopleFilter
+  about: AboutFilter
 }
 
 type DocumentConnectionEdges {
@@ -88,7 +91,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Join | People | Folder
+union DocumentNode = Join | People | About | Folder
 
 type JoinSeo {
   title: String!
@@ -257,6 +260,154 @@ type PeopleConnection implements Connection {
   edges: [PeopleConnectionEdges]
 }
 
+type AboutCommunityResearch {
+  title: String
+  description: String
+  video: String
+}
+
+type AboutStudioTime {
+  title: String
+  description: String
+  image: String
+  imageAlt: String
+  imageCaption: String
+  buttonText: String
+  buttonLink: String
+}
+
+type AboutLearningOutcomesItems {
+  title: String
+  description: String
+}
+
+type AboutLearningOutcomesAlumni {
+  name: String
+  title: String
+  quote: String
+  img: String
+}
+
+type AboutLearningOutcomes {
+  title: String!
+  items: [AboutLearningOutcomesItems]
+  alumni: [AboutLearningOutcomesAlumni]
+}
+
+type AboutEvents {
+  title1: String
+  description1: String
+  image1: String
+  image1Alt: String
+  title2: String
+  description2: String
+  image2: String
+  image2Alt: String
+  ctaTitle: String
+  buttonText: String
+  buttonLink: String
+}
+
+type AboutLabHappeningsImages {
+  src: String
+  alt: String
+}
+
+type AboutLabHappenings {
+  title: String
+  description: String
+  images: [AboutLabHappeningsImages]
+}
+
+type About implements Node & Document {
+  communityResearch: AboutCommunityResearch
+  studioTime: AboutStudioTime
+  learningOutcomes: AboutLearningOutcomes
+  events: AboutEvents
+  labHappenings: AboutLabHappenings
+  id: ID!
+  _sys: SystemInfo!
+  _values: JSON!
+}
+
+input AboutCommunityResearchFilter {
+  title: StringFilter
+  description: StringFilter
+  video: StringFilter
+}
+
+input AboutStudioTimeFilter {
+  title: StringFilter
+  description: StringFilter
+  image: ImageFilter
+  imageAlt: StringFilter
+  imageCaption: StringFilter
+  buttonText: StringFilter
+  buttonLink: StringFilter
+}
+
+input AboutLearningOutcomesItemsFilter {
+  title: StringFilter
+  description: StringFilter
+}
+
+input AboutLearningOutcomesAlumniFilter {
+  name: StringFilter
+  title: StringFilter
+  quote: StringFilter
+  img: ImageFilter
+}
+
+input AboutLearningOutcomesFilter {
+  title: StringFilter
+  items: AboutLearningOutcomesItemsFilter
+  alumni: AboutLearningOutcomesAlumniFilter
+}
+
+input AboutEventsFilter {
+  title1: StringFilter
+  description1: StringFilter
+  image1: ImageFilter
+  image1Alt: StringFilter
+  title2: StringFilter
+  description2: StringFilter
+  image2: ImageFilter
+  image2Alt: StringFilter
+  ctaTitle: StringFilter
+  buttonText: StringFilter
+  buttonLink: StringFilter
+}
+
+input AboutLabHappeningsImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input AboutLabHappeningsFilter {
+  title: StringFilter
+  description: StringFilter
+  images: AboutLabHappeningsImagesFilter
+}
+
+input AboutFilter {
+  communityResearch: AboutCommunityResearchFilter
+  studioTime: AboutStudioTimeFilter
+  learningOutcomes: AboutLearningOutcomesFilter
+  events: AboutEventsFilter
+  labHappenings: AboutLabHappeningsFilter
+}
+
+type AboutConnectionEdges {
+  cursor: String!
+  node: About
+}
+
+type AboutConnection implements Connection {
+  pageInfo: PageInfo!
+  totalCount: Float!
+  edges: [AboutConnectionEdges]
+}
+
 type Mutation {
   addPendingDocument(collection: String!, relativePath: String!, template: String): DocumentNode!
   updateDocument(collection: String, relativePath: String!, params: DocumentUpdateMutation!): DocumentNode!
@@ -267,17 +418,21 @@ type Mutation {
   createJoin(relativePath: String!, params: JoinMutation!): Join!
   updatePeople(relativePath: String!, params: PeopleMutation!): People!
   createPeople(relativePath: String!, params: PeopleMutation!): People!
+  updateAbout(relativePath: String!, params: AboutMutation!): About!
+  createAbout(relativePath: String!, params: AboutMutation!): About!
 }
 
 input DocumentUpdateMutation {
   join: JoinMutation
   people: PeopleMutation
+  about: AboutMutation
   relativePath: String
 }
 
 input DocumentMutation {
   join: JoinMutation
   people: PeopleMutation
+  about: AboutMutation
 }
 
 input JoinSeoMutation {
@@ -333,6 +488,73 @@ input PeoplePeopleMutation {
 input PeopleMutation {
   images: PeopleImagesMutation
   people: [PeoplePeopleMutation]
+}
+
+input AboutCommunityResearchMutation {
+  title: String
+  description: String
+  video: String
+}
+
+input AboutStudioTimeMutation {
+  title: String
+  description: String
+  image: String
+  imageAlt: String
+  imageCaption: String
+  buttonText: String
+  buttonLink: String
+}
+
+input AboutLearningOutcomesItemsMutation {
+  title: String
+  description: String
+}
+
+input AboutLearningOutcomesAlumniMutation {
+  name: String
+  title: String
+  quote: String
+  img: String
+}
+
+input AboutLearningOutcomesMutation {
+  title: String
+  items: [AboutLearningOutcomesItemsMutation]
+  alumni: [AboutLearningOutcomesAlumniMutation]
+}
+
+input AboutEventsMutation {
+  title1: String
+  description1: String
+  image1: String
+  image1Alt: String
+  title2: String
+  description2: String
+  image2: String
+  image2Alt: String
+  ctaTitle: String
+  buttonText: String
+  buttonLink: String
+}
+
+input AboutLabHappeningsImagesMutation {
+  src: String
+  alt: String
+}
+
+input AboutLabHappeningsMutation {
+  title: String
+  description: String
+  images: [AboutLabHappeningsImagesMutation]
+}
+
+input AboutMutation {
+  communityResearch: AboutCommunityResearchMutation
+  studioTime: AboutStudioTimeMutation
+  learningOutcomes: AboutLearningOutcomesMutation
+  events: AboutEventsMutation
+  labHappenings: AboutLabHappeningsMutation
 }
 
 schema {

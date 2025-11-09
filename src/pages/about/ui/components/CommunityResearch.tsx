@@ -1,45 +1,29 @@
-import { Card, CardContent } from "@/components/ui/card.tsx";
-import Title from "@/components/Title.tsx";
+import type { CommunityResearchContent } from "../../types";
 
-type CommunityResearch = {
-  title: string;
-  description: string;
-  video: string;
-};
+interface CommunityResearchProps {
+  content: CommunityResearchContent;
+}
 
-export default function CommunityResearch({
-  content,
-}: {
-  content: CommunityResearch;
-}) {
+export default function CommunityResearch({ content }: CommunityResearchProps) {
   return (
-    <div className="relative">
-      <Card
-        className="shadow-lg font-roboto"
-        style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}
-      >
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Left: Description */}
-          <CardContent className="px-6 md:px-8 py-6 flex-1">
-            <Title title={content.title} />
-            <p className="leading-relaxed text-md py-6">
-              {content.description}
-            </p>
-          </CardContent>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center font-roboto">
+      {/* Left: Text Content */}
+      <div>
+        <h2 className="text-4xl font-bold text-gray-900">{content.title}</h2>
+        <p className="mt-4 text-lg leading-relaxed">{content.description}</p>
+      </div>
 
-          {/* Right: Video */}
-          <CardContent className="px-6 md:px-8 py-6 flex-1">
-            <div className="relative w-full h-full aspect-video rounded-lg overflow-hidden shadow-md bg-black">
-              <iframe
-                src={content.video}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-          </CardContent>
-        </div>
-      </Card>
+      {/* Right: Video */}
+      <div className="rounded-3xl overflow-hidden shadow-lg aspect-video">
+        <iframe
+          src={content.video}
+          title="Community Research Video"
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 }
