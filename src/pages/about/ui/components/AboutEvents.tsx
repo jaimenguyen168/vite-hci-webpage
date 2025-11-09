@@ -1,46 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { getImagePath } from "@/lib/utils.ts";
+import type { EventsContent } from "../../types";
 
-interface AboutContent {
-  title1: string;
-  description1: string;
-  image1: string;
-  image1Alt: string;
-  title2: string;
-  description2: string;
-  image2: string;
-  image2Alt: string;
-  ctaTitle: string;
-  buttonText: string;
-  buttonLink: string;
+interface AboutEventsProps {
+  content: EventsContent
 }
 
-const aboutEventsContents: AboutContent = {
-  "title1": "Owl Hacks",
-  "description1": "Our HCI Lab at Temple proudly sponsors OwlHacks, the university's annual hackathon that brings together creative students from all disciplines to design, build, and innovate.<br><br>Through this event, we celebrate collaboration, accessibility, and the spirit of human-centered design—empowering students to turn ideas into impactful, user-focused technologies.",
-  "image1": "/images/cover/5-studio.JPG",
-  "image1Alt": "Lab/Event participants collaborating",
-  "title2": "Not Just a Hackathon",
-  "description2": "OwlHacks features panels with Temple alumni now working in the tech and design industry, giving students a chance to learn from real-world experiences and explore diverse career paths in human-centered technology.",
-  "image2": "/images/cover/5-studio.JPG",
-  "image2Alt": "Lab/Event participants collaborating",
-  "ctaTitle": "Want to find out more?",
-  "buttonText": "Check Out the Owl-Hacks Website",
-  "buttonLink": "https://owlhacks.com"
-}
-
-export default function AboutEvents() {
+export default function AboutEvents({ content }: AboutEventsProps) {
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-roboto">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">{aboutEventsContents.title1}</h2>
-          <p className="mt-4" dangerouslySetInnerHTML={{ __html: aboutEventsContents.description1 }} />
+          <h2 className="text-3xl font-bold text-gray-900">{content.title1}</h2>
+          <p className="mt-4" dangerouslySetInnerHTML={{ __html: content.description1 }} />
         </div>
         <div className="transform rotate-3 rounded-[64px] overflow-hidden shadow-lg">
           <img
-            src={getImagePath(aboutEventsContents.image1)}
-            alt={aboutEventsContents.image1Alt}
+            src={getImagePath(content.image1)}
+            alt={content.image1Alt}
             className="w-full h-80 object-cover"
             onError={(e) => {
               e.currentTarget.style.display = "none";
@@ -52,8 +29,8 @@ export default function AboutEvents() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-roboto py-10">
         <div className="transform -rotate-3 rounded-[64px] overflow-hidden shadow-lg">
           <img
-            src={getImagePath(aboutEventsContents.image2)}
-            alt={aboutEventsContents.image2Alt}
+            src={getImagePath(content.image2)}
+            alt={content.image2Alt}
             className="w-full h-80 object-cover"
             onError={(e) => {
               e.currentTarget.style.display = "none";
@@ -61,20 +38,20 @@ export default function AboutEvents() {
           />
         </div>
         <div>
-          <h2 className="text-3xl font-bold text-gray-900">{aboutEventsContents.title2}</h2>
-          <p className="mt-4" dangerouslySetInnerHTML={{ __html: aboutEventsContents.description2 }} />
+          <h2 className="text-3xl font-bold text-gray-900">{content.title2}</h2>
+          <p className="mt-4" dangerouslySetInnerHTML={{ __html: content.description2 }} />
 
           <div className="mt-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-3">
-              {aboutEventsContents.ctaTitle}
+              {content.ctaTitle}
             </h2>
             <div className="flex mt-4">
               <Button
                 className="text-black !rounded-full !text-sm hover:!bg-gray-200 ring-2 ring-black"
                 size="sm"
-                onClick={() => window.open(aboutEventsContents.buttonLink, "_blank")}
+                onClick={() => window.open(content.buttonLink, "_blank")}
               >
-                {aboutEventsContents.buttonText}
+                {content.buttonText}
               </Button>
             </div>
           </div>

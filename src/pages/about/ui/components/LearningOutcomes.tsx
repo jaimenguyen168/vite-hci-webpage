@@ -8,22 +8,13 @@ import {
 } from "@/components/ui/carousel";
 import { Quote } from "lucide-react";
 import Title from "@/components/Title.tsx";
+import type { LearningOutcomesContent } from "../../types";
 
-type LearningOutcomes = {
-  title: string;
-  items: Array<{
-    title: string;
-    description: string;
-  }>;
-  alumni?: Array<{
-    name: string;
-    title: string;
-    quote: string;
-    img: string;
-  }>;
-};
+interface LearningOutcomesProps {
+  content: LearningOutcomesContent;
+}
 
-export default function LearningOutcomes({content}: {content: LearningOutcomes;}) {
+export default function LearningOutcomes({content}: LearningOutcomesProps) {
   return (
     <div className="relative">
       <Card

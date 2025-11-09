@@ -106,3 +106,43 @@ fragment PeopleParts on People {
     now
   }
 }
+
+fragment AboutParts on About {
+  __typename
+  communityResearch {
+    __typename
+    title
+    description
+    video
+  }
+  learningOutcomes {
+    __typename
+    title
+    items {
+      __typename
+      title
+      description
+    }
+    alumni {
+      __typename
+      name
+      title
+      quote
+      img
+    }
+  }
+  events {
+    __typename
+    title1
+    description1
+    image1
+    image1Alt
+    title2
+    description2
+    image2
+    image2Alt
+    ctaTitle
+    buttonText
+    buttonLink
+  }
+}

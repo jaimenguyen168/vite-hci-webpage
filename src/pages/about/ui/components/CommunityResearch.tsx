@@ -1,17 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import Title from "@/components/Title.tsx";
+import type { CommunityResearchContent } from "../../types";
 
-type CommunityResearch = {
-  title: string;
-  description: string;
-  video: string;
-};
+interface CommunityResearchProps {
+  content: CommunityResearchContent;
+}
 
-export default function CommunityResearch({
-  content,
-}: {
-  content: CommunityResearch;
-}) {
+export default function CommunityResearch({ content }: CommunityResearchProps) {
   return (
     <div className="relative">
       <Card

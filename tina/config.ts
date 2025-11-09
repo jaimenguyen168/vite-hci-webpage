@@ -2,6 +2,7 @@ import { defineConfig } from "tinacms";
 import { routeCollection } from "./collections/routeCollection";
 import { joinCollection } from "./collections/joinUs/joinCollection";
 import { peopleCollection } from "./collections/people/peopleCollection";
+import { aboutCollection } from "./collections/about/aboutCollection";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -30,6 +31,6 @@ export default defineConfig({
   },
   // See docs on content modeling for more info on how to set up new content models: https://tina.io/docs/r/content-modelling-collections/
   schema: {
-    collections: [routeCollection, joinCollection, peopleCollection],
+    collections: [routeCollection, joinCollection, peopleCollection, aboutCollection],
   },
 });

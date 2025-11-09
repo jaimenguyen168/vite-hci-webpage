@@ -1,23 +1,23 @@
 import CommunityResearch from "../components/CommunityResearch";
 import LearningOutcomes from "../components/LearningOutcomes";
-// import Alumni from "../components/WhereAlumniLand";
 import LabHistory from "../components/LabHistory";
-import communityResearchContent from "../../content/communityResearch.json";
-import learningOutcomesContent from "../../content/learningOutcomes.json";
-// import alumniContent from "../../content/alumni.json";
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import type { CommunityResearchContent, LearningOutcomesContent } from "../../types";
 
-const AboutContentView = () => {
+interface AboutContentViewProps {
+  communityData: CommunityResearchContent;
+  learningData: LearningOutcomesContent;
+}
+
+const AboutContentView = ({ communityData, learningData }: AboutContentViewProps) => {
   const communityRef = useRef(null);
   const learningRef = useRef(null);
-  // const alumniRef = useRef(null);
   const historyRef = useRef(null);
 
   const isCommunityInView = useInView(communityRef, { once: true });
   const isLearningInView = useInView(learningRef, { once: true });
-  // const isAlumniInView = useInView(alumniRef, { once: true });
   const isHistoryInView = useInView(historyRef, { once: true });
 
   return (
@@ -28,7 +28,7 @@ const AboutContentView = () => {
         animate={isCommunityInView ? { opacity: 1, y: 0 } : {opacity: 0, y: 30}}
         transition={{ duration: 0.8 }}
       >
-        <CommunityResearch content={communityResearchContent} />
+        <CommunityResearch content={communityData} />
       </motion.div>
 
       <motion.div
@@ -37,7 +37,7 @@ const AboutContentView = () => {
         animate={isLearningInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8 }}
       >
-        <LearningOutcomes content={learningOutcomesContent} />
+        <LearningOutcomes content={learningData} />
       </motion.div>
 
       <motion.div
