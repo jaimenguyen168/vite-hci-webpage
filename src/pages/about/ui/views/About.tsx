@@ -3,9 +3,15 @@ import { useAboutData } from "../../hooks/useAboutData";
 import LoadingSpinner from "@/components/LoadingSpinner.tsx";
 import { lazy, Suspense, useEffect } from "react";
 
-const AboutContentView = lazy(() => import("@/pages/about/ui/views/AboutContentView.tsx"));
-const EventsContentView = lazy(() => import("@/pages/about/ui/views/EventsContentView.tsx"));
-const ContactContentView = lazy(() => import("@/pages/about/ui/views/ContactContentView.tsx"));
+const AboutContentView = lazy(
+  () => import("@/pages/about/ui/views/AboutContentView.tsx"),
+);
+const EventsContentView = lazy(
+  () => import("@/pages/about/ui/views/EventsContentView.tsx"),
+);
+const ContactContentView = lazy(
+  () => import("@/pages/about/ui/views/ContactContentView.tsx"),
+);
 
 const ErrorMessage = ({
   message = "Error loading content",
@@ -92,9 +98,7 @@ const AboutPage = () => {
 
   return (
     <div className="prose prose-lg max-w-none">
-      <Suspense fallback={<LoadingSpinner />}>
-        {renderContent()}
-      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>{renderContent()}</Suspense>
     </div>
   );
 };

@@ -5,7 +5,12 @@ import StudioTime from "../components/StudioTimeSection";
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import type { CommunityResearchContent, LabHappeningsContent, LearningOutcomesContent, StudioTimeContent } from "../../types";
+import type {
+  CommunityResearchContent,
+  LabHappeningsContent,
+  LearningOutcomesContent,
+  StudioTimeContent,
+} from "../../types";
 
 interface AboutContentViewProps {
   communityData: CommunityResearchContent;
@@ -14,7 +19,12 @@ interface AboutContentViewProps {
   labHappeningsData: LabHappeningsContent;
 }
 
-const AboutContentView = ({ communityData, studioTimeData, learningData, labHappeningsData }: AboutContentViewProps) => {
+const AboutContentView = ({
+  communityData,
+  studioTimeData,
+  learningData,
+  labHappeningsData,
+}: AboutContentViewProps) => {
   const communityRef = useRef(null);
   const studioTimeRef = useRef(null);
   const learningRef = useRef(null);
@@ -31,7 +41,9 @@ const AboutContentView = ({ communityData, studioTimeData, learningData, labHapp
       <motion.div
         ref={communityRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={isCommunityInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        animate={
+          isCommunityInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+        }
         transition={{ duration: 0.8 }}
       >
         <CommunityResearch content={communityData} />
@@ -41,7 +53,9 @@ const AboutContentView = ({ communityData, studioTimeData, learningData, labHapp
       <motion.div
         ref={studioTimeRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={isStudioTimeInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        animate={
+          isStudioTimeInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+        }
         transition={{ duration: 0.8 }}
       >
         <StudioTime content={studioTimeData} />
@@ -51,7 +65,9 @@ const AboutContentView = ({ communityData, studioTimeData, learningData, labHapp
       <motion.div
         ref={learningRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={isLearningInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        animate={
+          isLearningInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+        }
         transition={{ duration: 0.8 }}
       >
         <LearningOutcomes content={learningData} />
@@ -61,7 +77,9 @@ const AboutContentView = ({ communityData, studioTimeData, learningData, labHapp
       <motion.div
         ref={happeningsRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={isHappeningsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        animate={
+          isHappeningsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+        }
         transition={{ duration: 0.8 }}
       >
         <LabHappenings content={labHappeningsData} />

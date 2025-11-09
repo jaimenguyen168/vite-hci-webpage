@@ -13,9 +13,9 @@ export default function StudioTime({ content }: StudioTimeProps) {
   }, [content.buttonLink]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start font-roboto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 font-roboto">
       {/* Left: Image with Caption */}
-      <div className="relative">
+      <div className="flex flex-col items-center justify-center">
         {/* Red Box Background */}
         {/* <div className="absolute inset-0 bg-red-500 rounded-3xl scale-105 -z-10" /> */}
 
@@ -35,20 +35,21 @@ export default function StudioTime({ content }: StudioTimeProps) {
           />
         </div>
         {/* Caption outside image container */}
-        <p className="text-center text-sm mt-3">
-          {content.imageCaption}
-        </p>
+        <p className="text-center text-sm mt-3">{content.imageCaption}</p>
       </div>
 
       {/* Right: Text Content + Button */}
       <div>
         <h2 className="text-3xl font-bold text-gray-900">{content.title}</h2>
-        <p className="mt-4 text-lg" dangerouslySetInnerHTML={{ __html: content.description }} />
-        
+        <p
+          className="mt-4 text-lg"
+          dangerouslySetInnerHTML={{ __html: content.description }}
+        />
+
         {/* Button */}
         <div className="flex mt-6">
           <Button
-            className="text-black !rounded-full !text-sm hover:!bg-gray-200 ring-2 ring-black"
+            className="text-black !rounded-full !text-sm hover:!bg-gray-200 ring-2 ring-black !bg-white"
             size="sm"
             onClick={handleButtonClick}
           >

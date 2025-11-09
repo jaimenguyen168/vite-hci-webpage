@@ -17,14 +17,14 @@ const LabHappenings = ({ content }: LabHappeningsProps) => {
       className="shadow-lg font-roboto"
       style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}
     >
-      <CardContent className="px-6 md:px-8 py-6">
+      <CardContent className="px-6 md:px-8">
         <motion.section
           ref={ref}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 gap-8 lg:gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-6">
                 {content.title}
