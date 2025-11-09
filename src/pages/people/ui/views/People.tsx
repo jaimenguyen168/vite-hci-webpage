@@ -4,11 +4,9 @@ import {
   useActiveMembers,
   useAlumniMembers,
   useCollaborators,
-  usePeopleSEO,
 } from "@/pages/people/hooks/usePeopleData.ts";
 import CurrentMembersView from "@/pages/people/ui/views/CurrentMembersView.tsx";
 import LoadingSpinner from "@/components/LoadingSpinner.tsx";
-import { useSEO } from "@/hooks/useSEO.ts";
 import ErrorMessage from "@/components/ErrorMessage.tsx";
 
 const AlumniView = lazy(() => import("@/pages/people/ui/views/AlumniView.tsx"));
@@ -27,47 +25,6 @@ const PeoplePage = () => {
   const activeMembers = useActiveMembers();
   const alumniMembers = useAlumniMembers();
   const collaborators = useCollaborators();
-  const {
-    data: seoData,
-    isLoading: seoLoading,
-    isError: seoError,
-  } = usePeopleSEO();
-
-  const getSEOConfig = () => {
-    const baseUrl = window.location.origin;
-    const basePath = "/people";
-
-    if (!seoData) {
-      return {
-        title: "People | Our Research Lab",
-        description: "Meet our research team members.",
-        keywords: "research team, lab members",
-        canonical: `${baseUrl}${basePath}`,
-      };
-    }
-
-    switch (sub) {
-      case "alumni":
-        return {
-          ...seoData.alumni,
-          canonical: `${baseUrl}${basePath}?sub=alumni`,
-        };
-      case "collaborators":
-        return {
-          ...seoData.collaborators,
-          canonical: `${baseUrl}${basePath}?sub=collaborators`,
-        };
-      default:
-        return {
-          ...seoData.current,
-          canonical: `${baseUrl}${basePath}`,
-        };
-    }
-  };
-
-  const seoConfig = getSEOConfig();
-
-  useSEO(seoConfig);
 
   const getCurrentQuery = () => {
     switch (sub) {
@@ -82,11 +39,11 @@ const PeoplePage = () => {
 
   const currentQuery = getCurrentQuery();
 
-  if (currentQuery.isLoading || seoLoading) {
+  if (currentQuery.isLoading) {
     return <LoadingSpinner />;
   }
 
-  if (currentQuery.isError || seoError) {
+  if (currentQuery.isError) {
     return (
       <>
         <ErrorMessage

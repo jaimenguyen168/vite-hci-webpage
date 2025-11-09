@@ -79,24 +79,13 @@ function RoleLegend({ onSelectedRolesChange }: RoleLegendProps) {
 
         {/* Desktop: Regular flex layout */}
         <div className="hidden lg:flex lg:flex-wrap lg:gap-3 lg:items-center">
-          {/* Clear button for desktop */}
-          {hasSelectedRoles && (
-            <Button
-              onClick={handleClearAll}
-              variant="outline"
-              className="size-6 !p-0 !bg-transparent !rounded-full !border-2 !border-gray-300 hover:!bg-gray-100"
-            >
-              <X className="w-3 h-3 text-gray-400" />
-            </Button>
-          )}
-
           {Object.entries(roleLabels).map(([key, label]) => {
             const isSelected = selectedRoles.includes(key);
             return (
               <Button
                 key={key}
                 className={`
-                  px-4 rounded-full !text-sm font-medium
+                  px-4 rounded-full !text-base font-medium
                   transition-all duration-200 ease-in-out
                   border-2 hover:scale-105 hover:shadow-md
                   ${
@@ -115,6 +104,16 @@ function RoleLegend({ onSelectedRolesChange }: RoleLegendProps) {
               </Button>
             );
           })}
+
+          {hasSelectedRoles && (
+            <Button
+              onClick={handleClearAll}
+              variant="outline"
+              className="size-6 !p-0 !bg-transparent !rounded-full !border-2 !border-gray-300 hover:!bg-gray-100"
+            >
+              <X className="w-3 h-3 text-gray-400" />
+            </Button>
+          )}
         </div>
       </div>
     </div>

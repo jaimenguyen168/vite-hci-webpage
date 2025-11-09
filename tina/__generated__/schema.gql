@@ -54,8 +54,6 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
-  routes(relativePath: String): Routes!
-  routesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: RoutesFilter): RoutesConnection!
   join(relativePath: String): Join!
   joinConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: JoinFilter): JoinConnection!
   people(relativePath: String): People!
@@ -63,7 +61,6 @@ type Query {
 }
 
 input DocumentFilter {
-  routes: RoutesFilter
   join: JoinFilter
   people: PeopleFilter
 }
@@ -91,134 +88,7 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Routes | Join | People | Folder
-
-type RoutesHome {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-  heroSubtitle: String
-}
-
-type RoutesAbout {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesResearch {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesPeople {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesCourses {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesSponsors {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesJoin {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type Routes implements Node & Document {
-  home: RoutesHome
-  about: RoutesAbout
-  research: RoutesResearch
-  people: RoutesPeople
-  courses: RoutesCourses
-  sponsors: RoutesSponsors
-  join: RoutesJoin
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input StringFilter {
-  startsWith: String
-  eq: String
-  exists: Boolean
-  in: [String]
-}
-
-input RoutesHomeFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-  heroSubtitle: StringFilter
-}
-
-input RoutesAboutFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesResearchFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesPeopleFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesCoursesFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesSponsorsFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesJoinFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesFilter {
-  home: RoutesHomeFilter
-  about: RoutesAboutFilter
-  research: RoutesResearchFilter
-  people: RoutesPeopleFilter
-  courses: RoutesCoursesFilter
-  sponsors: RoutesSponsorsFilter
-  join: RoutesJoinFilter
-}
-
-type RoutesConnectionEdges {
-  cursor: String!
-  node: Routes
-}
-
-type RoutesConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [RoutesConnectionEdges]
-}
+union DocumentNode = Join | People | Folder
 
 type JoinSeo {
   title: String!
@@ -249,6 +119,13 @@ type Join implements Node & Document {
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
+}
+
+input StringFilter {
+  startsWith: String
+  eq: String
+  exists: Boolean
+  in: [String]
 }
 
 input JoinSeoFilter {
@@ -295,28 +172,14 @@ type JoinConnection implements Connection {
   edges: [JoinConnectionEdges]
 }
 
-type PeopleSeoCurrent {
-  title: String!
-  description: String!
-  keywords: String!
+type PeopleImagesHeroes {
+  src: String!
+  alt: String!
+  title: String
 }
 
-type PeopleSeoAlumni {
-  title: String!
-  description: String!
-  keywords: String!
-}
-
-type PeopleSeoCollaborators {
-  title: String!
-  description: String!
-  keywords: String!
-}
-
-type PeopleSeo {
-  current: PeopleSeoCurrent
-  alumni: PeopleSeoAlumni
-  collaborators: PeopleSeoCollaborators
+type PeopleImages {
+  heroes: [PeopleImagesHeroes]
 }
 
 type PeoplePeople {
@@ -332,35 +195,11 @@ type PeoplePeople {
 }
 
 type People implements Node & Document {
-  seo: PeopleSeo
+  images: PeopleImages
   people: [PeoplePeople]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
-}
-
-input PeopleSeoCurrentFilter {
-  title: StringFilter
-  description: StringFilter
-  keywords: StringFilter
-}
-
-input PeopleSeoAlumniFilter {
-  title: StringFilter
-  description: StringFilter
-  keywords: StringFilter
-}
-
-input PeopleSeoCollaboratorsFilter {
-  title: StringFilter
-  description: StringFilter
-  keywords: StringFilter
-}
-
-input PeopleSeoFilter {
-  current: PeopleSeoCurrentFilter
-  alumni: PeopleSeoAlumniFilter
-  collaborators: PeopleSeoCollaboratorsFilter
 }
 
 input ImageFilter {
@@ -368,6 +207,16 @@ input ImageFilter {
   eq: String
   exists: Boolean
   in: [String]
+}
+
+input PeopleImagesHeroesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  title: StringFilter
+}
+
+input PeopleImagesFilter {
+  heroes: PeopleImagesHeroesFilter
 }
 
 input NumberFilter {
@@ -393,7 +242,7 @@ input PeoplePeopleFilter {
 }
 
 input PeopleFilter {
-  seo: PeopleSeoFilter
+  images: PeopleImagesFilter
   people: PeoplePeopleFilter
 }
 
@@ -414,8 +263,6 @@ type Mutation {
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
-  updateRoutes(relativePath: String!, params: RoutesMutation!): Routes!
-  createRoutes(relativePath: String!, params: RoutesMutation!): Routes!
   updateJoin(relativePath: String!, params: JoinMutation!): Join!
   createJoin(relativePath: String!, params: JoinMutation!): Join!
   updatePeople(relativePath: String!, params: PeopleMutation!): People!
@@ -423,69 +270,14 @@ type Mutation {
 }
 
 input DocumentUpdateMutation {
-  routes: RoutesMutation
   join: JoinMutation
   people: PeopleMutation
   relativePath: String
 }
 
 input DocumentMutation {
-  routes: RoutesMutation
   join: JoinMutation
   people: PeopleMutation
-}
-
-input RoutesHomeMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-  heroSubtitle: String
-}
-
-input RoutesAboutMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesResearchMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesPeopleMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesCoursesMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesSponsorsMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesJoinMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesMutation {
-  home: RoutesHomeMutation
-  about: RoutesAboutMutation
-  research: RoutesResearchMutation
-  people: RoutesPeopleMutation
-  courses: RoutesCoursesMutation
-  sponsors: RoutesSponsorsMutation
-  join: RoutesJoinMutation
 }
 
 input JoinSeoMutation {
@@ -516,28 +308,14 @@ input JoinMutation {
   faqs: [JoinFaqsMutation]
 }
 
-input PeopleSeoCurrentMutation {
+input PeopleImagesHeroesMutation {
+  src: String
+  alt: String
   title: String
-  description: String
-  keywords: String
 }
 
-input PeopleSeoAlumniMutation {
-  title: String
-  description: String
-  keywords: String
-}
-
-input PeopleSeoCollaboratorsMutation {
-  title: String
-  description: String
-  keywords: String
-}
-
-input PeopleSeoMutation {
-  current: PeopleSeoCurrentMutation
-  alumni: PeopleSeoAlumniMutation
-  collaborators: PeopleSeoCollaboratorsMutation
+input PeopleImagesMutation {
+  heroes: [PeopleImagesHeroesMutation]
 }
 
 input PeoplePeopleMutation {
@@ -553,7 +331,7 @@ input PeoplePeopleMutation {
 }
 
 input PeopleMutation {
-  seo: PeopleSeoMutation
+  images: PeopleImagesMutation
   people: [PeoplePeopleMutation]
 }
 

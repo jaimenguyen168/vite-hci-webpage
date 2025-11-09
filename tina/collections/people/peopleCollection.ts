@@ -6,117 +6,51 @@ export const peopleCollection: Collection = {
   path: "public/content/people",
   format: "json",
   match: {
-    include: "people", // Only matches people.json
+    include: "people",
   },
   fields: [
-    // SEO Configuration Section
     {
       type: "object",
-      name: "seo",
-      label: "SEO Configuration",
+      name: "images",
+      label: "Hero Images",
       fields: [
         {
           type: "object",
-          name: "current",
-          label: "Current Members SEO",
+          name: "heroes",
+          label: "Hero Images",
+          description: "Multiple hero background images that will rotate/cycle",
+          list: true,
+          ui: {
+            itemProps: (item) => {
+              return { label: item?.title || item?.alt || "Hero Image" };
+            },
+          },
           fields: [
+            {
+              type: "image",
+              name: "src",
+              label: "Hero Image",
+              required: true,
+            },
+            {
+              type: "string",
+              name: "alt",
+              label: "Alt Text",
+              required: true,
+              description: "Descriptive text for accessibility",
+            },
             {
               type: "string",
               name: "title",
-              label: "Page Title",
-              required: true,
-              description:
-                "The title that appears in browser tabs and search results",
-            },
-            {
-              type: "string",
-              name: "description",
-              label: "Meta Description",
-              required: true,
-              ui: {
-                component: "textarea",
-              },
-              description:
-                "Brief description for search engines (150-160 characters recommended)",
-            },
-            {
-              type: "string",
-              name: "keywords",
-              label: "Keywords",
-              required: true,
-              description: "Comma-separated keywords for SEO",
-            },
-          ],
-        },
-        {
-          type: "object",
-          name: "alumni",
-          label: "Alumni SEO",
-          fields: [
-            {
-              type: "string",
-              name: "title",
-              label: "Page Title",
-              required: true,
-              description:
-                "The title that appears in browser tabs and search results",
-            },
-            {
-              type: "string",
-              name: "description",
-              label: "Meta Description",
-              required: true,
-              ui: {
-                component: "textarea",
-              },
-              description:
-                "Brief description for search engines (150-160 characters recommended)",
-            },
-            {
-              type: "string",
-              name: "keywords",
-              label: "Keywords",
-              required: true,
-              description: "Comma-separated keywords for SEO",
-            },
-          ],
-        },
-        {
-          type: "object",
-          name: "collaborators",
-          label: "Collaborators SEO",
-          fields: [
-            {
-              type: "string",
-              name: "title",
-              label: "Page Title",
-              required: true,
-              description:
-                "The title that appears in browser tabs and search results",
-            },
-            {
-              type: "string",
-              name: "description",
-              label: "Meta Description",
-              required: true,
-              ui: {
-                component: "textarea",
-              },
-              description:
-                "Brief description for search engines (150-160 characters recommended)",
-            },
-            {
-              type: "string",
-              name: "keywords",
-              label: "Keywords",
-              required: true,
-              description: "Comma-separated keywords for SEO",
+              label: "Title/Caption",
+              description: "Optional title or caption for the image",
             },
           ],
         },
       ],
     },
-    // Team Members Section
+
+    // HCI Lab Team
     {
       type: "object",
       name: "people",

@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import type { ReactNode } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { getImagePath } from "@/lib/utils.ts";
+import { usePeopleHeroImages } from "@/pages/people/hooks/usePeopleData.ts";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface HeroProps {
   children: ReactNode;
@@ -12,6 +15,8 @@ interface HeroProps {
   showCTA?: boolean;
 }
 
+const TRANSITION_DELAY = 10000;
+
 const Hero = ({
   children,
   image,
@@ -20,6 +25,11 @@ const Hero = ({
   subtitle,
   showCTA = false,
 }: HeroProps) => {
+  const location = useLocation();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [count, setCount] = useState(0);
+
   const heightClass =
     height === "large"
       ? "h-[500px] md:h-[600px] lg:h-[700px]"
@@ -34,24 +44,188 @@ const Hero = ({
         .join(" ")
     : null;
 
+  const isHomePage = location.pathname === "/";
+
   const showBreadcrumb = subSection && title;
-  const imagePath = getImagePath(image);
+
+  const peopleHeroImages = usePeopleHeroImages();
+
+  const getHeroImages = () => {
+    switch (location.pathname) {
+      case "/people":
+        return peopleHeroImages;
+      default:
+        return {
+          data: [{ src: image, alt: title || "Hero background", title: "" }],
+          isLoading: false,
+        };
+    }
+  };
+
+  const { data: heroImages, isLoading } = getHeroImages();
+
+  useEffect(() => {
+    if (heroImages?.length > 0) {
+      heroImages.forEach((heroImage, index) => {
+        const link = document.createElement("link");
+        if (index === 0) {
+          link.rel = "preload";
+          link.as = "image";
+        } else {
+          link.rel = "prefetch";
+        }
+        link.href = getImagePath(heroImage.src);
+        document.head.appendChild(link);
+      });
+    }
+  }, [heroImages]);
+
+  useEffect(() => {
+    if (heroImages && heroImages.length > 1) {
+      const interval = setInterval(() => {
+        setIsTransitioning(true);
+        setTimeout(() => {
+          setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+          setCount(count + 1);
+          setIsTransitioning(false);
+        }, 100);
+      }, TRANSITION_DELAY);
+
+      return () => clearInterval(interval);
+    }
+  }, [heroImages, currentImageIndex, count]);
+
+  const changeToImage = (index: number) => {
+    if (index === currentImageIndex || isTransitioning) return;
+
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentImageIndex(index);
+      setCount(count + 1);
+      setIsTransitioning(false);
+    }, 100);
+  };
+
+  const slideVariants = {
+    enter: {
+      x: "100%",
+      opacity: 1,
+      zIndex: 1,
+    },
+    center: {
+      x: 0,
+      opacity: 1,
+      zIndex: 2,
+    },
+    exit: {
+      x: "-100%",
+      opacity: 1,
+      zIndex: 1,
+    },
+  };
+
+  const transition = {
+    duration: 1,
+    ease: [0.45, 0.05, 0.55, 0.95] as const,
+  };
+
+  if (isLoading) {
+    return (
+      <div
+        className={`relative w-screen mx-auto bg-cover ${heightClass} overflow-hidden`}
+      >
+        <img
+          src={getImagePath(image)}
+          alt={title || "Hero background"}
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            objectPosition:
+              window.innerWidth >= 1024 ? "center 36%" : "center 50%",
+          }}
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative z-10 w-full h-full flex flex-col max-w-7xl mx-auto pt-16 md:pt-20 lg:pt-0">
+          {children}
+        </div>
+      </div>
+    );
+  }
+
+  const currentImage = heroImages?.[currentImageIndex] || {
+    src: image,
+    alt: title || "Hero background",
+    title: "",
+  };
 
   return (
-    <div className={`relative w-screen mx-auto bg-cover ${heightClass}`}>
-      <img
-        src={imagePath}
-        alt={title || "Hero background"}
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          objectPosition:
-            window.innerWidth >= 1024 ? "center 36%" : "center 50%",
-        }}
-        fetchPriority="high"
-        loading="eager"
-        decoding="async"
+    <div
+      className={`relative w-screen mx-auto bg-cover ${heightClass} overflow-hidden`}
+    >
+      <div className="absolute inset-0 overflow-hidden">
+        {heroImages && heroImages.length > 1 ? (
+          <AnimatePresence custom={currentImageIndex}>
+            <motion.img
+              key={currentImageIndex}
+              src={getImagePath(currentImage.src)}
+              alt={currentImage.alt}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{
+                objectPosition:
+                  window.innerWidth >= 1024 ? "center 36%" : "center 50%",
+              }}
+              variants={slideVariants}
+              initial={count === 0 ? "center" : "enter"}
+              animate="center"
+              exit="exit"
+              transition={transition}
+              decoding="async"
+            />
+          </AnimatePresence>
+        ) : (
+          <img
+            src={getImagePath(currentImage.src)}
+            alt={currentImage.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              objectPosition:
+                window.innerWidth >= 1024 ? "center 36%" : "center 50%",
+            }}
+            decoding="async"
+          />
+        )}
+      </div>
+
+      <div
+        className={`absolute inset-0 z-10 ${isHomePage ? "bg-black/50" : "bg-black/40"}`}
       />
-      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Dot Indicators */}
+      {heroImages && heroImages.length > 1 && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 items-center z-20">
+          {heroImages.map((_, index) => (
+            <Button
+              key={index}
+              onClick={() => changeToImage(index)}
+              disabled={isTransitioning}
+              variant="ghost"
+              className={`
+          !p-0 !m-0 !rounded-full !size-3 !bg-white transition-all duration-300 ease-out transform
+          ${
+            index === currentImageIndex
+              ? "scale-125 !border-2 !border-black shadow-[0_0_0_1px_white]"
+              : "scale-100 opacity-80 hover:opacity-100"
+          }
+          ${isTransitioning ? "cursor-not-allowed opacity-60" : "cursor-pointer"}
+        `}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
       <div className="relative z-10 w-full h-full flex flex-col max-w-7xl mx-auto pt-16 md:pt-20 lg:pt-0">
         {children}
 

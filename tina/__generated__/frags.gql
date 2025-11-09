@@ -1,50 +1,3 @@
-fragment RoutesParts on Routes {
-  __typename
-  home {
-    __typename
-    label
-    heroImage
-    heroTitle
-    heroSubtitle
-  }
-  about {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  research {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  people {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  courses {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  sponsors {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  join {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-}
-
 fragment JoinParts on Join {
   __typename
   seo {
@@ -72,25 +25,13 @@ fragment JoinParts on Join {
 
 fragment PeopleParts on People {
   __typename
-  seo {
+  images {
     __typename
-    current {
+    heroes {
       __typename
+      src
+      alt
       title
-      description
-      keywords
-    }
-    alumni {
-      __typename
-      title
-      description
-      keywords
-    }
-    collaborators {
-      __typename
-      title
-      description
-      keywords
     }
   }
   people {

@@ -4,10 +4,10 @@ import NavBar from "@/components/NavBar";
 import {
   getRouteConfig,
   getSEOConfig,
+  getRouteImages,
   routes,
 } from "@/constants/routeConfig.ts";
 import Footer from "@/components/Footer.tsx";
-import { useEffect } from "react";
 import { useSEO } from "@/hooks/useSEO.ts";
 
 export default function RootLayout() {
@@ -17,6 +17,7 @@ export default function RootLayout() {
 
   const routeConfig = getRouteConfig(location.pathname);
   const seoConfig = getSEOConfig(location.pathname, sub || undefined);
+  const routeImages = getRouteImages(location.pathname);
 
   useSEO(
     seoConfig || {
@@ -26,21 +27,11 @@ export default function RootLayout() {
     },
   );
 
-  useEffect(() => {
-    if (routeConfig?.heroImage) {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = routeConfig.heroImage;
-      document.head.appendChild(link);
-    }
-  }, [routeConfig?.heroImage]);
-
   return (
     <div className="min-h-screen flex flex-col scrollbar-hide">
       <Hero
         image={
-          routeConfig?.heroImage ||
+          routeImages.hero ||
           "https://live.staticflickr.com/65535/54823010757_699c9d480f_c.jpg"
         }
         title={routeConfig?.heroTitle}
