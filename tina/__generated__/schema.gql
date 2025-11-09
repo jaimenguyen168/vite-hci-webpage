@@ -417,6 +417,16 @@ type AboutCommunityResearch {
   video: String
 }
 
+type AboutStudioTime {
+  title: String
+  description: String
+  image: String
+  imageAlt: String
+  imageCaption: String
+  buttonText: String
+  buttonLink: String
+}
+
 type AboutLearningOutcomesItems {
   title: String
   description: String
@@ -449,10 +459,23 @@ type AboutEvents {
   buttonLink: String
 }
 
+type AboutLabHappeningsImages {
+  src: String
+  alt: String
+}
+
+type AboutLabHappenings {
+  title: String
+  description: String
+  images: [AboutLabHappeningsImages]
+}
+
 type About implements Node & Document {
   communityResearch: AboutCommunityResearch
+  studioTime: AboutStudioTime
   learningOutcomes: AboutLearningOutcomes
   events: AboutEvents
+  labHappenings: AboutLabHappenings
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -462,6 +485,16 @@ input AboutCommunityResearchFilter {
   title: StringFilter
   description: StringFilter
   video: StringFilter
+}
+
+input AboutStudioTimeFilter {
+  title: StringFilter
+  description: StringFilter
+  image: ImageFilter
+  imageAlt: StringFilter
+  imageCaption: StringFilter
+  buttonText: StringFilter
+  buttonLink: StringFilter
 }
 
 input AboutLearningOutcomesItemsFilter {
@@ -496,10 +529,23 @@ input AboutEventsFilter {
   buttonLink: StringFilter
 }
 
+input AboutLabHappeningsImagesFilter {
+  src: ImageFilter
+  alt: StringFilter
+}
+
+input AboutLabHappeningsFilter {
+  title: StringFilter
+  description: StringFilter
+  images: AboutLabHappeningsImagesFilter
+}
+
 input AboutFilter {
   communityResearch: AboutCommunityResearchFilter
+  studioTime: AboutStudioTimeFilter
   learningOutcomes: AboutLearningOutcomesFilter
   events: AboutEventsFilter
+  labHappenings: AboutLabHappeningsFilter
 }
 
 type AboutConnectionEdges {
@@ -672,6 +718,16 @@ input AboutCommunityResearchMutation {
   video: String
 }
 
+input AboutStudioTimeMutation {
+  title: String
+  description: String
+  image: String
+  imageAlt: String
+  imageCaption: String
+  buttonText: String
+  buttonLink: String
+}
+
 input AboutLearningOutcomesItemsMutation {
   title: String
   description: String
@@ -704,10 +760,23 @@ input AboutEventsMutation {
   buttonLink: String
 }
 
+input AboutLabHappeningsImagesMutation {
+  src: String
+  alt: String
+}
+
+input AboutLabHappeningsMutation {
+  title: String
+  description: String
+  images: [AboutLabHappeningsImagesMutation]
+}
+
 input AboutMutation {
   communityResearch: AboutCommunityResearchMutation
+  studioTime: AboutStudioTimeMutation
   learningOutcomes: AboutLearningOutcomesMutation
   events: AboutEventsMutation
+  labHappenings: AboutLabHappeningsMutation
 }
 
 schema {

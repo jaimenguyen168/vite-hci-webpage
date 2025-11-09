@@ -1,11 +1,12 @@
 import { useSearchParams } from "react-router-dom";
 import { useAboutData } from "../../hooks/useAboutData";
-import AboutContentView from "@/pages/about/ui/views/AboutContentView.tsx";
-import EventsContentView from "@/pages/about/ui/views/EventsContentView.tsx";
-import ContactContentView from "@/pages/about/ui/views/ContactContentView.tsx";
 import LoadingSpinner from "@/components/LoadingSpinner.tsx";
+import { lazy, Suspense, useEffect } from "react";
 
-// Error component with semantic HTML
+const AboutContentView = lazy(() => import("@/pages/about/ui/views/AboutContentView.tsx"));
+const EventsContentView = lazy(() => import("@/pages/about/ui/views/EventsContentView.tsx"));
+const ContactContentView = lazy(() => import("@/pages/about/ui/views/ContactContentView.tsx"));
+
 const ErrorMessage = ({
   message = "Error loading content",
   onRetry,
@@ -35,12 +36,25 @@ const AboutPage = () => {
 
   const { data: aboutData, status, error, refetch } = useAboutData();
 
-  // Handle loading state
+  useEffect(() => {
+    if (aboutData) {
+      const imagesToPreload = [
+        aboutData.studioTime?.image,
+        aboutData.events?.image1,
+        aboutData.events?.image2,
+      ].filter(Boolean);
+
+      imagesToPreload.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    }
+  }, [aboutData]);
+
   if (status === "pending") {
     return <LoadingSpinner />;
   }
 
-  // Handle error state
   if (status === "error") {
     return (
       <ErrorMessage
@@ -50,21 +64,39 @@ const AboutPage = () => {
     );
   }
 
+  if (!aboutData) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-gray-500 text-lg">No data available</div>
+      </div>
+    );
+  }
+
   const renderContent = () => {
     switch (sub) {
       case "events":
-        return <EventsContentView eventsData={aboutData?.events} />;
+        return <EventsContentView eventsData={aboutData.events} />;
       case "contact-us":
         return <ContactContentView />;
       default:
-        return <AboutContentView
-          communityData={aboutData?.communityResearch}
-          learningData={aboutData?.learningOutcomes}
-        />;
+        return (
+          <AboutContentView
+            communityData={aboutData.communityResearch}
+            studioTimeData={aboutData.studioTime}
+            learningData={aboutData.learningOutcomes}
+            labHappeningsData={aboutData.labHappenings}
+          />
+        );
     }
   };
 
-  return <div className="prose prose-lg max-w-none">{renderContent()}</div>;
+  return (
+    <div className="prose prose-lg max-w-none">
+      <Suspense fallback={<LoadingSpinner />}>
+        {renderContent()}
+      </Suspense>
+    </div>
+  );
 };
 
 export default AboutPage;

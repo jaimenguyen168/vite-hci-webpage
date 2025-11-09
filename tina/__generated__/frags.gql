@@ -115,6 +115,16 @@ fragment AboutParts on About {
     description
     video
   }
+  studioTime {
+    __typename
+    title
+    description
+    image
+    imageAlt
+    imageCaption
+    buttonText
+    buttonLink
+  }
   learningOutcomes {
     __typename
     title
@@ -144,5 +154,15 @@ fragment AboutParts on About {
     ctaTitle
     buttonText
     buttonLink
+  }
+  labHappenings {
+    __typename
+    title
+    description
+    images {
+      __typename
+      src
+      alt
+    }
   }
 }

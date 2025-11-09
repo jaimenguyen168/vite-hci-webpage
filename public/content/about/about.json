@@ -4,6 +4,15 @@
         "description": "Our lab takes a community-centered approach where students collaborate, share ideas, and learn from each other. Together, they explore real-world questions, build research skills, and create meaningful, collective solutions.",
         "video": "https://www.youtube.com/embed/CkwdRPN-r2M?si=R5YQhcKB3TjxnZtr"
     },
+    "studioTime": {
+        "title": "When You're at Studio Time...",
+        "description": "Our HCI studio time is a collaborative space where students learn by doing. HCI members explore interaction design, user testing, UX, and web development through real-world projects. It's a chance to explore interaction design, try new ideas, learn from failure, and build solutions that solve real needs.",
+        "image": "/images/cover/5-studio.JPG",
+        "imageAlt": "HCI Lab members collaborating at Studio Time",
+        "imageCaption": "HCI lab members collaborating at Studio Time",
+        "buttonText": "Learn More About Studio Time",
+        "buttonLink": "https://owlhacks.com"
+    },
     "learningOutcomes": {
         "title": "Learning Outcomes",
         "items": [
@@ -44,6 +53,32 @@
                 "title": "Software Engineer @ Amazon",
                 "quote": "Working on real-world projects helped me build a strong portfolio. The mentorship from Dr. MacNeil and the collaborative environment at the Temple HCI Lab were instrumental in my growth as a developer. The skills and experiences I gained there paved the way for my current role as a Software Engineer at Amazon. I'm thankful for the opportunities and connections I made during my time at the lab.",
                 "img": "/images/people/atran.webp"
+            }
+        ]
+    },
+    "labHappenings": {
+        "title": "Lab Happenings",
+        "description": "What began as a small group of six researchers in a modest lab space has grown into a thriving community of over 50 members in just 2–3 years. During this time, our lab has published [insert number] peer-reviewed papers and participated in [insert number] national and international conferences including:",
+        "images": [
+            {
+                "src": "/images/cover/3-studio.jpg",
+                "alt": "HCI Lab members working together during studio time session"
+            },
+            {
+                "src": "/images/cover/5-studio.JPG",
+                "alt": "Students collaborating at tables in the HCI Lab studio space"
+            },
+            {
+                "src": "/images/cover/6-studio.JPG",
+                "alt": "Temple HCI Lab studio session with students at workstations"
+            },
+            {
+                "src": "/images/cover/HCI_OpenHouse-5.jpg",
+                "alt": "HCI Lab Open House event with students and visitors"
+            },
+            {
+                "src": "/images/cover/HCI_OpenHouse-38.jpg",
+                "alt": "Attendees at Temple HCI Lab Open House presentation"
             }
         ]
     },

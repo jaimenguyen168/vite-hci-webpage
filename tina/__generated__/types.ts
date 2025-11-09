@@ -566,6 +566,17 @@ export type AboutCommunityResearch = {
   video?: Maybe<Scalars['String']['output']>;
 };
 
+export type AboutStudioTime = {
+  __typename?: 'AboutStudioTime';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  image?: Maybe<Scalars['String']['output']>;
+  imageAlt?: Maybe<Scalars['String']['output']>;
+  imageCaption?: Maybe<Scalars['String']['output']>;
+  buttonText?: Maybe<Scalars['String']['output']>;
+  buttonLink?: Maybe<Scalars['String']['output']>;
+};
+
 export type AboutLearningOutcomesItems = {
   __typename?: 'AboutLearningOutcomesItems';
   title?: Maybe<Scalars['String']['output']>;
@@ -602,11 +613,26 @@ export type AboutEvents = {
   buttonLink?: Maybe<Scalars['String']['output']>;
 };
 
+export type AboutLabHappeningsImages = {
+  __typename?: 'AboutLabHappeningsImages';
+  src?: Maybe<Scalars['String']['output']>;
+  alt?: Maybe<Scalars['String']['output']>;
+};
+
+export type AboutLabHappenings = {
+  __typename?: 'AboutLabHappenings';
+  title?: Maybe<Scalars['String']['output']>;
+  description?: Maybe<Scalars['String']['output']>;
+  images?: Maybe<Array<Maybe<AboutLabHappeningsImages>>>;
+};
+
 export type About = Node & Document & {
   __typename?: 'About';
   communityResearch?: Maybe<AboutCommunityResearch>;
+  studioTime?: Maybe<AboutStudioTime>;
   learningOutcomes?: Maybe<AboutLearningOutcomes>;
   events?: Maybe<AboutEvents>;
+  labHappenings?: Maybe<AboutLabHappenings>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -616,6 +642,16 @@ export type AboutCommunityResearchFilter = {
   title?: InputMaybe<StringFilter>;
   description?: InputMaybe<StringFilter>;
   video?: InputMaybe<StringFilter>;
+};
+
+export type AboutStudioTimeFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  image?: InputMaybe<ImageFilter>;
+  imageAlt?: InputMaybe<StringFilter>;
+  imageCaption?: InputMaybe<StringFilter>;
+  buttonText?: InputMaybe<StringFilter>;
+  buttonLink?: InputMaybe<StringFilter>;
 };
 
 export type AboutLearningOutcomesItemsFilter = {
@@ -650,10 +686,23 @@ export type AboutEventsFilter = {
   buttonLink?: InputMaybe<StringFilter>;
 };
 
+export type AboutLabHappeningsImagesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+};
+
+export type AboutLabHappeningsFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  images?: InputMaybe<AboutLabHappeningsImagesFilter>;
+};
+
 export type AboutFilter = {
   communityResearch?: InputMaybe<AboutCommunityResearchFilter>;
+  studioTime?: InputMaybe<AboutStudioTimeFilter>;
   learningOutcomes?: InputMaybe<AboutLearningOutcomesFilter>;
   events?: InputMaybe<AboutEventsFilter>;
+  labHappenings?: InputMaybe<AboutLabHappeningsFilter>;
 };
 
 export type AboutConnectionEdges = {
@@ -910,6 +959,16 @@ export type AboutCommunityResearchMutation = {
   video?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type AboutStudioTimeMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  image?: InputMaybe<Scalars['String']['input']>;
+  imageAlt?: InputMaybe<Scalars['String']['input']>;
+  imageCaption?: InputMaybe<Scalars['String']['input']>;
+  buttonText?: InputMaybe<Scalars['String']['input']>;
+  buttonLink?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type AboutLearningOutcomesItemsMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
   description?: InputMaybe<Scalars['String']['input']>;
@@ -942,10 +1001,23 @@ export type AboutEventsMutation = {
   buttonLink?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type AboutLabHappeningsImagesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type AboutLabHappeningsMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  images?: InputMaybe<Array<InputMaybe<AboutLabHappeningsImagesMutation>>>;
+};
+
 export type AboutMutation = {
   communityResearch?: InputMaybe<AboutCommunityResearchMutation>;
+  studioTime?: InputMaybe<AboutStudioTimeMutation>;
   learningOutcomes?: InputMaybe<AboutLearningOutcomesMutation>;
   events?: InputMaybe<AboutEventsMutation>;
+  labHappenings?: InputMaybe<AboutLabHappeningsMutation>;
 };
 
 export type RoutesPartsFragment = { __typename: 'Routes', home?: { __typename: 'RoutesHome', label: string, heroImage?: string | null, heroTitle: string, heroSubtitle?: string | null } | null, about?: { __typename: 'RoutesAbout', label: string, heroImage?: string | null, heroTitle: string } | null, research?: { __typename: 'RoutesResearch', label: string, heroImage?: string | null, heroTitle: string } | null, people?: { __typename: 'RoutesPeople', label: string, heroImage?: string | null, heroTitle: string } | null, courses?: { __typename: 'RoutesCourses', label: string, heroImage?: string | null, heroTitle: string } | null, sponsors?: { __typename: 'RoutesSponsors', label: string, heroImage?: string | null, heroTitle: string } | null, join?: { __typename: 'RoutesJoin', label: string, heroImage?: string | null, heroTitle: string } | null };
@@ -954,7 +1026,7 @@ export type JoinPartsFragment = { __typename: 'Join', seo?: { __typename: 'JoinS
 
 export type PeoplePartsFragment = { __typename: 'People', seo?: { __typename: 'PeopleSeo', current?: { __typename: 'PeopleSeoCurrent', title: string, description: string, keywords: string } | null, alumni?: { __typename: 'PeopleSeoAlumni', title: string, description: string, keywords: string } | null, collaborators?: { __typename: 'PeopleSeoCollaborators', title: string, description: string, keywords: string } | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
 
-export type AboutPartsFragment = { __typename: 'About', communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null };
+export type AboutPartsFragment = { __typename: 'About', communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, studioTime?: { __typename: 'AboutStudioTime', title?: string | null, description?: string | null, image?: string | null, imageAlt?: string | null, imageCaption?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, labHappenings?: { __typename: 'AboutLabHappenings', title?: string | null, description?: string | null, images?: Array<{ __typename: 'AboutLabHappeningsImages', src?: string | null, alt?: string | null } | null> | null } | null };
 
 export type RoutesQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
@@ -1018,7 +1090,7 @@ export type AboutQueryVariables = Exact<{
 }>;
 
 
-export type AboutQuery = { __typename?: 'Query', about: { __typename: 'About', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null } };
+export type AboutQuery = { __typename?: 'Query', about: { __typename: 'About', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, studioTime?: { __typename: 'AboutStudioTime', title?: string | null, description?: string | null, image?: string | null, imageAlt?: string | null, imageCaption?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, labHappenings?: { __typename: 'AboutLabHappenings', title?: string | null, description?: string | null, images?: Array<{ __typename: 'AboutLabHappeningsImages', src?: string | null, alt?: string | null } | null> | null } | null } };
 
 export type AboutConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -1030,7 +1102,7 @@ export type AboutConnectionQueryVariables = Exact<{
 }>;
 
 
-export type AboutConnectionQuery = { __typename?: 'Query', aboutConnection: { __typename?: 'AboutConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AboutConnectionEdges', cursor: string, node?: { __typename: 'About', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null } | null } | null> | null } };
+export type AboutConnectionQuery = { __typename?: 'Query', aboutConnection: { __typename?: 'AboutConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'AboutConnectionEdges', cursor: string, node?: { __typename: 'About', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, communityResearch?: { __typename: 'AboutCommunityResearch', title?: string | null, description?: string | null, video?: string | null } | null, studioTime?: { __typename: 'AboutStudioTime', title?: string | null, description?: string | null, image?: string | null, imageAlt?: string | null, imageCaption?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, learningOutcomes?: { __typename: 'AboutLearningOutcomes', title: string, items?: Array<{ __typename: 'AboutLearningOutcomesItems', title?: string | null, description?: string | null } | null> | null, alumni?: Array<{ __typename: 'AboutLearningOutcomesAlumni', name?: string | null, title?: string | null, quote?: string | null, img?: string | null } | null> | null } | null, events?: { __typename: 'AboutEvents', title1?: string | null, description1?: string | null, image1?: string | null, image1Alt?: string | null, title2?: string | null, description2?: string | null, image2?: string | null, image2Alt?: string | null, ctaTitle?: string | null, buttonText?: string | null, buttonLink?: string | null } | null, labHappenings?: { __typename: 'AboutLabHappenings', title?: string | null, description?: string | null, images?: Array<{ __typename: 'AboutLabHappeningsImages', src?: string | null, alt?: string | null } | null> | null } | null } | null } | null> | null } };
 
 export const RoutesPartsFragmentDoc = gql`
     fragment RoutesParts on Routes {
@@ -1153,6 +1225,16 @@ export const AboutPartsFragmentDoc = gql`
     description
     video
   }
+  studioTime {
+    __typename
+    title
+    description
+    image
+    imageAlt
+    imageCaption
+    buttonText
+    buttonLink
+  }
   learningOutcomes {
     __typename
     title
@@ -1182,6 +1264,16 @@ export const AboutPartsFragmentDoc = gql`
     ctaTitle
     buttonText
     buttonLink
+  }
+  labHappenings {
+    __typename
+    title
+    description
+    images {
+      __typename
+      src
+      alt
+    }
   }
 }
     `;

@@ -19,6 +19,8 @@ export default function AboutEvents({ content }: AboutEventsProps) {
             src={getImagePath(content.image1)}
             alt={content.image1Alt}
             className="w-full h-80 object-cover"
+            loading="lazy"
+            decoding="async"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}
@@ -32,6 +34,8 @@ export default function AboutEvents({ content }: AboutEventsProps) {
             src={getImagePath(content.image2)}
             alt={content.image2Alt}
             className="w-full h-80 object-cover"
+            loading="lazy"
+            decoding="async"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}

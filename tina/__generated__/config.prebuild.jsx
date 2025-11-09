@@ -543,6 +543,20 @@ var aboutCollection = {
     },
     {
       type: "object",
+      name: "studioTime",
+      label: "Studio Time",
+      fields: [
+        { type: "string", name: "title", label: "Title" },
+        { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+        { type: "image", name: "image", label: "Image" },
+        { type: "string", name: "imageAlt", label: "Image Alt Text" },
+        { type: "string", name: "imageCaption", label: "Image Caption" },
+        { type: "string", name: "buttonText", label: "Button Text" },
+        { type: "string", name: "buttonLink", label: "Button Link" }
+      ]
+    },
+    {
+      type: "object",
       name: "learningOutcomes",
       label: "Learning Outcomes",
       fields: [
@@ -587,6 +601,25 @@ var aboutCollection = {
         { type: "string", name: "ctaTitle", label: "CTA Title" },
         { type: "string", name: "buttonText", label: "Button Text" },
         { type: "string", name: "buttonLink", label: "Button Link" }
+      ]
+    },
+    {
+      type: "object",
+      name: "labHappenings",
+      label: "Lab Happenings",
+      fields: [
+        { type: "string", name: "title", label: "Section Title" },
+        { type: "string", name: "description", label: "Description", ui: { component: "textarea" } },
+        {
+          type: "object",
+          name: "images",
+          label: "Gallery Images",
+          list: true,
+          fields: [
+            { type: "image", name: "src", label: "Image" },
+            { type: "string", name: "alt", label: "Alt Text" }
+          ]
+        }
       ]
     }
   ]

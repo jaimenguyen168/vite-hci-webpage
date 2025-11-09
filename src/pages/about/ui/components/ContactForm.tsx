@@ -2,9 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 
-
 const ContactForm = () => {
-
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -75,8 +73,8 @@ const ContactForm = () => {
     setFormData((prev) => ({
         ...prev,
         requests: prev.requests.includes(option)
-            ? prev.requests.filter((r) => r !== option) // Remove if already selected
-            : [...prev.requests, option], // Add if not selected
+            ? prev.requests.filter((r) => r !== option)
+            : [...prev.requests, option],
     }));
   };
 
@@ -92,9 +90,8 @@ const ContactForm = () => {
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Contact Form Card */}
-      <Card className="p-6 shadow-lg font-roboto" style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}>
+    <Card className="shadow-lg font-roboto" style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}>
+      <div className="px-6 md:px-8 py-6">
         <form onSubmit={handleSubmit}>
           <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-6">Get in Touch</h2>
           
@@ -104,7 +101,6 @@ const ContactForm = () => {
               Name <span className="text-red-600">*</span>
             </label>
             
-            {/* Two inputs side by side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-150">
               <div>
                 <Input
@@ -234,8 +230,8 @@ const ContactForm = () => {
             </button>
           </div>
         </form>
-      </Card>
-    </div>
+      </div>
+    </Card>
   );
 };
 

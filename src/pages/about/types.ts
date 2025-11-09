@@ -1,13 +1,25 @@
 export interface AboutData {
     communityResearch: CommunityResearchContent;
+    studioTime: StudioTimeContent;
     learningOutcomes: LearningOutcomesContent;
     events: EventsContent;
+    labHappenings: LabHappeningsContent;
 }
 
 export interface CommunityResearchContent {
     title: string;
     description: string;
     video: string;
+}
+
+export interface StudioTimeContent {
+    title: string;
+    description: string;
+    image: string;
+    imageAlt: string;
+    imageCaption: string;
+    buttonText: string;
+    buttonLink: string;
 }
 
 export interface LearningOutcomesContent {
@@ -40,4 +52,15 @@ export interface EventsContent {
     ctaTitle: string;
     buttonText: string;
     buttonLink: string;
+}
+
+export interface LabHappeningsContent {
+    title: string;
+    description: string;
+    images: LabHappeningsImage[];
+}
+
+export interface LabHappeningsImage {
+    src: string;
+    alt: string;
 }
