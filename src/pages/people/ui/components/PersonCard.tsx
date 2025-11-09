@@ -17,6 +17,8 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
     }
   };
 
+  const altText = `${person.name}, ${roles[0] ? roleLabels[roles[0]] || roles[0] : "Research Team Member"} at ${person.affiliation || "Research Lab"} - Temple HCI Lab`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -27,7 +29,9 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
     >
       <Card
         className={`h-full text-center transition-shadow ${
-          person.url ? "cursor-pointer hover:bg-accent/50" : ""
+          person.url
+            ? "cursor-pointer hover:scale-105 hover:shadow-lg transition-all duration-100"
+            : ""
         }`}
         onClick={handleCardClick}
       >
@@ -36,8 +40,10 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
             <Avatar className="size-20 lg:size-32">
               <AvatarImage
                 src={getImagePath(person.img)}
-                alt={person.name}
+                alt={altText}
                 className="object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <AvatarFallback className="text-4xl font-bold bg-gray-200 text-gray-600">
                 {getInitials(person.name)}
@@ -96,21 +102,6 @@ function PersonCard({ person, index = 0 }: { person: Person; index?: number }) {
               })}
             </AnimatePresence>
           </div>
-
-          {/*/!* Additional info *!/*/}
-          {/*<div className="space-y-1">*/}
-          {/*  {person.start && (*/}
-          {/*    <p className="text-muted-foreground text-xs lg:text-sm">*/}
-          {/*      {person.status === "alumni" && !person.end*/}
-          {/*        ? person.start*/}
-          {/*        : `${person.start}${person.end ? ` - ${person.end}` : " - Present"}`}*/}
-          {/*    </p>*/}
-          {/*  )}*/}
-
-          {/*  {person.now && person.status === "alumni" && (*/}
-          {/*    <p className="text-muted-foreground text-sm">Now: {person.now}</p>*/}
-          {/*  )}*/}
-          {/*</div>*/}
         </CardContent>
       </Card>
     </motion.div>

@@ -54,8 +54,6 @@ type Query {
   collections: [Collection!]!
   node(id: String): Node!
   document(collection: String, relativePath: String): DocumentNode!
-  routes(relativePath: String): Routes!
-  routesConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: RoutesFilter): RoutesConnection!
   join(relativePath: String): Join!
   joinConnection(before: String, after: String, first: Float, last: Float, sort: String, filter: JoinFilter): JoinConnection!
   people(relativePath: String): People!
@@ -63,7 +61,6 @@ type Query {
 }
 
 input DocumentFilter {
-  routes: RoutesFilter
   join: JoinFilter
   people: PeopleFilter
 }
@@ -91,59 +88,34 @@ type Collection {
   documents(before: String, after: String, first: Float, last: Float, sort: String, filter: DocumentFilter, folder: String): DocumentConnection!
 }
 
-union DocumentNode = Routes | Join | People | Folder
+union DocumentNode = Join | People | Folder
 
-type RoutesHome {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-  heroSubtitle: String
+type JoinSeo {
+  title: String!
+  description: String!
+  keywords: String!
 }
 
-type RoutesAbout {
-  label: String!
-  heroImage: String
-  heroTitle: String!
+type JoinApplyButton {
+  text: String!
+  url: String!
 }
 
-type RoutesResearch {
-  label: String!
-  heroImage: String
-  heroTitle: String!
+type JoinApply {
+  title: String!
+  button: JoinApplyButton
 }
 
-type RoutesPeople {
-  label: String!
-  heroImage: String
-  heroTitle: String!
+type JoinFaqs {
+  question: String!
+  answer: String!
+  defaultOpen: Boolean
 }
 
-type RoutesCourses {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesSponsors {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type RoutesJoin {
-  label: String!
-  heroImage: String
-  heroTitle: String!
-}
-
-type Routes implements Node & Document {
-  home: RoutesHome
-  about: RoutesAbout
-  research: RoutesResearch
-  people: RoutesPeople
-  courses: RoutesCourses
-  sponsors: RoutesSponsors
-  join: RoutesJoin
+type Join implements Node & Document {
+  seo: JoinSeo
+  apply: JoinApply
+  faqs: [JoinFaqs]
   id: ID!
   _sys: SystemInfo!
   _values: JSON!
@@ -156,91 +128,37 @@ input StringFilter {
   in: [String]
 }
 
-input RoutesHomeFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-  heroSubtitle: StringFilter
+input JoinSeoFilter {
+  title: StringFilter
+  description: StringFilter
+  keywords: StringFilter
 }
 
-input RoutesAboutFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesResearchFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesPeopleFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesCoursesFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesSponsorsFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesJoinFilter {
-  label: StringFilter
-  heroImage: StringFilter
-  heroTitle: StringFilter
-}
-
-input RoutesFilter {
-  home: RoutesHomeFilter
-  about: RoutesAboutFilter
-  research: RoutesResearchFilter
-  people: RoutesPeopleFilter
-  courses: RoutesCoursesFilter
-  sponsors: RoutesSponsorsFilter
-  join: RoutesJoinFilter
-}
-
-type RoutesConnectionEdges {
-  cursor: String!
-  node: Routes
-}
-
-type RoutesConnection implements Connection {
-  pageInfo: PageInfo!
-  totalCount: Float!
-  edges: [RoutesConnectionEdges]
-}
-
-type JoinButton {
-  text: String!
-  url: String!
-}
-
-type Join implements Node & Document {
-  title: String!
-  button: JoinButton
-  id: ID!
-  _sys: SystemInfo!
-  _values: JSON!
-}
-
-input JoinButtonFilter {
+input JoinApplyButtonFilter {
   text: StringFilter
   url: StringFilter
 }
 
-input JoinFilter {
+input JoinApplyFilter {
   title: StringFilter
-  button: JoinButtonFilter
+  button: JoinApplyButtonFilter
+}
+
+input BooleanFilter {
+  eq: Boolean
+  exists: Boolean
+}
+
+input JoinFaqsFilter {
+  question: StringFilter
+  answer: StringFilter
+  defaultOpen: BooleanFilter
+}
+
+input JoinFilter {
+  seo: JoinSeoFilter
+  apply: JoinApplyFilter
+  faqs: JoinFaqsFilter
 }
 
 type JoinConnectionEdges {
@@ -252,6 +170,16 @@ type JoinConnection implements Connection {
   pageInfo: PageInfo!
   totalCount: Float!
   edges: [JoinConnectionEdges]
+}
+
+type PeopleImagesHeroes {
+  src: String!
+  alt: String!
+  title: String
+}
+
+type PeopleImages {
+  heroes: [PeopleImagesHeroes]
 }
 
 type PeoplePeople {
@@ -267,6 +195,7 @@ type PeoplePeople {
 }
 
 type People implements Node & Document {
+  images: PeopleImages
   people: [PeoplePeople]
   id: ID!
   _sys: SystemInfo!
@@ -278,6 +207,16 @@ input ImageFilter {
   eq: String
   exists: Boolean
   in: [String]
+}
+
+input PeopleImagesHeroesFilter {
+  src: ImageFilter
+  alt: StringFilter
+  title: StringFilter
+}
+
+input PeopleImagesFilter {
+  heroes: PeopleImagesHeroesFilter
 }
 
 input NumberFilter {
@@ -303,6 +242,7 @@ input PeoplePeopleFilter {
 }
 
 input PeopleFilter {
+  images: PeopleImagesFilter
   people: PeoplePeopleFilter
 }
 
@@ -323,8 +263,6 @@ type Mutation {
   deleteDocument(collection: String, relativePath: String!): DocumentNode!
   createDocument(collection: String, relativePath: String!, params: DocumentMutation!): DocumentNode!
   createFolder(collection: String, relativePath: String!): DocumentNode!
-  updateRoutes(relativePath: String!, params: RoutesMutation!): Routes!
-  createRoutes(relativePath: String!, params: RoutesMutation!): Routes!
   updateJoin(relativePath: String!, params: JoinMutation!): Join!
   createJoin(relativePath: String!, params: JoinMutation!): Join!
   updatePeople(relativePath: String!, params: PeopleMutation!): People!
@@ -332,79 +270,52 @@ type Mutation {
 }
 
 input DocumentUpdateMutation {
-  routes: RoutesMutation
   join: JoinMutation
   people: PeopleMutation
   relativePath: String
 }
 
 input DocumentMutation {
-  routes: RoutesMutation
   join: JoinMutation
   people: PeopleMutation
 }
 
-input RoutesHomeMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-  heroSubtitle: String
+input JoinSeoMutation {
+  title: String
+  description: String
+  keywords: String
 }
 
-input RoutesAboutMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesResearchMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesPeopleMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesCoursesMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesSponsorsMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesJoinMutation {
-  label: String
-  heroImage: String
-  heroTitle: String
-}
-
-input RoutesMutation {
-  home: RoutesHomeMutation
-  about: RoutesAboutMutation
-  research: RoutesResearchMutation
-  people: RoutesPeopleMutation
-  courses: RoutesCoursesMutation
-  sponsors: RoutesSponsorsMutation
-  join: RoutesJoinMutation
-}
-
-input JoinButtonMutation {
+input JoinApplyButtonMutation {
   text: String
   url: String
 }
 
-input JoinMutation {
+input JoinApplyMutation {
   title: String
-  button: JoinButtonMutation
+  button: JoinApplyButtonMutation
+}
+
+input JoinFaqsMutation {
+  question: String
+  answer: String
+  defaultOpen: Boolean
+}
+
+input JoinMutation {
+  seo: JoinSeoMutation
+  apply: JoinApplyMutation
+  faqs: [JoinFaqsMutation]
+}
+
+input PeopleImagesHeroesMutation {
+  src: String
+  alt: String
+  title: String
+}
+
+input PeopleImagesMutation {
+  heroes: [PeopleImagesHeroesMutation]
 }
 
 input PeoplePeopleMutation {
@@ -420,6 +331,7 @@ input PeoplePeopleMutation {
 }
 
 input PeopleMutation {
+  images: PeopleImagesMutation
   people: [PeoplePeopleMutation]
 }
 

@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Allow all main pages
+Allow: /about
+Allow: /research
+Allow: /people
+Allow: /courses
+Allow: /sponsors
+Allow: /join
+
+# Allow sub-pages
+Allow: /people?sub=alumni
+Allow: /people?sub=collaborators
+Allow: /about?sub=events
+Allow: /about?sub=contact-us
+Allow: /sponsors?sub=become-our-sponsor
+
+# Sitemap location
+Sitemap: http://localhost:5173/sitemap.xml
+Sitemap: https://hci-lab-temple.vercel.app/sitemap.xml

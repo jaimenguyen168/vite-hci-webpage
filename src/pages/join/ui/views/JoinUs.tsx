@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import {
   Accordion,
   AccordionContent,
@@ -8,60 +7,66 @@ import {
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import faqData from "@/pages/join/content/faq.json";
-
-interface ApplyData {
-  title: string;
-  button: {
-    text: string;
-    url: string;
-  };
-}
+import { useJoinData, useJoinSEO } from "@/pages/join/hooks/useJoinData.ts";
+import { useSEO } from "@/hooks/useSEO.ts";
 
 const JoinUsPage = () => {
-  const [applyData, setApplyData] = useState<ApplyData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: joinData, isLoading, isError } = useJoinData();
+  const {
+    data: seoData,
+    isLoading: seoLoading,
+    isError: seoError,
+  } = useJoinSEO();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [applyResponse] = await Promise.all([
-          fetch("/content/join/apply.json"),
-        ]);
+  const getSEOConfig = () => {
+    const baseUrl = window.location.origin;
+    const basePath = "/join";
 
-        const applyResult = await applyResponse.json();
+    if (!seoData) {
+      return {
+        title: "Join Us | Research Lab",
+        description:
+          "Join our research lab and contribute to cutting-edge HCI research.",
+        keywords: "research lab, join us, apply, HCI research",
+        canonical: `${baseUrl}${basePath}`,
+      };
+    }
 
-        setApplyData(applyResult);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setLoading(false);
-      }
+    return {
+      ...seoData,
+      canonical: `${baseUrl}${basePath}`,
     };
+  };
 
-    fetchData();
-  }, []);
+  const seoConfig = getSEOConfig();
+  useSEO(seoConfig);
 
-  if (loading) {
+  if (isLoading || seoLoading) {
     return <div>Loading...</div>;
   }
 
-  if (!applyData) {
+  if (isError || seoError || !joinData) {
     return <div>Error loading content</div>;
   }
 
-  const faqs = faqData.faqs;
+  const defaultOpenFaq = joinData.faqs?.find((faq) => faq.defaultOpen);
+  const defaultValue = defaultOpenFaq ? defaultOpenFaq.question : undefined;
 
   return (
-    <div className="w-full pb-8 pt-4">
-      <h2 className="font-bold text-gray-900 !text-2xl md:!text-3xl xl:!text-4xl mb-8">
+    <main className="w-full pb-8 pt-4" role="main">
+      <h1 className="font-bold text-gray-900 !text-2xl md:!text-3xl xl:!text-4xl mb-8">
         Any questions before joining?
-      </h2>
+      </h1>
 
       <div className="px-0 md:px-6 mb-16">
-        <Accordion type="single" collapsible className="space-y-6">
-          {faqs.map((faq, index) => (
-            <AnimatedAccordionItem key={faq.id} faq={faq} index={index} />
+        <Accordion
+          type="single"
+          collapsible
+          className="space-y-6"
+          defaultValue={defaultValue}
+        >
+          {joinData.faqs?.map((faq, index) => (
+            <AnimatedAccordionItem key={index} faq={faq} index={index} />
           ))}
         </Accordion>
       </div>
@@ -69,19 +74,19 @@ const JoinUsPage = () => {
       <Card className="bg-primary-red-900 border-0 shadow-lg !rounded-4xl">
         <CardContent className="px-8 md:px-16 py-8 flex flex-col md:flex-row items-center justify-between text-center md:text-left space-y-4 md:space-y-0">
           <h2 className="text-xl md:text-2xl font-semibold text-white">
-            {applyData.title}
+            {joinData.apply.title}
           </h2>
           <Button
             variant="outline"
             size="lg"
             className="!bg-transparent text-white !rounded-full !border-2 !border-white hover:!bg-white hover:text-primary-red-900 transition-colors px-8"
-            onClick={() => window.open(applyData.button.url, "_blank")}
+            onClick={() => window.open(joinData.apply.button.url, "_blank")}
           >
-            {applyData.button.text}
+            {joinData.apply.button.text}
           </Button>
         </CardContent>
       </Card>
-    </div>
+    </main>
   );
 };
 
@@ -91,17 +96,17 @@ const AnimatedAccordionItem = ({
   faq,
   index,
 }: {
-  faq: { id: string; question: string; answer: string };
+  faq: {
+    question: string;
+    answer: string;
+    defaultOpen?: boolean;
+  };
   index: number;
 }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "50px" });
-
   return (
     <motion.div
-      ref={ref}
       initial={{ opacity: 0, x: 50 }}
-      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{
         duration: 0.5,
         delay: index * 0.1,
@@ -109,8 +114,8 @@ const AnimatedAccordionItem = ({
       }}
     >
       <AccordionItem
-        key={faq.id}
-        value={faq.id}
+        key={index}
+        value={faq.question}
         className="rounded-4xl shadow-lg"
       >
         <AccordionTrigger className="px-6 py-5 !bg-white !border-2 !rounded-full text-left !text-base md:!text-2xl font-medium shadow shadow-gray-300">

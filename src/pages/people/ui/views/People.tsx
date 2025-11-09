@@ -1,60 +1,83 @@
 import { useSearchParams } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import {
+  useActiveMembers,
+  useAlumniMembers,
+  useCollaborators,
+} from "@/pages/people/hooks/usePeopleData.ts";
 import CurrentMembersView from "@/pages/people/ui/views/CurrentMembersView.tsx";
-import AlumniView from "@/pages/people/ui/views/AlumniView.tsx";
-import CollaboratorsView from "@/pages/people/ui/views/CollaboratorsView.tsx";
-import { useEffect, useState } from "react";
-import type { Person } from "@/pages/people/types.ts";
-import client from "../../../../../tina/__generated__/client.ts";
+import LoadingSpinner from "@/components/LoadingSpinner.tsx";
+import ErrorMessage from "@/components/ErrorMessage.tsx";
+
+const AlumniView = lazy(() => import("@/pages/people/ui/views/AlumniView.tsx"));
+const CollaboratorsView = lazy(
+  () => import("@/pages/people/ui/views/CollaboratorsView.tsx"),
+);
 
 const PeoplePage = () => {
   const [searchParams] = useSearchParams();
   const sub = searchParams.get("sub");
 
-  const [peopleData, setPeopleData] = useState<Person[] | null>(null);
-  const [loading, setLoading] = useState(true);
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await client.queries.people({
-          relativePath: "people.json",
-        });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [sub]);
 
-        setPeopleData((response.data.people.people as Person[]) || []);
-      } catch (error) {
-        console.error("Error fetching people data from Tina:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const activeMembers = useActiveMembers();
+  const alumniMembers = useAlumniMembers();
+  const collaborators = useCollaborators();
 
-    fetchData();
-  }, []);
+  const getCurrentQuery = () => {
+    switch (sub) {
+      case "alumni":
+        return alumniMembers;
+      case "collaborators":
+        return collaborators;
+      default:
+        return activeMembers;
+    }
+  };
 
-  if (loading) {
-    return <div>Loading...</div>;
+  const currentQuery = getCurrentQuery();
+
+  if (currentQuery.isLoading) {
+    return <LoadingSpinner />;
   }
 
-  if (!peopleData) {
-    return <div>Error loading content</div>;
+  if (currentQuery.isError) {
+    return (
+      <>
+        <ErrorMessage
+          message={currentQuery.error?.message || "Failed to load people data"}
+          onRetry={() => currentQuery.refetch?.()}
+        />
+      </>
+    );
   }
-
-  const activeMembers = peopleData?.filter((p) => p.status === "active");
-  const alumniMembers = peopleData?.filter((p) => p.status === "alumni");
-  const collaborators = peopleData?.filter((p) => p.status === "collaborator");
 
   const renderContent = () => {
     switch (sub) {
       case "alumni":
-        return <AlumniView alumniMembers={alumniMembers} />;
+        return (
+          <Suspense fallback={<LoadingSpinner />}>
+            <AlumniView alumniMembers={alumniMembers.data} />
+          </Suspense>
+        );
       case "collaborators":
-        return <CollaboratorsView collaborators={collaborators} />;
+        return (
+          <Suspense fallback={<LoadingSpinner />}>
+            <CollaboratorsView collaborators={collaborators.data} />
+          </Suspense>
+        );
       default:
-        return <CurrentMembersView activeMembers={activeMembers} />;
+        return <CurrentMembersView activeMembers={activeMembers.data} />;
     }
   };
 
-  return <div className="prose prose-lg max-w-none">{renderContent()}</div>;
+  return (
+    <main className="prose prose-lg max-w-none" role="main">
+      {renderContent()}
+    </main>
+  );
 };
 
 export default PeoplePage;

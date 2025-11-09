@@ -1,4 +1,13 @@
 {
+  "images": {
+    "heroes": [
+      {
+        "src": "/images/cover/3-studio.jpg",
+        "alt": "HCI Lab team working in the studio space",
+        "title": "Our Studio Research Environment"
+      }
+    ]
+  },
   "people": [
     {
       "name": "Stephen MacNeil",

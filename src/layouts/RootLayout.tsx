@@ -1,33 +1,37 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
-import { getRouteConfig, type RouteConfig } from "@/constants/routeConfig.ts";
+import {
+  getRouteConfig,
+  getSEOConfig,
+  getRouteImages,
+  routes,
+} from "@/constants/routeConfig.ts";
 import Footer from "@/components/Footer.tsx";
-import { useEffect } from "react";
+import { useSEO } from "@/hooks/useSEO.ts";
 
-interface RootLayoutProps {
-  routes: RouteConfig[];
-}
-
-export default function RootLayout({ routes }: RootLayoutProps) {
+export default function RootLayout() {
   const location = useLocation();
-  const routeConfig = getRouteConfig(routes, location.pathname);
+  const [searchParams] = useSearchParams();
+  const sub = searchParams.get("sub");
 
-  useEffect(() => {
-    if (routeConfig?.heroImage) {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = routeConfig.heroImage;
-      document.head.appendChild(link);
-    }
-  }, [routeConfig?.heroImage]);
+  const routeConfig = getRouteConfig(location.pathname);
+  const seoConfig = getSEOConfig(location.pathname, sub || undefined);
+  const routeImages = getRouteImages(location.pathname);
+
+  useSEO(
+    seoConfig || {
+      title: "Temple University HCI Lab",
+      description: "Human-Computer Interaction Research at Temple University",
+      keywords: "HCI, Temple University, Research Lab",
+    },
+  );
 
   return (
     <div className="min-h-screen flex flex-col scrollbar-hide">
       <Hero
         image={
-          routeConfig?.heroImage ||
+          routeImages.hero ||
           "https://live.staticflickr.com/65535/54823010757_699c9d480f_c.jpg"
         }
         title={routeConfig?.heroTitle}

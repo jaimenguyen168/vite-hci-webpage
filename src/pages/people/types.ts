@@ -1,3 +1,16 @@
+export interface PeopleData {
+  images: {
+    heroes: HeroImage[];
+  };
+  people: Person[];
+}
+
+export interface HeroImage {
+  src: string;
+  alt: string;
+  title?: string;
+}
+
 export interface Person {
   name: string;
   url?: string | null;

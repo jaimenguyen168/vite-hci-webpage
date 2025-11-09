@@ -82,8 +82,6 @@ export type Query = {
   collections: Array<Collection>;
   node: Node;
   document: DocumentNode;
-  routes: Routes;
-  routesConnection: RoutesConnection;
   join: Join;
   joinConnection: JoinConnection;
   people: People;
@@ -109,21 +107,6 @@ export type QueryNodeArgs = {
 export type QueryDocumentArgs = {
   collection?: InputMaybe<Scalars['String']['input']>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryRoutesArgs = {
-  relativePath?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-export type QueryRoutesConnectionArgs = {
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<RoutesFilter>;
 };
 
 
@@ -157,7 +140,6 @@ export type QueryPeopleConnectionArgs = {
 };
 
 export type DocumentFilter = {
-  routes?: InputMaybe<RoutesFilter>;
   join?: InputMaybe<JoinFilter>;
   people?: InputMaybe<PeopleFilter>;
 };
@@ -199,67 +181,39 @@ export type CollectionDocumentsArgs = {
   folder?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type DocumentNode = Routes | Join | People | Folder;
+export type DocumentNode = Join | People | Folder;
 
-export type RoutesHome = {
-  __typename?: 'RoutesHome';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
-  heroSubtitle?: Maybe<Scalars['String']['output']>;
+export type JoinSeo = {
+  __typename?: 'JoinSeo';
+  title: Scalars['String']['output'];
+  description: Scalars['String']['output'];
+  keywords: Scalars['String']['output'];
 };
 
-export type RoutesAbout = {
-  __typename?: 'RoutesAbout';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
+export type JoinApplyButton = {
+  __typename?: 'JoinApplyButton';
+  text: Scalars['String']['output'];
+  url: Scalars['String']['output'];
 };
 
-export type RoutesResearch = {
-  __typename?: 'RoutesResearch';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
+export type JoinApply = {
+  __typename?: 'JoinApply';
+  title: Scalars['String']['output'];
+  button?: Maybe<JoinApplyButton>;
 };
 
-export type RoutesPeople = {
-  __typename?: 'RoutesPeople';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
+export type JoinFaqs = {
+  __typename?: 'JoinFaqs';
+  question: Scalars['String']['output'];
+  answer: Scalars['String']['output'];
+  defaultOpen?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type RoutesCourses = {
-  __typename?: 'RoutesCourses';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
-};
-
-export type RoutesSponsors = {
-  __typename?: 'RoutesSponsors';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
-};
-
-export type RoutesJoin = {
-  __typename?: 'RoutesJoin';
-  label: Scalars['String']['output'];
-  heroImage?: Maybe<Scalars['String']['output']>;
-  heroTitle: Scalars['String']['output'];
-};
-
-export type Routes = Node & Document & {
-  __typename?: 'Routes';
-  home?: Maybe<RoutesHome>;
-  about?: Maybe<RoutesAbout>;
-  research?: Maybe<RoutesResearch>;
-  people?: Maybe<RoutesPeople>;
-  courses?: Maybe<RoutesCourses>;
-  sponsors?: Maybe<RoutesSponsors>;
-  join?: Maybe<RoutesJoin>;
+export type Join = Node & Document & {
+  __typename?: 'Join';
+  seo?: Maybe<JoinSeo>;
+  apply?: Maybe<JoinApply>;
+  faqs?: Maybe<Array<Maybe<JoinFaqs>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
   _values: Scalars['JSON']['output'];
@@ -272,95 +226,37 @@ export type StringFilter = {
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
-export type RoutesHomeFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-  heroSubtitle?: InputMaybe<StringFilter>;
+export type JoinSeoFilter = {
+  title?: InputMaybe<StringFilter>;
+  description?: InputMaybe<StringFilter>;
+  keywords?: InputMaybe<StringFilter>;
 };
 
-export type RoutesAboutFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-};
-
-export type RoutesResearchFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-};
-
-export type RoutesPeopleFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-};
-
-export type RoutesCoursesFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-};
-
-export type RoutesSponsorsFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-};
-
-export type RoutesJoinFilter = {
-  label?: InputMaybe<StringFilter>;
-  heroImage?: InputMaybe<StringFilter>;
-  heroTitle?: InputMaybe<StringFilter>;
-};
-
-export type RoutesFilter = {
-  home?: InputMaybe<RoutesHomeFilter>;
-  about?: InputMaybe<RoutesAboutFilter>;
-  research?: InputMaybe<RoutesResearchFilter>;
-  people?: InputMaybe<RoutesPeopleFilter>;
-  courses?: InputMaybe<RoutesCoursesFilter>;
-  sponsors?: InputMaybe<RoutesSponsorsFilter>;
-  join?: InputMaybe<RoutesJoinFilter>;
-};
-
-export type RoutesConnectionEdges = {
-  __typename?: 'RoutesConnectionEdges';
-  cursor: Scalars['String']['output'];
-  node?: Maybe<Routes>;
-};
-
-export type RoutesConnection = Connection & {
-  __typename?: 'RoutesConnection';
-  pageInfo: PageInfo;
-  totalCount: Scalars['Float']['output'];
-  edges?: Maybe<Array<Maybe<RoutesConnectionEdges>>>;
-};
-
-export type JoinButton = {
-  __typename?: 'JoinButton';
-  text: Scalars['String']['output'];
-  url: Scalars['String']['output'];
-};
-
-export type Join = Node & Document & {
-  __typename?: 'Join';
-  title: Scalars['String']['output'];
-  button?: Maybe<JoinButton>;
-  id: Scalars['ID']['output'];
-  _sys: SystemInfo;
-  _values: Scalars['JSON']['output'];
-};
-
-export type JoinButtonFilter = {
+export type JoinApplyButtonFilter = {
   text?: InputMaybe<StringFilter>;
   url?: InputMaybe<StringFilter>;
 };
 
-export type JoinFilter = {
+export type JoinApplyFilter = {
   title?: InputMaybe<StringFilter>;
-  button?: InputMaybe<JoinButtonFilter>;
+  button?: InputMaybe<JoinApplyButtonFilter>;
+};
+
+export type BooleanFilter = {
+  eq?: InputMaybe<Scalars['Boolean']['input']>;
+  exists?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type JoinFaqsFilter = {
+  question?: InputMaybe<StringFilter>;
+  answer?: InputMaybe<StringFilter>;
+  defaultOpen?: InputMaybe<BooleanFilter>;
+};
+
+export type JoinFilter = {
+  seo?: InputMaybe<JoinSeoFilter>;
+  apply?: InputMaybe<JoinApplyFilter>;
+  faqs?: InputMaybe<JoinFaqsFilter>;
 };
 
 export type JoinConnectionEdges = {
@@ -374,6 +270,18 @@ export type JoinConnection = Connection & {
   pageInfo: PageInfo;
   totalCount: Scalars['Float']['output'];
   edges?: Maybe<Array<Maybe<JoinConnectionEdges>>>;
+};
+
+export type PeopleImagesHeroes = {
+  __typename?: 'PeopleImagesHeroes';
+  src: Scalars['String']['output'];
+  alt: Scalars['String']['output'];
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type PeopleImages = {
+  __typename?: 'PeopleImages';
+  heroes?: Maybe<Array<Maybe<PeopleImagesHeroes>>>;
 };
 
 export type PeoplePeople = {
@@ -391,6 +299,7 @@ export type PeoplePeople = {
 
 export type People = Node & Document & {
   __typename?: 'People';
+  images?: Maybe<PeopleImages>;
   people?: Maybe<Array<Maybe<PeoplePeople>>>;
   id: Scalars['ID']['output'];
   _sys: SystemInfo;
@@ -402,6 +311,16 @@ export type ImageFilter = {
   eq?: InputMaybe<Scalars['String']['input']>;
   exists?: InputMaybe<Scalars['Boolean']['input']>;
   in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type PeopleImagesHeroesFilter = {
+  src?: InputMaybe<ImageFilter>;
+  alt?: InputMaybe<StringFilter>;
+  title?: InputMaybe<StringFilter>;
+};
+
+export type PeopleImagesFilter = {
+  heroes?: InputMaybe<PeopleImagesHeroesFilter>;
 };
 
 export type NumberFilter = {
@@ -427,6 +346,7 @@ export type PeoplePeopleFilter = {
 };
 
 export type PeopleFilter = {
+  images?: InputMaybe<PeopleImagesFilter>;
   people?: InputMaybe<PeoplePeopleFilter>;
 };
 
@@ -450,8 +370,6 @@ export type Mutation = {
   deleteDocument: DocumentNode;
   createDocument: DocumentNode;
   createFolder: DocumentNode;
-  updateRoutes: Routes;
-  createRoutes: Routes;
   updateJoin: Join;
   createJoin: Join;
   updatePeople: People;
@@ -492,18 +410,6 @@ export type MutationCreateFolderArgs = {
 };
 
 
-export type MutationUpdateRoutesArgs = {
-  relativePath: Scalars['String']['input'];
-  params: RoutesMutation;
-};
-
-
-export type MutationCreateRoutesArgs = {
-  relativePath: Scalars['String']['input'];
-  params: RoutesMutation;
-};
-
-
 export type MutationUpdateJoinArgs = {
   relativePath: Scalars['String']['input'];
   params: JoinMutation;
@@ -528,79 +434,52 @@ export type MutationCreatePeopleArgs = {
 };
 
 export type DocumentUpdateMutation = {
-  routes?: InputMaybe<RoutesMutation>;
   join?: InputMaybe<JoinMutation>;
   people?: InputMaybe<PeopleMutation>;
   relativePath?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type DocumentMutation = {
-  routes?: InputMaybe<RoutesMutation>;
   join?: InputMaybe<JoinMutation>;
   people?: InputMaybe<PeopleMutation>;
 };
 
-export type RoutesHomeMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-  heroSubtitle?: InputMaybe<Scalars['String']['input']>;
+export type JoinSeoMutation = {
+  title?: InputMaybe<Scalars['String']['input']>;
+  description?: InputMaybe<Scalars['String']['input']>;
+  keywords?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type RoutesAboutMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type RoutesResearchMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type RoutesPeopleMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type RoutesCoursesMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type RoutesSponsorsMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type RoutesJoinMutation = {
-  label?: InputMaybe<Scalars['String']['input']>;
-  heroImage?: InputMaybe<Scalars['String']['input']>;
-  heroTitle?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type RoutesMutation = {
-  home?: InputMaybe<RoutesHomeMutation>;
-  about?: InputMaybe<RoutesAboutMutation>;
-  research?: InputMaybe<RoutesResearchMutation>;
-  people?: InputMaybe<RoutesPeopleMutation>;
-  courses?: InputMaybe<RoutesCoursesMutation>;
-  sponsors?: InputMaybe<RoutesSponsorsMutation>;
-  join?: InputMaybe<RoutesJoinMutation>;
-};
-
-export type JoinButtonMutation = {
+export type JoinApplyButtonMutation = {
   text?: InputMaybe<Scalars['String']['input']>;
   url?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type JoinMutation = {
+export type JoinApplyMutation = {
   title?: InputMaybe<Scalars['String']['input']>;
-  button?: InputMaybe<JoinButtonMutation>;
+  button?: InputMaybe<JoinApplyButtonMutation>;
+};
+
+export type JoinFaqsMutation = {
+  question?: InputMaybe<Scalars['String']['input']>;
+  answer?: InputMaybe<Scalars['String']['input']>;
+  defaultOpen?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type JoinMutation = {
+  seo?: InputMaybe<JoinSeoMutation>;
+  apply?: InputMaybe<JoinApplyMutation>;
+  faqs?: InputMaybe<Array<InputMaybe<JoinFaqsMutation>>>;
+};
+
+export type PeopleImagesHeroesMutation = {
+  src?: InputMaybe<Scalars['String']['input']>;
+  alt?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type PeopleImagesMutation = {
+  heroes?: InputMaybe<Array<InputMaybe<PeopleImagesHeroesMutation>>>;
 };
 
 export type PeoplePeopleMutation = {
@@ -616,40 +495,20 @@ export type PeoplePeopleMutation = {
 };
 
 export type PeopleMutation = {
+  images?: InputMaybe<PeopleImagesMutation>;
   people?: InputMaybe<Array<InputMaybe<PeoplePeopleMutation>>>;
 };
 
-export type RoutesPartsFragment = { __typename: 'Routes', home?: { __typename: 'RoutesHome', label: string, heroImage?: string | null, heroTitle: string, heroSubtitle?: string | null } | null, about?: { __typename: 'RoutesAbout', label: string, heroImage?: string | null, heroTitle: string } | null, research?: { __typename: 'RoutesResearch', label: string, heroImage?: string | null, heroTitle: string } | null, people?: { __typename: 'RoutesPeople', label: string, heroImage?: string | null, heroTitle: string } | null, courses?: { __typename: 'RoutesCourses', label: string, heroImage?: string | null, heroTitle: string } | null, sponsors?: { __typename: 'RoutesSponsors', label: string, heroImage?: string | null, heroTitle: string } | null, join?: { __typename: 'RoutesJoin', label: string, heroImage?: string | null, heroTitle: string } | null };
+export type JoinPartsFragment = { __typename: 'Join', seo?: { __typename: 'JoinSeo', title: string, description: string, keywords: string } | null, apply?: { __typename: 'JoinApply', title: string, button?: { __typename: 'JoinApplyButton', text: string, url: string } | null } | null, faqs?: Array<{ __typename: 'JoinFaqs', question: string, answer: string, defaultOpen?: boolean | null } | null> | null };
 
-export type JoinPartsFragment = { __typename: 'Join', title: string, button?: { __typename: 'JoinButton', text: string, url: string } | null };
-
-export type PeoplePartsFragment = { __typename: 'People', people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
-
-export type RoutesQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
-}>;
-
-
-export type RoutesQuery = { __typename?: 'Query', routes: { __typename: 'Routes', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, home?: { __typename: 'RoutesHome', label: string, heroImage?: string | null, heroTitle: string, heroSubtitle?: string | null } | null, about?: { __typename: 'RoutesAbout', label: string, heroImage?: string | null, heroTitle: string } | null, research?: { __typename: 'RoutesResearch', label: string, heroImage?: string | null, heroTitle: string } | null, people?: { __typename: 'RoutesPeople', label: string, heroImage?: string | null, heroTitle: string } | null, courses?: { __typename: 'RoutesCourses', label: string, heroImage?: string | null, heroTitle: string } | null, sponsors?: { __typename: 'RoutesSponsors', label: string, heroImage?: string | null, heroTitle: string } | null, join?: { __typename: 'RoutesJoin', label: string, heroImage?: string | null, heroTitle: string } | null } };
-
-export type RoutesConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<RoutesFilter>;
-}>;
-
-
-export type RoutesConnectionQuery = { __typename?: 'Query', routesConnection: { __typename?: 'RoutesConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'RoutesConnectionEdges', cursor: string, node?: { __typename: 'Routes', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, home?: { __typename: 'RoutesHome', label: string, heroImage?: string | null, heroTitle: string, heroSubtitle?: string | null } | null, about?: { __typename: 'RoutesAbout', label: string, heroImage?: string | null, heroTitle: string } | null, research?: { __typename: 'RoutesResearch', label: string, heroImage?: string | null, heroTitle: string } | null, people?: { __typename: 'RoutesPeople', label: string, heroImage?: string | null, heroTitle: string } | null, courses?: { __typename: 'RoutesCourses', label: string, heroImage?: string | null, heroTitle: string } | null, sponsors?: { __typename: 'RoutesSponsors', label: string, heroImage?: string | null, heroTitle: string } | null, join?: { __typename: 'RoutesJoin', label: string, heroImage?: string | null, heroTitle: string } | null } | null } | null> | null } };
+export type PeoplePartsFragment = { __typename: 'People', images?: { __typename: 'PeopleImages', heroes?: Array<{ __typename: 'PeopleImagesHeroes', src: string, alt: string, title?: string | null } | null> | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null };
 
 export type JoinQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type JoinQuery = { __typename?: 'Query', join: { __typename: 'Join', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, button?: { __typename: 'JoinButton', text: string, url: string } | null } };
+export type JoinQuery = { __typename?: 'Query', join: { __typename: 'Join', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'JoinSeo', title: string, description: string, keywords: string } | null, apply?: { __typename: 'JoinApply', title: string, button?: { __typename: 'JoinApplyButton', text: string, url: string } | null } | null, faqs?: Array<{ __typename: 'JoinFaqs', question: string, answer: string, defaultOpen?: boolean | null } | null> | null } };
 
 export type JoinConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -661,14 +520,14 @@ export type JoinConnectionQueryVariables = Exact<{
 }>;
 
 
-export type JoinConnectionQuery = { __typename?: 'Query', joinConnection: { __typename?: 'JoinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'JoinConnectionEdges', cursor: string, node?: { __typename: 'Join', id: string, title: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, button?: { __typename: 'JoinButton', text: string, url: string } | null } | null } | null> | null } };
+export type JoinConnectionQuery = { __typename?: 'Query', joinConnection: { __typename?: 'JoinConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'JoinConnectionEdges', cursor: string, node?: { __typename: 'Join', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, seo?: { __typename: 'JoinSeo', title: string, description: string, keywords: string } | null, apply?: { __typename: 'JoinApply', title: string, button?: { __typename: 'JoinApplyButton', text: string, url: string } | null } | null, faqs?: Array<{ __typename: 'JoinFaqs', question: string, answer: string, defaultOpen?: boolean | null } | null> | null } | null } | null> | null } };
 
 export type PeopleQueryVariables = Exact<{
   relativePath: Scalars['String']['input'];
 }>;
 
 
-export type PeopleQuery = { __typename?: 'Query', people: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } };
+export type PeopleQuery = { __typename?: 'Query', people: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, images?: { __typename: 'PeopleImages', heroes?: Array<{ __typename: 'PeopleImagesHeroes', src: string, alt: string, title?: string | null } | null> | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } };
 
 export type PeopleConnectionQueryVariables = Exact<{
   before?: InputMaybe<Scalars['String']['input']>;
@@ -680,70 +539,46 @@ export type PeopleConnectionQueryVariables = Exact<{
 }>;
 
 
-export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
+export type PeopleConnectionQuery = { __typename?: 'Query', peopleConnection: { __typename?: 'PeopleConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PeopleConnectionEdges', cursor: string, node?: { __typename: 'People', id: string, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string }, images?: { __typename: 'PeopleImages', heroes?: Array<{ __typename: 'PeopleImagesHeroes', src: string, alt: string, title?: string | null } | null> | null } | null, people?: Array<{ __typename: 'PeoplePeople', name: string, url?: string | null, img?: string | null, roles?: Array<string | null> | null, status: string, start?: number | null, end?: number | null, affiliation: string, now?: string | null } | null> | null } | null } | null> | null } };
 
-export const RoutesPartsFragmentDoc = gql`
-    fragment RoutesParts on Routes {
-  __typename
-  home {
-    __typename
-    label
-    heroImage
-    heroTitle
-    heroSubtitle
-  }
-  about {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  research {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  people {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  courses {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  sponsors {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-  join {
-    __typename
-    label
-    heroImage
-    heroTitle
-  }
-}
-    `;
 export const JoinPartsFragmentDoc = gql`
     fragment JoinParts on Join {
   __typename
-  title
-  button {
+  seo {
     __typename
-    text
-    url
+    title
+    description
+    keywords
+  }
+  apply {
+    __typename
+    title
+    button {
+      __typename
+      text
+      url
+    }
+  }
+  faqs {
+    __typename
+    question
+    answer
+    defaultOpen
   }
 }
     `;
 export const PeoplePartsFragmentDoc = gql`
     fragment PeopleParts on People {
   __typename
+  images {
+    __typename
+    heroes {
+      __typename
+      src
+      alt
+      title
+    }
+  }
   people {
     __typename
     name
@@ -758,63 +593,6 @@ export const PeoplePartsFragmentDoc = gql`
   }
 }
     `;
-export const RoutesDocument = gql`
-    query routes($relativePath: String!) {
-  routes(relativePath: $relativePath) {
-    ... on Document {
-      _sys {
-        filename
-        basename
-        hasReferences
-        breadcrumbs
-        path
-        relativePath
-        extension
-      }
-      id
-    }
-    ...RoutesParts
-  }
-}
-    ${RoutesPartsFragmentDoc}`;
-export const RoutesConnectionDocument = gql`
-    query routesConnection($before: String, $after: String, $first: Float, $last: Float, $sort: String, $filter: RoutesFilter) {
-  routesConnection(
-    before: $before
-    after: $after
-    first: $first
-    last: $last
-    sort: $sort
-    filter: $filter
-  ) {
-    pageInfo {
-      hasPreviousPage
-      hasNextPage
-      startCursor
-      endCursor
-    }
-    totalCount
-    edges {
-      cursor
-      node {
-        ... on Document {
-          _sys {
-            filename
-            basename
-            hasReferences
-            breadcrumbs
-            path
-            relativePath
-            extension
-          }
-          id
-        }
-        ...RoutesParts
-      }
-    }
-  }
-}
-    ${RoutesPartsFragmentDoc}`;
 export const JoinDocument = gql`
     query join($relativePath: String!) {
   join(relativePath: $relativePath) {
@@ -932,13 +710,7 @@ export const PeopleConnectionDocument = gql`
 export type Requester<C= {}> = <R, V>(doc: DocumentNode, vars?: V, options?: C) => Promise<R>
   export function getSdk<C>(requester: Requester<C>) {
     return {
-      routes(variables: RoutesQueryVariables, options?: C): Promise<{data: RoutesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: RoutesQueryVariables, query: string}> {
-        return requester<{data: RoutesQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: RoutesQueryVariables, query: string}, RoutesQueryVariables>(RoutesDocument, variables, options);
-      },
-    routesConnection(variables?: RoutesConnectionQueryVariables, options?: C): Promise<{data: RoutesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: RoutesConnectionQueryVariables, query: string}> {
-        return requester<{data: RoutesConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: RoutesConnectionQueryVariables, query: string}, RoutesConnectionQueryVariables>(RoutesConnectionDocument, variables, options);
-      },
-    join(variables: JoinQueryVariables, options?: C): Promise<{data: JoinQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: JoinQueryVariables, query: string}> {
+      join(variables: JoinQueryVariables, options?: C): Promise<{data: JoinQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: JoinQueryVariables, query: string}> {
         return requester<{data: JoinQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: JoinQueryVariables, query: string}, JoinQueryVariables>(JoinDocument, variables, options);
       },
     joinConnection(variables?: JoinConnectionQueryVariables, options?: C): Promise<{data: JoinConnectionQuery, errors?: { message: string, locations: { line: number, column: number }[], path: string[] }[], variables: JoinConnectionQueryVariables, query: string}> {

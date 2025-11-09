@@ -1,0 +1,58 @@
+{
+  "home": {
+    "hero": "/images/cover-resized/6-studio.JPG",
+    "gallery": [
+      "/images/cover-resized/6-studio.JPG",
+      "/images/cover-resized/HCI_OpenHouse-5.jpg",
+      "/images/cover-resized/442_72A2112.jpg"
+    ]
+  },
+  "about": {
+    "hero": "/images/cover-resized/NC_05301.jpg",
+    "gallery": [
+      "/images/cover-resized/NC_05301.jpg",
+      "/images/cover-resized/HCI_OpenHouse-38.jpg",
+      "/images/cover-resized/3-studio.jpg"
+    ]
+  },
+  "research": {
+    "hero": "/images/cover-resized/442_72A2112.jpg",
+    "gallery": [
+      "/images/cover-resized/442_72A2112.jpg",
+      "/images/cover-resized/NC_05301.jpg",
+      "/images/cover-resized/6-studio.JPG"
+    ]
+  },
+  "people": {
+    "hero": "/images/cover-resized/3-studio.jpg",
+    "gallery": [
+      "/images/cover-resized/3-studio.jpg",
+      "/images/cover-resized/HCI_OpenHouse-5.jpg",
+      "/images/cover-resized/IMG_3673.jpg"
+    ]
+  },
+  "courses": {
+    "hero": "/images/cover-resized/HCI_OpenHouse-5.jpg",
+    "gallery": [
+      "/images/cover-resized/HCI_OpenHouse-5.jpg",
+      "/images/cover-resized/6-studio.JPG",
+      "/images/cover-resized/3-studio.jpg"
+    ]
+  },
+  "sponsors": {
+    "hero": "/images/cover-resized/HCI_OpenHouse-38.jpg",
+    "gallery": [
+      "/images/cover-resized/HCI_OpenHouse-38.jpg",
+      "/images/cover-resized/NC_05301.jpg",
+      "/images/cover-resized/442_72A2112.jpg"
+    ]
+  },
+  "join": {
+    "hero": "/images/cover-resized/IMG_3673.jpg",
+    "gallery": [
+      "/images/cover-resized/IMG_3673.jpg",
+      "/images/cover-resized/3-studio.jpg",
+      "/images/cover-resized/HCI_OpenHouse-5.jpg"
+    ]
+  }
+}

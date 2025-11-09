@@ -1,11 +1,18 @@
-import HomePage from "@/pages/home/ui/views/Home.tsx";
-import ResearchPage from "@/pages/research/ui/views/Research.tsx";
-import AboutPage from "@/pages/about/ui/views/About.tsx";
-import PeoplePage from "@/pages/people/ui/views/People.tsx";
-import CoursesPage from "@/pages/courses/ui/views/Courses";
-import SponsorsPage from "@/pages/sponsors/ui/views/Sponsors";
-import JoinUsPage from "@/pages/join/ui/views/JoinUs.tsx";
-import type { ComponentType } from "react";
+import { type ComponentType, lazy } from "react";
+import type { SEOConfig } from "@/hooks/useSEO";
+import seoConfigs from "@/constants/content/seoConfigs.json";
+import routeContent from "@/constants/content/routeContent.json";
+import imagesConfig from "@/constants/content/heroImagesConfig.json";
+
+const HomePage = lazy(() => import("@/pages/home/ui/views/Home.tsx"));
+const ResearchPage = lazy(
+  () => import("@/pages/research/ui/views/Research.tsx"),
+);
+const AboutPage = lazy(() => import("@/pages/about/ui/views/About.tsx"));
+const PeoplePage = lazy(() => import("@/pages/people/ui/views/People.tsx"));
+const CoursesPage = lazy(() => import("@/pages/courses/ui/views/Courses"));
+const SponsorsPage = lazy(() => import("@/pages/sponsors/ui/views/Sponsors"));
+const JoinUsPage = lazy(() => import("@/pages/join/ui/views/JoinUs.tsx"));
 
 export interface SidebarItem {
   label: string;
@@ -18,81 +25,25 @@ export interface RouteConfig {
   label: string;
   component: ComponentType;
   sidebar?: SidebarItem[];
-  heroImage?: string;
   heroTitle?: string;
   heroHeight?: "small" | "large";
   heroSubtitle?: string;
   showCTA?: boolean;
+  seo?: SEOConfig;
+  linkDescription?: string;
 }
 
-interface RouteContent {
-  home: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-    heroSubtitle: string;
-  };
-  about: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-  };
-  research: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-  };
-  people: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-  };
-  courses: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-  };
-  sponsors: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-  };
-  join: {
-    label: string;
-    heroImage: string;
-    heroTitle: string;
-  };
-}
-
-// Cache for route content to avoid multiple fetches
-let routeContentCache: RouteContent | null = null;
-
-export const fetchRouteContent = async (): Promise<RouteContent> => {
-  if (routeContentCache) {
-    return routeContentCache;
-  }
-
-  try {
-    const response = await fetch("/content/routes/routeContent.json");
-    const content = await response.json();
-    routeContentCache = content;
-    return content;
-  } catch (error) {
-    console.error("Error fetching route content:", error);
-    throw error;
-  }
-};
-
-export const createRoutes = (routeContent: RouteContent): RouteConfig[] => [
+export const routes: RouteConfig[] = [
   {
     path: "/",
     label: routeContent.home.label,
     component: HomePage,
-    heroImage: routeContent.home.heroImage,
     heroTitle: routeContent.home.heroTitle,
     heroHeight: "large",
     heroSubtitle: routeContent.home.heroSubtitle,
     showCTA: true,
+    seo: seoConfigs.main.home,
+    linkDescription: routeContent.home.linkDescription,
   },
   {
     path: "/about",
@@ -103,17 +54,19 @@ export const createRoutes = (routeContent: RouteContent): RouteConfig[] => [
       { label: "Events", path: "/about?sub=events" },
       { label: "Contact Us", path: "/about?sub=contact-us" },
     ],
-    heroImage: routeContent.about.heroImage,
     heroTitle: routeContent.about.heroTitle,
     heroHeight: "small",
+    seo: seoConfigs.main.about,
+    linkDescription: routeContent.about.linkDescription,
   },
   {
     path: "/research",
     label: routeContent.research.label,
     component: ResearchPage,
-    heroImage: routeContent.research.heroImage,
     heroTitle: routeContent.research.heroTitle,
     heroHeight: "small",
+    seo: seoConfigs.main.research,
+    linkDescription: routeContent.research.linkDescription,
   },
   {
     path: "/people",
@@ -124,17 +77,19 @@ export const createRoutes = (routeContent: RouteContent): RouteConfig[] => [
       { label: "Alumni", path: "/people?sub=alumni" },
       { label: "Collaborators", path: "/people?sub=collaborators" },
     ],
-    heroImage: routeContent.people.heroImage,
     heroTitle: routeContent.people.heroTitle,
     heroHeight: "small",
+    seo: seoConfigs.main.people,
+    linkDescription: routeContent.people.linkDescription,
   },
   {
     path: "/courses",
     label: routeContent.courses.label,
     component: CoursesPage,
-    heroImage: routeContent.courses.heroImage,
     heroTitle: routeContent.courses.heroTitle,
     heroHeight: "small",
+    seo: seoConfigs.main.courses,
+    linkDescription: routeContent.courses.linkDescription,
   },
   {
     path: "/sponsors",
@@ -147,19 +102,50 @@ export const createRoutes = (routeContent: RouteContent): RouteConfig[] => [
         path: "/sponsors?sub=become-our-sponsor",
       },
     ],
-    heroImage: routeContent.sponsors.heroImage,
     heroTitle: routeContent.sponsors.heroTitle,
     heroHeight: "small",
+    seo: seoConfigs.main.sponsors,
+    linkDescription: routeContent.sponsors.linkDescription,
   },
   {
     path: "/join",
     label: routeContent.join.label,
     component: JoinUsPage,
-    heroImage: routeContent.join.heroImage,
     heroTitle: routeContent.join.heroTitle,
     heroHeight: "small",
+    seo: seoConfigs.main.join,
+    linkDescription: routeContent.join.linkDescription,
   },
 ];
 
-export const getRouteConfig = (routes: RouteConfig[], path: string) =>
+export const getRouteConfig = (path: string) =>
   routes.find((route) => route.path === path);
+
+export const getSEOConfig = (path: string, sub?: string) => {
+  const route = getRouteConfig(path);
+
+  if (!route?.seo) return null;
+
+  if (sub) {
+    const pathKey = path.replace("/", "") || "home";
+    const subPageSEO = seoConfigs.sub[pathKey as keyof typeof seoConfigs.sub];
+
+    if (subPageSEO && subPageSEO[sub as keyof typeof subPageSEO]) {
+      return subPageSEO[sub as keyof typeof subPageSEO] as SEOConfig;
+    }
+  }
+
+  return route.seo;
+};
+
+export const getRouteImages = (path: string) => {
+  const pathKey = path.replace("/", "") || "home";
+  return (
+    imagesConfig[pathKey as keyof typeof imagesConfig] || {
+      hero: "",
+      gallery: [],
+    }
+  );
+};
+
+export { routeContent, seoConfigs, imagesConfig };

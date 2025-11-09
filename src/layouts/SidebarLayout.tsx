@@ -7,17 +7,13 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { getRouteConfig, type RouteConfig } from "@/constants/routeConfig";
+import { getRouteConfig } from "@/constants/routeConfig";
 
-interface SidebarLayoutProps {
-  routes: RouteConfig[];
-}
-
-export default function SidebarLayout({ routes }: SidebarLayoutProps) {
+export default function SidebarLayout() {
   const location = useLocation();
   const [searchParams] = useSearchParams();
 
-  const routeConfig = getRouteConfig(routes, location.pathname);
+  const routeConfig = getRouteConfig(location.pathname);
   const currentSub = searchParams.get("sub");
   const sidebarItems = routeConfig?.sidebar || [];
 

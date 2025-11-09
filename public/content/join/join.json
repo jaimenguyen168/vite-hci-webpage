@@ -1,43 +1,48 @@
 {
+  "seo": {
+    "title": "Join Our Research Lab | Apply Now",
+    "description": "Join our HCI research lab! We welcome undergraduate students, graduate students, and recent graduates passionate about human-computer interaction research.",
+    "keywords": "join research lab, HCI research, apply lab position, undergraduate research, graduate research, human-computer interaction"
+  },
+  "apply": {
+    "title": "Apply to Join HCI Lab!",
+    "button": {
+      "text": "Link to Google Form",
+      "url": "https://forms.google.com/your-form-link"
+    }
+  },
   "faqs": [
     {
-      "id": "item-1",
       "question": "What is Human-Computer Interaction (HCI)?",
       "answer": "HCI (Human-Computer Interaction) is the study of how people interact with computers and digital systems. It combines psychology to understand user behavior and cognition, design to create intuitive and accessible interfaces, and technology to develop interactive systems. HCI helps ensure that digital tools are not only functional but also user-friendly and engaging.",
-      "defaultOpen": true
+      "defaultOpen": false
     },
     {
-      "id": "item-2",
       "question": "What roles are available in the lab?",
-      "answer": "We have several roles available including Research Assistants who help with data collection and analysis, UX Designers who create prototypes and conduct usability testing, Software Developers who build interactive systems and applications, and Research Interns who work on specific project components. We also occasionally have positions for Data Analysts and Technical Writers."
+      "answer": "We have several roles available including Research Assistants who help with data collection and analysis, UX Designers who create prototypes and conduct usability testing, Software Developers who build interactive systems and applications, and Research Interns who work on specific project components. We also occasionally have positions for Data Analysts and Technical Writers.",
+      "defaultOpen": false
     },
     {
-      "id": "item-3",
       "question": "Who can apply?",
       "answer": "We welcome applications from undergraduate students, graduate students, and recent graduates with backgrounds in Computer Science, Psychology, Design, Information Science, or related fields. No prior research experience is required, but we look for candidates who are passionate about understanding user needs, have strong communication skills, and are eager to learn about human-centered design principles."
     },
     {
-      "id": "item-4",
       "question": "How do I apply?",
       "answer": "To apply, please fill out the application form linked at the bottom of this page. You'll need to provide your resume, a brief statement of interest explaining why you want to join the lab and what you hope to contribute, and contact information for one academic or professional reference. Applications are reviewed on a rolling basis, and we typically respond within 2-3 weeks."
     },
     {
-      "id": "item-5",
       "question": "What will I gain from working in the HCI lab?",
       "answer": "Working in our lab provides hands-on research experience, mentorship from faculty and senior researchers, opportunities to contribute to published research papers, development of technical and design skills, and exposure to cutting-edge HCI methodologies. You'll also build a professional network in the HCI community and gain experience that's valuable for careers in UX research, product design, academia, or tech industry roles."
     },
     {
-      "id": "item-6",
       "question": "Can I conduct my own research projects?",
       "answer": "Yes! After completing an orientation period and demonstrating commitment to the lab, members are encouraged to propose and lead their own research projects. We provide guidance, resources, and mentorship to help you develop your research ideas. Independent projects are a great way to explore your specific interests within HCI and can lead to thesis work, publications, or conference presentations."
     },
     {
-      "id": "item-7",
       "question": "What is the time commitment?",
       "answer": "We typically ask for a minimum commitment of 8-10 hours per week for at least one semester. This includes attending weekly lab meetings, working on assigned tasks or projects, and participating in research activities. The time commitment may vary depending on your role and project needs. We understand that students have academic obligations and work to create flexible schedules that accommodate your coursework."
     },
     {
-      "id": "item-8",
       "question": "Are there funding or publication opportunities?",
       "answer": "Yes! Dedicated lab members may be eligible for paid research assistant positions, subject to availability and funding. We also support members in submitting work to academic conferences like CHI, UIST, and DIS, as well as workshops and poster sessions. Many of our lab members have co-authored papers and presented at international conferences. We also help connect students with external fellowship and grant opportunities."
     }
