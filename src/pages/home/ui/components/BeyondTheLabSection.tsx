@@ -2,8 +2,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import Title from "@/components/Title.tsx";
-import { Link } from "react-router-dom";
 import { getImagePath } from "@/lib/utils.ts";
+import { AccessibleLink } from "@/components/AccessibleLink.tsx";
+import { routeContent } from "@/constants/routeConfig.ts";
 
 interface FeaturedProject {
   id: string;
@@ -36,7 +37,6 @@ const BeyondTheLabSection = () => {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="mt-8"
     >
       <Title title="Beyond the Lab" classname="font-medium" />
 
@@ -48,7 +48,7 @@ const BeyondTheLabSection = () => {
       </p>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <div className="transform -rotate-3 rounded-[64px] overflow-hidden shadow-lg">
+        <div className="transform -rotate-3 rounded-3xl overflow-hidden shadow-lg">
           <img
             src={getImagePath("/images/cover/3-studio.jpg")}
             alt="Lab/Event participants collaborating"
@@ -86,14 +86,18 @@ const BeyondTheLabSection = () => {
               </motion.div>
             ))}
           </div>
-          <Link to="/research">
+          <AccessibleLink
+            to="/research"
+            customAriaLabel={routeContent.research.linkDescription}
+          >
             <Button
               className="!bg-black text-white !rounded-full !px-12 !text-sm hover:!bg-gray-700 transition-colors mt-8"
               size="sm"
             >
               Read More
+              <span className="sr-only"> about HCI Lab Research</span>
             </Button>
-          </Link>
+          </AccessibleLink>
         </div>
       </div>
     </motion.section>

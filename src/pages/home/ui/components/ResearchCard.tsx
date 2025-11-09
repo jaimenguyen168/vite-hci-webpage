@@ -2,18 +2,24 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import type {LucideIcon} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 
 interface ResearchArea {
   id: string;
   title: string;
   description: string;
-  buttonText: string;
   buttonUrl: string;
   icon: LucideIcon;
+  linkDescription?: string;
 }
 
-const ResearchCard = ({ research, index }: { research: ResearchArea; index: number }) => {
+const ResearchCard = ({
+  research,
+  index,
+}: {
+  research: ResearchArea;
+  index: number;
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "50px" });
 
@@ -28,9 +34,11 @@ const ResearchCard = ({ research, index }: { research: ResearchArea; index: numb
         ease: "easeOut",
       }}
     >
-      <Card className="bg-primary-red-900 border-0 shadow-lg !rounded-4xl h-full py-0">
+      <Card className="bg-primary-red-900 border-0 shadow-lg !rounded-3xl h-full py-0">
         <CardContent className="p-8 flex flex-col h-full relative">
-          <h3 className="text-sm md:text-lg xl:text-2xl font-semibold text-white mb-2">{research.title}</h3>
+          <h3 className="text-sm md:text-lg xl:text-2xl font-semibold text-white mb-2">
+            {research.title}
+          </h3>
           <p className="text-white/90 text-xs md:text-sm xl:text-base leading-relaxed mb-4 flex-grow">
             {research.description}
           </p>
@@ -39,8 +47,18 @@ const ResearchCard = ({ research, index }: { research: ResearchArea; index: numb
             className="!bg-transparent text-white !rounded-full !border !border-white hover:!bg-white hover:text-primary-red-900 transition-colors self-start"
             onClick={() => window.open(research.buttonUrl, "_blank")}
             size="sm"
+            aria-label={
+              research.linkDescription ||
+              `Learn more about ${research.title} research`
+            }
           >
-            <p className="text-xs md:text-sm xl:text-base">{research.buttonText}</p>
+            <p className="text-xs md:text-sm xl:text-base">
+              Read More
+              <span className="sr-only">
+                {" "}
+                about HCI Lab Research on {research.title}
+              </span>
+            </p>
           </Button>
 
           <research.icon

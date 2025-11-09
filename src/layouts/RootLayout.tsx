@@ -1,17 +1,30 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useSearchParams } from "react-router-dom";
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
-import { getRouteConfig, type RouteConfig } from "@/constants/routeConfig.ts";
+import {
+  getRouteConfig,
+  getSEOConfig,
+  routes,
+} from "@/constants/routeConfig.ts";
 import Footer from "@/components/Footer.tsx";
 import { useEffect } from "react";
+import { useSEO } from "@/hooks/useSEO.ts";
 
-interface RootLayoutProps {
-  routes: RouteConfig[];
-}
-
-export default function RootLayout({ routes }: RootLayoutProps) {
+export default function RootLayout() {
   const location = useLocation();
-  const routeConfig = getRouteConfig(routes, location.pathname);
+  const [searchParams] = useSearchParams();
+  const sub = searchParams.get("sub");
+
+  const routeConfig = getRouteConfig(location.pathname);
+  const seoConfig = getSEOConfig(location.pathname, sub || undefined);
+
+  useSEO(
+    seoConfig || {
+      title: "Temple University HCI Lab",
+      description: "Human-Computer Interaction Research at Temple University",
+      keywords: "HCI, Temple University, Research Lab",
+    },
+  );
 
   useEffect(() => {
     if (routeConfig?.heroImage) {
