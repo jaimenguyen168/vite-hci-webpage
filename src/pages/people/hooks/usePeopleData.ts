@@ -18,12 +18,12 @@ export const usePeopleData = () => {
   });
 };
 
-export const usePeopleSEO = () => {
-  const { data, ...rest } = usePeopleData();
+export const usePeopleHeroImages = () => {
+  const { data: peopleData, ...rest } = usePeopleData();
 
   return {
     ...rest,
-    data: data?.seo,
+    data: peopleData?.images?.heroes || [],
   };
 };
 

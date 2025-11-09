@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { getImagePath } from "@/lib/utils.ts";
 import React from "react";
 
 interface LogoProps {
@@ -42,7 +41,7 @@ const Logo = ({ size = 48, className = "" }: LogoProps) => {
     >
       <div className="flex-shrink-0">
         <img
-          src={getImagePath("/hci-logo.png")}
+          src="/logos-resized/hci-logo.png"
           alt="Temple University HCI Lab logo - Human-Computer Interaction Research Laboratory"
           className="rounded"
           style={{ width: `${size}px`, height: `${size}px` }}

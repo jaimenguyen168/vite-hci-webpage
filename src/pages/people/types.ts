@@ -1,6 +1,14 @@
 export interface PeopleData {
+  images: {
+    heroes: HeroImage[];
+  };
   people: Person[];
-  seo: PeopleSEOData;
+}
+
+export interface HeroImage {
+  src: string;
+  alt: string;
+  title?: string;
 }
 
 export interface Person {
@@ -13,22 +21,4 @@ export interface Person {
   end?: number | null;
   affiliation: string;
   now?: string | null;
-}
-
-export interface PeopleSEOData {
-  current: {
-    title: string;
-    description: string;
-    keywords: string;
-  };
-  alumni: {
-    title: string;
-    description: string;
-    keywords: string;
-  };
-  collaborators: {
-    title: string;
-    description: string;
-    keywords: string;
-  };
 }

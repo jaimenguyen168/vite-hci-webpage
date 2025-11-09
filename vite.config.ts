@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-import ViteImageOptimize from "vite-plugin-imagemin";
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -13,11 +13,22 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    ViteImageOptimize({
-      gifsicle: { optimizationLevel: 7 },
-      mozjpeg: { quality: 80 },
-      pngquant: { quality: [0.65, 0.8] },
-      webp: { quality: 80 },
+    ViteImageOptimizer({
+      jpeg: {
+        quality: 80,
+      },
+      jpg: {
+        quality: 80,
+      },
+      png: {
+        quality: 85,
+      },
+      webp: {
+        quality: 80,
+        lossless: false,
+      },
+      logStats: true,
+      includePublic: true,
     }),
   ],
   resolve: {

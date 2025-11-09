@@ -1,13 +1,71 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/hci-logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/logos/hci-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>react-hci-web</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+    <!-- Preload critical fonts BEFORE anything else -->
+    <link rel="preload" href="/fonts/outfit/Outfit-Regular.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/roboto/Roboto-Regular.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Preload other weights -->
+    <link rel="preload" href="/fonts/outfit/Outfit-Medium.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/outfit/Outfit-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="/fonts/roboto/Roboto-Medium.ttf" as="font" type="font/ttf" crossorigin>
+
+    <!-- Inline critical font-face definitions -->
+    <style>
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/outfit/Outfit-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Outfit';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('/fonts/outfit/Outfit-Medium.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 500;
+            font-display: swap;
+            src: url('/fonts/roboto/Roboto-Medium.ttf') format('truetype');
+        }
+
+        /* Critical CSS */
+        body {
+            font-family: "Roboto", system-ui, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Outfit", sans-serif;
+        }
+    </style>
+
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="/images/cover/6-studio.JPG">
+</head>
+<body>
+<div id="root"></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
 </html>

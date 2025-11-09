@@ -1,17 +1,17 @@
 {
   "socialLinks": [
     {
-      "iconUrl": "/logos/insta.webp",
+      "iconUrl": "/logos-resized/insta.webp",
       "href": "https://www.instagram.com/templehci/",
       "label": "Instagram"
     },
     {
-      "iconUrl": "/logos/linkedin.webp",
+      "iconUrl": "/logos-resized/linkedin.webp",
       "href": "https://www.linkedin.com/company/temple-hci-lab/posts/?feedView=all",
       "label": "LinkedIn"
     },
     {
-      "iconUrl": "/logos/twitter.png",
+      "iconUrl": "/logos-resized/twitter.png",
       "href": "https://x.com/templehci?lang=en",
       "label": "Twitter"
     }
