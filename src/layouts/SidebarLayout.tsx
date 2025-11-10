@@ -50,14 +50,14 @@ export default function SidebarLayout() {
   const breadcrumbItems = getBreadcrumbItems();
 
   const SidebarContent = () => (
-    <nav className="border border-gray-200 bg-white rounded-lg">
+    <nav className="border border-gray-200 bg-white rounded-lg overflow-hidden w-full md:w-auto">
       <div className="p-2">
         {sidebarItems.map((item, index) => (
           <Link
             key={index}
             to={item.path}
             className={`
-              block w-full text-left px-4 py-3 text-base rounded-md transition-colors mb-1
+              block w-full text-left px-4 py-3 text-base rounded-md transition-colors mb-1 truncate
               ${
                 isActive(item)
                   ? "bg-primary-red-800 !text-primary-red-foreground font-medium"
@@ -104,28 +104,28 @@ export default function SidebarLayout() {
   );
 
   return (
-    <div className="max-w-7xl mx-auto lg:px-0 py-0 lg:py-2">
+    <div className="max-w-7xl mx-auto lg:px-0 py-0 lg:py-2 overflow-hidden">
       {/* Mobile Breadcrumb */}
       <div className="md:hidden">
         <MobileBreadcrumb />
       </div>
 
-      <div className="flex gap-8">
+      <div className="flex gap-8 overflow-hidden">
         {/* Desktop Sidebar - Side panel */}
-        <aside className="hidden md:block w-80 shrink-0">
-          <div className="sticky top-8">
+        <aside className="hidden md:block w-80 shrink-0 overflow-hidden">
+          <div className="sticky">
             <SidebarContent />
           </div>
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 pt-6">
+        <main className="flex-1 pt-4 w-full xl:max-w-6xl overflow-hidden">
           <Outlet />
         </main>
       </div>
 
       {/* Mobile Sidebar - Bottom */}
-      <div className="md:hidden shrink-0 w-full mb-8">
+      <div className="md:hidden shrink-0 w-full mb-8 overflow-hidden">
         <SidebarContent />
       </div>
     </div>

@@ -97,7 +97,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="prose prose-lg max-w-none">
+    <div className="prose prose-lg max-w-none px-1">
       <Suspense fallback={<LoadingSpinner />}>{renderContent()}</Suspense>
     </div>
   );

@@ -5,7 +5,6 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const ContactContentView = () => {
-
   const contactInfoRef = useRef(null);
   const contactFormRef = useRef(null);
 
@@ -13,11 +12,13 @@ const ContactContentView = () => {
   const isContactFormInView = useInView(contactFormRef, { once: true });
 
   return (
-    <div className="space-y-12 pb-16">
+    <div className="space-y-8 pb-16">
       <motion.div
         ref={contactInfoRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={isContactInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        animate={
+          isContactInfoInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+        }
         transition={{ duration: 0.8 }}
       >
         <ContactInformation />
@@ -26,7 +27,9 @@ const ContactContentView = () => {
       <motion.div
         ref={contactFormRef}
         initial={{ opacity: 0, y: 30 }}
-        animate={isContactFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        animate={
+          isContactFormInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+        }
         transition={{ duration: 0.8 }}
       >
         <ContactForm />
