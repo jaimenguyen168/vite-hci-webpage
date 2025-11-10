@@ -6,26 +6,38 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
+import Title from "@/components/Title.tsx";
 
 interface LearningOutcomesProps {
   content: LearningOutcomesContent;
 }
 
 export default function LearningOutcomes({ content }: LearningOutcomesProps) {
+  const [api, setApi] = useState<CarouselApi>();
   const alumni = content.alumni || [];
 
+  useEffect(() => {
+    if (!api) return;
+
+    return () => {
+      api.off("select", () => {});
+    };
+  }, [api]);
+
   return (
-    <section className="px-4 md:px-8">
-      <div className="max-w-6xl mx-auto">
+    <section className="">
+      <div className="w-full">
         {/* Learning Outcomes Header */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-8">{content.title}</h2>
+        <Title title={content.title} />
 
         {/* Outcomes List */}
-        <div className="mb-8 space-y-6">
+        <div className="mb-8 space-y-3">
           {content.items.map((item, index) => (
             <div key={index}>
-              <h3 className="text-xl mb-2">
+              <h3 className="text-base xl:text-xl mb-2">
                 <span className="font-bold">{item.title}:</span>{" "}
                 {item.description}
               </h3>
@@ -33,46 +45,32 @@ export default function LearningOutcomes({ content }: LearningOutcomesProps) {
           ))}
         </div>
 
-        {/* Testimonials Carousel */}
         <div className="relative">
-          <div className="hidden xl:block">
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
-                {alumni.map((testimonial, index) => (
-                  <CarouselItem key={index} className="pl-4 basis-1/2">
+          <Carousel
+            setApi={setApi}
+            className="max-w-sm xl:max-w-7xl mx-auto"
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+          >
+            <CarouselContent className="-ml-4">
+              {alumni.map((testimonial, index) => (
+                <CarouselItem key={index} className="pl-4  xl:basis-1/2">
+                  <div className="relative w-full h-full overflow-hidden rounded-lg">
                     <Testimony
                       name={testimonial.name}
                       quote={testimonial.quote}
                       img={testimonial.img}
                       title={testimonial.title}
                     />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-4 !bg-white !size-8" />
-              <CarouselNext className="right-4 !bg-white !size-8" />
-            </Carousel>
-          </div>
-
-          {/* Mobile/Tablet View (below xl) - Carousel with single testimony */}
-          <div className="xl:hidden">
-            <Carousel className="w-full max-w-xl mx-auto px-6">
-              <CarouselContent>
-                {alumni.map((testimonial, index) => (
-                  <CarouselItem key={index}>
-                    <Testimony
-                      name={testimonial.name}
-                      quote={testimonial.quote}
-                      img={testimonial.img}
-                      title={testimonial.title}
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-4 !bg-white !size-8" />
-              <CarouselNext className="right-4 !bg-white !size-8" />
-            </Carousel>
-          </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-0 xl:left-4 size-10 !bg-white" />
+            <CarouselNext className="right-0 xl:right-4 size-10 !bg-white" />
+          </Carousel>
         </div>
       </div>
     </section>

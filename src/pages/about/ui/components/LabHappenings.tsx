@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageCarousel from "@/components/ImageCarousel";
 import type { LabHappeningsContent } from "../../types";
+import Title from "@/components/Title.tsx";
 
 interface LabHappeningsProps {
   content: LabHappeningsContent;
@@ -26,9 +27,7 @@ const LabHappenings = ({ content }: LabHappeningsProps) => {
         >
           <div className="grid grid-cols-1 gap-8 lg:gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-outfit font-bold mb-6">
-                {content.title}
-              </h2>
+              <Title title={content.title} />
 
               <p className="text-base lg:text-lg leading-relaxed">
                 {content.description}

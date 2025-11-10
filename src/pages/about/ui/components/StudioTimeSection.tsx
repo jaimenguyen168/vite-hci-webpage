@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { getImagePath } from "@/lib/utils.ts";
 import type { StudioTimeContent } from "../../types";
 import { useCallback } from "react";
+import Title from "@/components/Title.tsx";
 
 interface StudioTimeProps {
   content: StudioTimeContent;
@@ -13,14 +14,14 @@ export default function StudioTime({ content }: StudioTimeProps) {
   }, [content.buttonLink]);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 font-roboto">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 font-roboto">
       {/* Left: Image with Caption */}
       <div className="flex flex-col items-center justify-center">
         {/* Red Box Background */}
         {/* <div className="absolute inset-0 bg-red-500 rounded-3xl scale-105 -z-10" /> */}
 
         {/* Image */}
-        <div className="rounded-3xl overflow-hidden shadow-lg -rotate-3 z-10">
+        <div className="rounded-3xl overflow-hidden shadow-lg -rotate-3 z-2">
           <img
             src={getImagePath(content.image)}
             alt={content.imageAlt}
@@ -40,9 +41,9 @@ export default function StudioTime({ content }: StudioTimeProps) {
 
       {/* Right: Text Content + Button */}
       <div>
-        <h2 className="text-3xl font-bold text-gray-900">{content.title}</h2>
+        <Title title={content.title} />
         <p
-          className="mt-4 text-lg"
+          className="mt-4 text-base lg:text-lg"
           dangerouslySetInnerHTML={{ __html: content.description }}
         />
 

@@ -9,10 +9,9 @@ interface EventsContentViewProps {
 }
 
 const EventsContentView = ({ eventsData }: EventsContentViewProps) => {
-
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "50px" });
-  
+
   return (
     <motion.section
       ref={ref}
@@ -20,8 +19,8 @@ const EventsContentView = ({ eventsData }: EventsContentViewProps) => {
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <div className="space-y-12 pb-16">
-        <AboutEvents content={eventsData}/>
+      <div className="space-y-8 pb-16">
+        <AboutEvents content={eventsData} />
         <LabLinkedInPosts />
       </div>
     </motion.section>
