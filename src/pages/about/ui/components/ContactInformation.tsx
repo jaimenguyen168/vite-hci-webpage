@@ -1,92 +1,46 @@
-import { Card } from "@/components/ui/card";
+import Title from "@/components/Title.tsx";
 
 const ContactInformation = () => {
   return (
-    <Card
-      className="shadow-lg font-roboto w-full max-w-full overflow-hidden"
-      style={{ borderRadius: "2rem", backgroundColor: "#FAFAFA" }}
-    >
-      <div className="px-4 sm:px-6 md:px-8 py-6 w-full overflow-hidden">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-outfit font-bold mb-6">
-          Contact
-        </h2>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="relative w-full h-full overflow-hidden rounded-lg">
+        <img
+          src="/images/about/SERC.png"
+          alt="Science Education and Research Center"
+          className="w-full h-auto object-cover rounded-lg"
+        />
+        <p className="mt-2 text-sm flex justify-center">
+          Front doors of Science Education and Research Center (SERC)
+        </p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 w-full">
-          {/* Left: Contact Information */}
-          <div className="space-y-4 sm:space-y-6 min-w-0">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">
-                Mailing Address
-              </h3>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base break-words">
-                Temple University HCI Lab
-                <br />
-                1801 N. Broad Street
-                <br />
-                Philadelphia, PA 19122
-              </p>
-            </div>
+      <div className="space-y-2">
+        <Title title="Find us in SERC!" />
 
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">Email</h3>
-              <a
-                href="mailto:hcilab@temple.edu"
-                className="text-blue-600 hover:underline text-sm sm:text-base break-all"
-              >
-                hcilab@temple.edu
-              </a>
-              <p className="text-gray-700 mt-1 text-sm sm:text-base">
-                or use the form below
-              </p>
-            </div>
+        <a
+          href="https://campusoperations.temple.edu/parking-services"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm xl:text-md leading-relaxed underline hover:text-blue-600"
+        >
+          Directions and Parking
+        </a>
 
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">
-                How To Find Us
-              </h3>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                The HCI Lab is located in the Science Education and Research
-                Center at Temple University.
-              </p>
-              <a
-                href="#"
-                className="text-blue-600 hover:underline text-sm sm:text-base"
-              >
-                Directions and parking
-              </a>
-            </div>
-          </div>
+        <p className="text-sm xl:text-md leading-relaxed">
+          The Human-Computer Interaction (HCI) Lab meets in the College of Science and Technology at Temple University, located in the Science Education and Research Center (SERC) building. This vibrant space brings together students and researchers to explore the intersection of technology, design, and human experience.
+        </p>
 
-          {/* Right: General Information */}
-          <div className="space-y-4 sm:space-y-6 min-w-0">
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">
-                Lab Hours
-              </h3>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                Monday - Friday: 9:00 a.m. - 5:00 p.m.
-                <br />
-                Saturday - Sunday: CLOSED
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg sm:text-xl font-semibold mb-2">Note</h3>
-              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                The HCI Lab is closed on all{" "}
-                <a
-                  href="#"
-                  className="text-blue-600 hover:underline break-words"
-                >
-                  Temple University Holidays
-                </a>
-                .
-              </p>
-            </div>
-          </div>
+        <div>
+          <h3 className="font-bold text-lg mb-2">HCI Mailing Address</h3>
+          <p className="text-sm leading-relaxed">
+            Temple University HCI Lab<br />
+            1925 N 12th St (SERC 301)<br />
+            Philadelphia, PA 19122
+          </p>
         </div>
       </div>
-    </Card>
+      
+    </div>
   );
 };
 
