@@ -1,50 +1,9 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import ResearchCard from "@/pages/home/ui/components/ResearchCard.tsx";
 import WhyHCILabSection from "@/pages/home/ui/components/WhyHCILabSection.tsx";
-import BeyondTheLabSection from "@/pages/home/ui/components/BeyondTheLabSection.tsx";
+import FeatureProjects from "@/pages/home/ui/components/FeatureProjects.tsx";
 import RecentNewsSection from "@/pages/home/ui/components/RecentNewsSection.tsx";
-import { BookOpen, Globe, type LucideIcon, Users } from "lucide-react";
-import Title from "@/components/Title.tsx";
-
-interface ResearchArea {
-  id: string;
-  title: string;
-  description: string;
-  buttonUrl: string;
-  icon: LucideIcon;
-  linkDescription?: string;
-}
-
-const researchAreas: ResearchArea[] = [
-  {
-    id: "genai-education",
-    title: "GenAI & Education",
-    description:
-      "Exploring Generative AI in computing education, enhancing learning, creativity, and assessment through intelligent tools.",
-    buttonUrl: "/research/genai-education",
-    icon: BookOpen,
-    linkDescription: "Learn more about GenAI & Education research",
-  },
-  {
-    id: "accessible-technology",
-    title: "Accessible Technology",
-    description:
-      "Exploring accessible technology in computing, enhancing inclusion, usability, and opportunity through thoughtful design and innovation.",
-    buttonUrl: "/research/accessible-technology",
-    icon: Globe,
-    linkDescription: "Learn more about Accessible Technology research",
-  },
-  {
-    id: "social-computing",
-    title: "Social Computing",
-    description:
-      "Exploring social computing in education, fostering collaboration, communication, and community through interactive digital platforms.",
-    buttonUrl: "/research/social-computing",
-    icon: Users,
-    linkDescription: "Learn more about Social Computing research",
-  },
-];
+import HCITagsHero from "@/pages/home/ui/components/HCITagsHero.tsx";
 
 export default function HomePage() {
   const heroRef = useRef(null);
@@ -62,22 +21,15 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 30 }}
         animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8 }}
-        className="container mx-auto px-4 pt-4 pb-12 space-y-12"
+        className="max-w-7xl mx-auto px-4 pt-4 pb-12 space-y-12"
       >
-        <Title title="Our Research" />
-
-        {/* Research Areas Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {researchAreas.map((research, index) => (
-            <ResearchCard key={research.id} research={research} index={index} />
-          ))}
-        </div>
+        <HCITagsHero />
 
         {/* Why HCI Lab Section */}
         <WhyHCILabSection />
 
         {/* Beyond the Lab Section */}
-        <BeyondTheLabSection />
+        <FeatureProjects />
 
         {/* Recent News Section */}
         <RecentNewsSection />

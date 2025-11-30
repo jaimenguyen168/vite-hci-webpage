@@ -1,10 +1,10 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import Title from "@/components/Title.tsx";
 import { getImagePath } from "@/lib/utils.ts";
 import { AccessibleLink } from "@/components/AccessibleLink.tsx";
 import { routeContent } from "@/constants/routeConfig.ts";
+import { Title } from "@/components/customs/title.tsx";
 
 interface NewsItem {
   id: string;

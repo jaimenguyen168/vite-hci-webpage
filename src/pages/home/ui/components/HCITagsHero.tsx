@@ -1,0 +1,45 @@
+import { BookOpen, Globe, Users } from "lucide-react";
+
+const HciTagsHero = () => {
+  return (
+    <div className="flex flex-row items-start gap-4 lg:gap-6 xl:gap-12">
+      {/* Main title block */}
+      <div className="bg-primary-red-800 text-white pl-3 xl:pl-4.5 pb-3 font-bold flex-shrink-0 relative size-48 md:size-56 xl:size-80 items-end justify-end">
+        <div className="flex flex-col h-full justify-end">
+          <p className="text-2xl md:text-4xl xl:!text-6xl">our</p>
+          <p className="text-2xl md:text-4xl xl:!text-6xl">research</p>
+          <p className="text-2xl md:text-4xl xl:!text-6xl">focuses</p>
+        </div>
+
+        <div className="absolute top-0 right-12 xl:right-16 size-12 xl:size-16 bg-white" />
+        <div className="absolute top-0 right-0 size-12 xl:size-16 bg-primary-red" />
+        <div className="absolute top-12 right-0 xl:top-16 size-12 xl:size-16 bg-white" />
+      </div>
+
+      <div className="flex flex-wrap items-center gap-4 lg:gap-6">
+        {/* Social Computing tag */}
+        <div className="bg-[#067AAB] text-white px-4 md:px-6 py-2 md:py-3 rounded-2xl text-lg md:text-2xl xl:text-3xl flex-shrink-0 font-medium tracking-wider font-jetbrains-mono uppercase">
+          Social Computing
+        </div>
+
+        <Users className="size-10 md:size-11 xl:size-16" />
+
+        {/* GenAI tag */}
+        <div className="bg-[#E29500] px-4 md:px-6 py-2 md:py-3 rounded-full text-lg md:text-2xl xl:text-3xl font-medium tracking-wide flex-shrink-0">
+          GenAI & Education
+        </div>
+
+        <BookOpen className="size-10 md:size-11 xl:size-16" />
+
+        {/* Accessible Technology tag */}
+        <div className="bg-[#028683] text-white px-4 md:px-6 py-2 md:py-3 rounded-2xl text-lg md:text-2xl xl:text-3xl font-semibold flex-shrink-0">
+          Accessible Technology
+        </div>
+
+        <Globe className="size-10 md:size-11 xl:size-16" />
+      </div>
+    </div>
+  );
+};
+
+export default HciTagsHero;

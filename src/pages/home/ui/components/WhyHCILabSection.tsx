@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import Title from "@/components/Title.tsx";
 import ImageCarousel from "@/components/ImageCarousel";
 import { AccessibleLink } from "@/components/AccessibleLink.tsx";
+import CustomButton from "@/components/customs/button.tsx";
 import { routeContent } from "@/constants/routeConfig.ts";
+import { BorderTitle } from "@/components/customs/title.tsx";
 
 const labImages = [
   {
@@ -36,11 +36,10 @@ interface WhyHCILabSectionProps {
 
 const WhyHCILabSection = ({ images = labImages }: WhyHCILabSectionProps) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-      <div>
-        <Title title="Why HCI Lab?" classname="font-medium" />
-
-        <p className="text-base lg:text-lg text-gray-700 leading-relaxed">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="flex flex-col gap-6">
+        <BorderTitle title="Why join HCI Lab?" />
+        <p className="text-base md:text-lg xl:text-xl text-gray-700 leading-relaxed mt-4">
           Being part of a research lab builds real-world skills, from critical
           thinking to teamwork. Students gain mentorship and hands-on
           experience, while job opportunities open doors to future careers in
@@ -50,13 +49,10 @@ const WhyHCILabSection = ({ images = labImages }: WhyHCILabSectionProps) => {
           to="/about"
           customAriaLabel={routeContent.about.linkDescription}
         >
-          <Button
-            className="!bg-black text-white !rounded-full !px-12 !text-sm hover:!bg-gray-700 transition-colors mt-8"
-            size="sm"
-            aria-label={routeContent.about.linkDescription}
-          >
-            Learn More<span className="sr-only"> about HCI Lab</span>
-          </Button>
+          <CustomButton
+            text="Learn More"
+            ariaLabel={routeContent.about.linkDescription}
+          />
         </AccessibleLink>
       </div>
 
@@ -64,6 +60,7 @@ const WhyHCILabSection = ({ images = labImages }: WhyHCILabSectionProps) => {
         <ImageCarousel
           images={images}
           height="h-72"
+          roundedClassName="rounded-bl-[100px]"
           showPagination={true}
           showNavigation={true}
         />

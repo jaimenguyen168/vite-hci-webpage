@@ -2,48 +2,6 @@
 @import "tw-animate-css";
 @import 'tailwind-scrollbar-hide/v4';
 
-/* Outfit Font Family */
-@font-face {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url('/public/fonts/outfit/Outfit-Light.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('/fonts/outfit/Outfit-SemiBold.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Outfit';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/outfit/Outfit-Bold.ttf') format('truetype');
-}
-
-/* Roboto Font Family */
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url('/fonts/roboto/Roboto-Light.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url('/fonts/roboto/Roboto-Bold.ttf') format('truetype');
-}
-
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -94,6 +52,7 @@
 
   --primary-red-800: #AA2C45;
   --primary-red-900: #963145;
+  --primary-red: #620719;
   --primary-red-foreground: oklch(0.985 0 0);
 }
 
@@ -202,6 +161,7 @@ body::-webkit-scrollbar {
 
   --color-primary-red-800: var(--primary-red-800);
   --color-primary-red-900: var(--primary-red-900);
+  --color-primary-red: var(--primary-red);
  --color-primary-red-foreground: var(--primary-red-foreground);
 }
 
@@ -240,13 +200,16 @@ body::-webkit-scrollbar {
 
   --primary-red-800: #AA2C45;
   --primary-red-900: #963145;
+  --primary-red: #620719;
   --primary-red-foreground: oklch(0.985 0 0);
 }
 
 @theme {
     --font-outfit: "Outfit", sans-serif;
     --font-roboto: "Roboto", sans-serif;
+    --font-jetbrains-mono: "JetBrains Mono", monospace;
 }
+
 
 @layer base {
     * {
@@ -280,4 +243,64 @@ body::-webkit-scrollbar {
         font-size: 18px;
         line-height: 1.6;
     }
+
+    /* Torn tape effect - paste into globals.css */
+    .tape {
+        position: relative;
+        display: inline-block;
+        background: rgba(0,0,0,0.70);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.45), inset 0 -6px 12px rgba(255,255,255,0.02);
+        font-weight: 600;
+        line-height: 1;
+        white-space: nowrap;
+        isolation: isolate;
+    }
+
+    /* Left torn edge */
+    .tape::before {
+        content: "";
+        position: absolute;
+        left: -17px;
+        top: 0;
+        width: 18px;
+        height: 100%;
+        background: rgba(0,0,0,0.70);
+        clip-path: polygon(
+                0% 6%, 20% 12%, 10% 28%, 30% 36%, 12% 52%, 26% 68%, 6% 78%, 22% 92%, 0% 100%, 100% 100%, 100% 0%
+        );
+    }
+
+    /* Right torn edge */
+    .tape::after {
+        content: "";
+        position: absolute;
+        right: -17px;
+        top: 0;
+        width: 18px;
+        height: 100%;
+        background: rgba(0,0,0,0.70);
+        transform-origin: right center;
+        clip-path: polygon(
+                100% 6%, 80% 12%, 90% 28%, 70% 36%, 88% 52%, 74% 68%, 94% 78%, 78% 92%, 100% 100%, 0% 100%, 0% 0%
+        );
+    }
+
+    /* optional light paper texture (subtle) */
+    .tape::after,
+    .tape::before {
+        background-image: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+        background-blend-mode: overlay;
+    }
+
+    /* small responsive tweak: reduce torn width on very small screens */
+    @media (max-width: 420px) {
+        .tape::before,
+        .tape::after {
+            width: 12px;
+            left: -8px;
+            right: -8px;
+        }
+        .tape { padding: 0.45rem 0.8rem; transform: rotate(-2deg); }
+    }
+
 }
