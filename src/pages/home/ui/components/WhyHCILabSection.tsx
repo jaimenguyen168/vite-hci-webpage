@@ -36,10 +36,10 @@ interface WhyHCILabSectionProps {
 
 const WhyHCILabSection = ({ images = labImages }: WhyHCILabSectionProps) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center mt-0 md:mt-12">
       <div className="flex flex-col gap-6">
         <BorderTitle title="Why join HCI Lab?" />
-        <p className="text-base md:text-lg xl:text-xl text-gray-700 leading-relaxed mt-4">
+        <p className="text-sm md:text-lg xl:text-xl text-gray-700 leading-relaxed">
           Being part of a research lab builds real-world skills, from critical
           thinking to teamwork. Students gain mentorship and hands-on
           experience, while job opportunities open doors to future careers in
@@ -59,7 +59,7 @@ const WhyHCILabSection = ({ images = labImages }: WhyHCILabSectionProps) => {
       <div className="relative">
         <ImageCarousel
           images={images}
-          height="h-72"
+          height="h-64 md:h-72"
           roundedClassName="rounded-bl-[100px]"
           showPagination={true}
           showNavigation={true}
