@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import SponsorModal from "@/pages/sponsors/ui/components/SponsorModal.tsx";
 import SponsorCard from "@/pages/sponsors/ui/components/SponsorCard.tsx";
 import sponsorsData from "@/pages/sponsors/content/sponsors.json";
-import Title from "@/components/Title.tsx";
+import { Title } from "@/components/customs/title.tsx";
 
 interface Grant {
   title: string;

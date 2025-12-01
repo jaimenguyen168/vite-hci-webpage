@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import PersonCard from "@/pages/people/ui/components/PersonCard.tsx";
 import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
-import Title from "@/components/Title.tsx";
+import { Title } from "@/components/customs/title.tsx";
 
 interface AlumniViewProps {
   alumniMembers: Person[];

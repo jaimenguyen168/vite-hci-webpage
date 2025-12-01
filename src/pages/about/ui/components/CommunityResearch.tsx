@@ -1,5 +1,5 @@
 import type { CommunityResearchContent } from "../../types";
-import Title from "@/components/Title.tsx";
+import { Title } from "@/components/customs/title.tsx";
 
 interface CommunityResearchProps {
   content: CommunityResearchContent;
