@@ -4,6 +4,7 @@ import WhyHCILabSection from "@/pages/home/ui/components/WhyHCILabSection.tsx";
 import FeatureProjects from "@/pages/home/ui/components/FeatureProjects.tsx";
 import HCITagsHero from "@/pages/home/ui/components/HCITagsHero.tsx";
 import HubCommunitySection from "@/pages/home/ui/components/HubCommunitySection.tsx";
+import RecentNewsSection from "@/pages/home/ui/components/RecentNewsSection.tsx";
 
 export default function HomePage() {
   const heroRef = useRef(null);
@@ -33,6 +34,9 @@ export default function HomePage() {
 
         {/* Hub Community Section */}
         <HubCommunitySection />
+
+        {/* Recent News Section */}
+        <RecentNewsSection />
 
         {/* Join Us CTA */}
         {/*<JoinUsCallToAction />*/}
