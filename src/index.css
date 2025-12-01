@@ -248,7 +248,7 @@ body::-webkit-scrollbar {
     .tape {
         position: relative;
         display: inline-block;
-        background: rgba(0,0,0,0.70);
+        background: var(--tape-bg, rgba(0,0,0,0.70));
         box-shadow: 0 6px 18px rgba(0,0,0,0.45), inset 0 -6px 12px rgba(255,255,255,0.02);
         font-weight: 600;
         line-height: 1;
@@ -260,11 +260,11 @@ body::-webkit-scrollbar {
     .tape::before {
         content: "";
         position: absolute;
-        left: -17px;
+        left: -17.6px;
         top: 0;
         width: 18px;
         height: 100%;
-        background: rgba(0,0,0,0.70);
+        background: var(--tape-bg, rgba(0,0,0,0.70));
         clip-path: polygon(
                 0% 6%, 20% 12%, 10% 28%, 30% 36%, 12% 52%, 26% 68%, 6% 78%, 22% 92%, 0% 100%, 100% 100%, 100% 0%
         );
@@ -274,15 +274,32 @@ body::-webkit-scrollbar {
     .tape::after {
         content: "";
         position: absolute;
-        right: -17px;
+        right: -17.6px;
         top: 0;
         width: 18px;
         height: 100%;
-        background: rgba(0,0,0,0.70);
+        background: var(--tape-bg, rgba(0,0,0,0.70));
         transform-origin: right center;
         clip-path: polygon(
                 100% 6%, 80% 12%, 90% 28%, 70% 36%, 88% 52%, 74% 68%, 94% 78%, 78% 92%, 100% 100%, 0% 100%, 0% 0%
         );
+    }
+
+    /* Color variants */
+    .tape-black {
+        --tape-bg: rgba(0,0,0,0.75);
+    }
+
+    .tape-white {
+        --tape-bg: rgba(255,255,255,0.90);
+    }
+
+    .tape-gray {
+        --tape-bg: rgba(156,163,175,0.85);
+    }
+
+    .tape-blue {
+        --tape-bg: rgba(59,130,246,0.85);
     }
 
     /* optional light paper texture (subtle) */
@@ -302,5 +319,4 @@ body::-webkit-scrollbar {
         }
         .tape { padding: 0.45rem 0.8rem; transform: rotate(-2deg); }
     }
-
 }

@@ -41,7 +41,7 @@ export default function RootLayout() {
       >
         <NavBar routes={routes} />
       </Hero>
-      <main className="max-w-7xl mx-auto px-6 py-8 flex-1 w-full scrollbar-hide">
+      <main className="max-w-7xl mx-auto px-6 py-8 flex-1 w-full scrollbar-hide overflow-hidden">
         <Outlet />
       </main>
       <Footer routes={routes} />
