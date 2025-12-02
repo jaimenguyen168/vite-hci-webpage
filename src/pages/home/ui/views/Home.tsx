@@ -5,6 +5,7 @@ import FeatureProjects from "@/pages/home/ui/components/FeatureProjects.tsx";
 import HCITagsHero from "@/pages/home/ui/components/HCITagsHero.tsx";
 import HubCommunitySection from "@/pages/home/ui/components/HubCommunitySection.tsx";
 import RecentNewsSection from "@/pages/home/ui/components/RecentNewsSection.tsx";
+import CallToActionSection from "@/pages/home/ui/components/CallToActionSection.tsx";
 
 export default function HomePage() {
   const heroRef = useRef(null);
@@ -39,7 +40,7 @@ export default function HomePage() {
         <RecentNewsSection />
 
         {/* Join Us CTA */}
-        {/*<JoinUsCallToAction />*/}
+        <CallToActionSection />
       </motion.section>
     </div>
   );

@@ -1,5 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { BorderTitle } from "@/components/customs/title.tsx";
 
 interface NewsItem {
   id: string;
@@ -44,7 +45,7 @@ const RecentNewsSection = () => {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
-      className="w-full mt-16"
+      className="w-full mt-12 md:mt-16"
     >
       {/* Desktop Layout - 4 column grid */}
       <div className="hidden md:grid md:grid-cols-4 md:gap-6 md:h-48 lg:h-64 xl:h-72">
@@ -117,7 +118,8 @@ const RecentNewsSection = () => {
       </div>
 
       {/* Mobile Layout - Simple list */}
-      <div className="md:hidden space-y-3">
+      <div className="md:hidden space-y-8">
+        <BorderTitle title="Recent News" />
         {newsItems.map((news, index) => (
           <motion.div
             key={news.id}
@@ -128,7 +130,7 @@ const RecentNewsSection = () => {
               delay: index * 0.1,
               ease: "easeOut",
             }}
-            className="px-4 py-2 bg-gray-50 rounded-lg"
+            className="px-4 py-2 bg-gray-50 rounded-lg mb-3"
           >
             <p className="font-semibold text-gray-900 mb-2 text-sm">
               {news.title}
