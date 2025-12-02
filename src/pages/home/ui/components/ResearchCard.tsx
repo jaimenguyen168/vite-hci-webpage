@@ -34,17 +34,16 @@ const ResearchCard = ({
         ease: "easeOut",
       }}
     >
-      <Card className="bg-primary-red-900 border-0 shadow-lg !rounded-3xl h-full py-0">
-        <CardContent className="p-8 flex flex-col h-full relative">
-          <h3 className="text-sm md:text-lg xl:text-2xl font-semibold text-white mb-2">
+      <Card className="border-0 shadow-lg !rounded-3xl h-full py-0 relative">
+        <CardContent className="p-8 flex flex-col h-full relative z-20">
+          <h3 className="text-sm md:text-lg xl:text-2xl font-semibold  mb-2">
             {research.title}
           </h3>
-          <p className="text-white/90 text-xs md:text-sm xl:text-base leading-relaxed mb-4 flex-grow">
+          <p className="text-xs md:text-sm xl:text-base leading-relaxed mb-4 flex-grow">
             {research.description}
           </p>
           <Button
-            variant="outline"
-            className="!bg-transparent text-white !rounded-full !border !border-white hover:!bg-white hover:text-primary-red-900 transition-colors self-start"
+            className="!rounded-full !border !border-white hover:!bg-white hover:text-primary-red-900 transition-colors self-start !px-8"
             onClick={() => window.open(research.buttonUrl, "_blank")}
             size="sm"
             aria-label={
@@ -60,12 +59,12 @@ const ResearchCard = ({
               </span>
             </p>
           </Button>
-
-          <research.icon
-            className="absolute size-36 md:size-40 xl:size-48 text-white/20 right-12 md:right-6 top-1/2 -translate-y-1/2"
-            strokeWidth={1}
-          />
         </CardContent>
+
+        <research.icon
+          className="absolute size-36 md:size-40 xl:size-48 text-gray-300 right-12 md:right-6 top-1/2 -translate-y-1/2"
+          strokeWidth={1}
+        />
       </Card>
     </motion.div>
   );

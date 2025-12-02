@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import ImageCarousel from "@/components/ImageCarousel";
 import type { LabHappeningsContent } from "../../types";
-import Title from "@/components/Title.tsx";
+import { Title } from "@/components/customs/title.tsx";
 
 interface LabHappeningsProps {
   content: LabHappeningsContent;

@@ -5,8 +5,8 @@ import RoleLegend from "@/pages/people/ui/components/RoleLegend.tsx";
 import type { Person } from "@/pages/people/types.ts";
 import { Card, CardContent } from "@/components/ui/card.tsx";
 import { Button } from "@/components/ui/button.tsx";
-import Title from "@/components/Title.tsx";
 import { useNavigate } from "react-router-dom";
+import { Title } from "@/components/customs/title.tsx";
 
 interface CurrentMembersViewProps {
   activeMembers: Person[];

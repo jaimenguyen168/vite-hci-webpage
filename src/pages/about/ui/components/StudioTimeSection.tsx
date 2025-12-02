@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { getImagePath } from "@/lib/utils.ts";
 import type { StudioTimeContent } from "../../types";
 import { useCallback } from "react";
-import Title from "@/components/Title.tsx";
+import { Title } from "@/components/customs/title.tsx";
 
 interface StudioTimeProps {
   content: StudioTimeContent;
